@@ -39,7 +39,12 @@
         </div>
 
         <div>Notes</div>
-        <input class="notesInput" type="text" placeholder="notes" />
+        <input
+          class="notesInput"
+          type="text"
+          placeholder="notes"
+          onkeydown="enter(event)"
+        />
         <button class="sendButton">&#8594;</button>
       </div>
       <div class="formRight"></div>
