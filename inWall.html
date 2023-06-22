@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>in wall material order</title>
+    <link rel="stylesheet" href="inWall.css" />
+  </head>
+  <body>
+    <div class="form">
+      <div class="formLeft">
+        <div>Designation</div>
+        <div class="designation">
+          <div>Device panel</div>
+          <div>CKT#</div>
+          <div>S</div>
+          <div>Qty</div>
+        </div>
+        <div>Bottom Box Configuration</div>
+        <div class="botBoxConfig">
+          <div>Box Type</div>
+          <div>Exits</div>
+          <div>Connecter Type</div>
+          <div>Support Type</div>
+          <div>Plaster Ring</div>
+          <div>Conduit/Cable Type</div>
+        </div>
+        <div>Conduit Lengths</div>
+        <div class="conduitLengths">
+          <div>Left</div>
+          <div>Center</div>
+          <div>Right</div>
+          <div>Bottom</div>
+        </div>
+        <div>NEMA Device Configuration</div>
+        <div class="nemaDeviceConfig">
+          <div>Device Left</div>
+          <div>Device Center</div>
+          <div>Device Right</div>
+        </div>
+
+        <div>Notes</div>
+        <input
+          class="notesInput"
+          type="text"
+          placeholder="notes"
+          onkeydown="enter(event)"
+        />
+        <button class="sendButton">&#8594;</button>
+      </div>
+      <div class="formRight"></div>
+    </div>
+    <script src="inWall.js"></script>
+  </body>
+</html>
