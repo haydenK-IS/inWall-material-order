@@ -69,6 +69,24 @@ body {
   margin-left: 20px;
 }
 
+.boxType {
+  display: flex;
+  align-items: center;
+  column-gap: 10px;
+}
+
+select {
+  font-size: 18px;
+  padding: 3px 3px;
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
+}
+
+select:focus {
+  outline: none;
+}
+
 .notesInput {
   min-width: 250px;
   min-height: 50px;
@@ -84,4 +102,5 @@ body {
   font-size: 15px;
   border: none;
   margin-left: -6px;
+  cursor: pointer;
 }
