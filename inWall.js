@@ -4,17 +4,24 @@ document.querySelector(
   '.sendButton').addEventListener(
     'click',function(){
       let temp = document.querySelector('.notesInput');
-      notes.push(temp);
+      notes.push(temp.value);
       let html = '';
       for(let x = 0; x<notes.length; x++){
         html+= `<p>${notes[x]}</p>`
       }
-      document.querySelector('.formRight').innerHTML = JSON.stringify(notes);
+      document.querySelector('.formRight').innerHTML = html;
+      document.querySelector('.notesInput').innerHTML = '';
     })
 
 function enter(event){
   if(event.key === 'Enter'){
     let temp = document.querySelector('.notesInput');
-      document.querySelector('.formRight').innerHTML = notes;
+      notes.push(temp.value);
+      let html = '';
+      for(let x = 0; x<notes.length; x++){
+        html+= `<p>${notes[x]}</p>`
+      }
+      document.querySelector('.formRight').innerHTML = html;
+      document.querySelector('.notesInput').innerHTML = '';
   }
 }
