@@ -1,5 +1,4 @@
 let matList = {};
-
 let orderCount = 1;
 
 document.querySelector(
@@ -25,12 +24,17 @@ document.querySelector(
         deviceCenter:0,
         note: notes
       }
+      if(orderCount>1)
+      {
+        document.querySelector('.viewOrders').innerHTML = `${orderCount} Orders`;
+      }
+      else{
+        document.querySelector('.viewOrders').innerHTML = `${orderCount} Orders`;
+      }
+      localStorage.setItem('matList', JSON.stringify(matList));
       orderCount++;
-      console.log(matList);
     }
   )
-
-
 
 let notes = [];
 
@@ -45,7 +49,8 @@ document.querySelector(
       }
       document.querySelector('.userNotes').innerHTML = html;
       document.querySelector('.notesInput').value = '';
-    })
+    }
+  )
 
 function enter(event){
   if(event.key === 'Enter'){
