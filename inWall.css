@@ -1,10 +1,4 @@
-body {
-  background-color: rgb(0, 153, 255);
-  justify-content: center;
-  color: white;
-  font-family: Arial, Helvetica, sans-serif;
-  font-size: 25px;
-}
+body {}
 
 div {
   margin-bottom: 8px;
@@ -109,4 +103,10 @@ body {
 
 .title {
   font-weight: bold;
+}
+
+.addToOrder {
+  position: relative;
+  bottom: 10px;
+
 }

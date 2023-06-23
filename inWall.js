@@ -9,7 +9,7 @@ document.querySelector(
       for(let x = 0; x<notes.length; x++){
         html+= `<p>${notes[x]}</p>`
       }
-      document.querySelector('.formRight').innerHTML = html;
+      document.querySelector('.userNotes').innerHTML = html;
       document.querySelector('.notesInput').value = '';
     })
 
@@ -21,7 +21,7 @@ function enter(event){
       for(let x = 0; x<notes.length; x++){
         html+= `<p>${notes[x]}</p>`
       }
-      document.querySelector('.formRight').innerHTML = html;
+      document.querySelector('.userNotes').innerHTML = html;
       document.querySelector('.notesInput').value = '';
   }
 }
