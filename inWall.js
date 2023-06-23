@@ -10,7 +10,7 @@ document.querySelector(
         html+= `<p>${notes[x]}</p>`
       }
       document.querySelector('.formRight').innerHTML = html;
-      document.querySelector('.notesInput').innerHTML = '';
+      document.querySelector('.notesInput').value = '';
     })
 
 function enter(event){
@@ -22,6 +22,6 @@ function enter(event){
         html+= `<p>${notes[x]}</p>`
       }
       document.querySelector('.formRight').innerHTML = html;
-      document.querySelector('.notesInput').innerHTML = '';
+      document.querySelector('.notesInput').value = '';
   }
 }
