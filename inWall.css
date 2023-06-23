@@ -6,6 +6,10 @@ body {
   font-size: 25px;
 }
 
+div {
+  margin-bottom: 8px;
+}
+
 select {
   font-size: 18px;
   padding: 3px 3px;
