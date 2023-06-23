@@ -22,7 +22,8 @@ document.querySelector(
         bottom:0,
         deviceLeft:0,
         deviceRight:0,
-        deviceCenter:0
+        deviceCenter:0,
+        note: notes
       }
       orderCount++;
       console.log(matList);
