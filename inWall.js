@@ -1,26 +1,35 @@
-let matList = {
-  orderCount : {
-    devicePanel : 0,
-    ckt : 0,
-    s : 0,
-    qty : 0,
-    boxType: document.getElementById("boxTypeVal").value,
-    exits:0,
-    connecterType:0,
-    supportType:0,
-    platerRingv0,
-    conduitCableType:0,
-    left:0,
-    center:0,
-    right:0,
-    bottomv0,
-    deviceLeft:0,
-    deviceRight:0,
-    deviceCenter:0
-  }
-};
+let matList = {};
 
 let orderCount = 1;
+
+document.querySelector(
+  '.addToOrder').addEventListener(
+    'click', function(){
+      matList[orderCount] = {
+        devicePanel : 0,
+        ckt : 0,
+        s : 0,
+        qty : 0,
+        boxType: document.getElementById("boxTypeVal").value,
+        exits:0,
+        connecterType:0,
+        supportType:0,
+        platerRing:0,
+        conduitCableType:0,
+        left:0,
+        center:0,
+        right:0,
+        bottom:0,
+        deviceLeft:0,
+        deviceRight:0,
+        deviceCenter:0
+      }
+      orderCount++;
+      console.log(matList);
+    }
+  )
+
+
 
 let notes = [];
 
