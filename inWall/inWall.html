@@ -9,56 +9,108 @@
   <body>
     <div class="form">
       <div class="formLeft">
-        <div class="title">Designation</div>
+        <p class="title">Designation</p>
         <div class="designation">
-          <div>Device panel</div>
-          <div>CKT#</div>
-          <div>S</div>
-          <div>Qty</div>
+          <div class="devicePanel">
+            <p>Device panel</p>
+            <input class="devicePanelVal" type="text" />
+          </div>
+          <div class="ckt">
+            <p>CKT#</p>
+            <input class="cktVal" type="text" />
+          </div>
+          <div class="s">
+            <p>S</p>
+            <input class="sVal" type="text" />
+          </div>
+          <div class="qty">
+            <p>Qty</p>
+            <input class="qtyVal" type="text" />
+          </div>
         </div>
 
-        <div class="title">Bottom Box Configuration</div>
+        <p class="title">Bottom Box Configuration</p>
         <div class="botBoxConfig">
           <div class="boxType">
-            <div>Box Type</div>
+            <p>Box Type</p>
             <div class="boxTypeQuantity">
-              <select id="boxTypeVal">
-                <option selected value="1">1</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-                <option value="4">4</option>
-                <option value="5">5</option>
-                <option value="6">6</option>
-                <option value="7">7</option>
-                <option value="8">8</option>
-                <option value="9">9</option>
-                <option value="10">10</option>
-              </select>
+              <input class="boxTypeVal" type="text" />
             </div>
           </div>
-          <div>Exits</div>
-          <div>Connecter Type</div>
-          <div>Support Type</div>
-          <div>Plaster Ring</div>
-          <div>Conduit/Cable Type</div>
+          <div class="exits">
+            <p>Exits</p>
+            <select id="exitsVal">
+              <option selected value="0">0</option>
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+              <option value="6">6</option>
+            </select>
+          </div>
+          <div class="connecterType">
+            <p>Connecter Type</p>
+            <input class="connecterTypeVal" />
+          </div>
+          <div class="supportType">
+            <p>Support Type</p>
+            <input class="supportTypeVal" type="text" />
+          </div>
+          <div class="plasterRing">
+            <p>Plaster Ring</p>
+            <input class="plasterRingVal" type="text" />
+          </div>
+          <div class="conduitCableType">
+            <p>Conduit/Cable Type</p>
+            <select id="conduitCableTypeVal">
+              <option selected value="Na">Choose</option>
+              <option value='1/2" EMT'>1/2" EMT</option>
+              <option value='3/4" EMT'>3/4" EMT</option>
+              <option value='1" EMT'>1" EMT</option>
+              <option value="5 Wire">5 Wire</option>
+              <option value="3 Wire">3 Wire</option>
+            </select>
+          </div>
         </div>
 
-        <div class="title">Conduit Lengths</div>
+        <p class="title">Conduit Lengths</p>
         <div class="conduitLengths">
-          <div>Left</div>
-          <div>Center</div>
-          <div>Right</div>
-          <div>Bottom</div>
+          <div class="left">
+            <p>Left</p>
+            <input type="text" class="leftVal" />
+          </div>
+          <div class="center">
+            <p>Center</p>
+            <input type="text" class="centerVal" />
+          </div>
+          <div class="right">
+            <p>Right</p>
+            <input type="text" class="rightVal" />
+          </div>
+          <div class="bottom">
+            <p>Bottom</p>
+            <input type="text" class="bottomVal" />
+          </div>
         </div>
 
-        <div class="title">NEMA Device Configuration</div>
+        <p class="title">NEMA Device Configuration</p>
         <div class="nemaDeviceConfig">
-          <div>Device Left</div>
-          <div>Device Center</div>
-          <div>Device Right</div>
+          <div class="deviceLeft">
+            <p>Device Left</p>
+            <input type="text" class="deviceLeftVal" />
+          </div>
+          <div class="deviceCenter">
+            <p>Device Center</p>
+            <input type="text" class="deviceCenterVal" />
+          </div>
+          <div class="deviceRight">
+            <p>Device Right</p>
+            <input type="text" class="deviceRightVal" />
+          </div>
         </div>
 
-        <div class="title">Notes</div>
+        <p class="title">Notes</p>
         <input
           class="notesInput"
           type="text"
@@ -78,6 +130,7 @@
       <a class="viewCartRef" href="/viewCart/viewCart.html"
         ><button class="viewCart">View Cart</button></a
       >
+      <button class="clearCartButton">Clear Cart</button>
     </div>
 
     <script src="inWall.js"></script>

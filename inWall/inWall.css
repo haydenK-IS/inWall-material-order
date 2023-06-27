@@ -6,6 +6,10 @@ body {
   font-size: 25px;
 }
 
+p {
+  margin: 10px 0px;
+}
+
 div {
   margin-bottom: 8px;
 }
@@ -74,19 +78,35 @@ input:focus {
   margin-left: 20px;
 }
 
-.boxType {
+.devicePanel,
+.ckt,
+.s,
+.qty,
+.boxType,
+.exits,
+.connecterType,
+.supportType,
+.plasterRing,
+.conduitCableType,
+.left,
+.right,
+.center,
+.bottom,
+.deviceLeft,
+.deviceRight,
+.deviceCenter {
   display: flex;
   align-items: center;
   column-gap: 10px;
 }
 
 .notesInput {
-  min-width: 250px;
   min-height: 50px;
   text-align: center;
   font-size: 15px;
   border: none;
-  margin-right: -5px;
+  padding-right: 5px;
+  margin-right: -1px;
 }
 
 .sendButton {
@@ -131,7 +151,8 @@ input:focus {
   margin-right: 20px;
 }
 
-.viewCart {
+.viewCart,
+.clearCartButton {
   background-color: rgb(2, 57, 111);
   color: white;
   border-radius: 20px;
@@ -139,6 +160,8 @@ input:focus {
   width: 100px;
   padding: 15px 3px;
   cursor: pointer;
+  display: block;
+  margin-bottom: 10px;
 }
 
 .viewCart:hover {

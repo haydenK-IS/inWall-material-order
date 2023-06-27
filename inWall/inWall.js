@@ -1,38 +1,52 @@
-let matList = {};
-let orderCount = 1;
+let matList = JSON.parse(localStorage.getItem("matList")) || {};
+
+let orderCount = 0
+loadOrderCount();
+function loadOrderCount(){
+  for(let properties in matList){
+    orderCount++;
+  }
+  if(orderCount === 1){
+    document.querySelector('.viewOrders').innerHTML = `${orderCount} Order`;
+  }
+  else{
+    document.querySelector('.viewOrders').innerHTML = `${orderCount} Orders`;
+  }
+}
 
 document.querySelector(
   '.addToOrder').addEventListener(
     'click', function(){
-      matList[orderCount] = {
-        devicePanel : 0,
-        ckt : 0,
-        s : 0,
-        qty : 0,
-        boxType: document.getElementById("boxTypeVal").value,
-        exits:0,
-        connecterType:0,
-        supportType:0,
-        platerRing:0,
-        conduitCableType:0,
-        left:0,
-        center:0,
-        right:0,
-        bottom:0,
-        deviceLeft:0,
-        deviceRight:0,
-        deviceCenter:0,
+      matList[orderCount+1] = {
+        devicePanel : document.querySelector(".devicePanelVal").value,
+        ckt : document.querySelector(".cktVal").value,
+        s : document.querySelector(".sVal").value,
+        qty : document.querySelector(".qtyVal").value,
+        boxType: document.querySelector(".boxTypeVal").value,
+        exits:document.getElementById("exitsVal").value,
+        connecterType:document.querySelector(".connecterTypeVal").value,
+        supportType:document.querySelector(".supportTypeVal").value,
+        plasterRing:document.querySelector(".plasterRingVal").value,
+        conduitCableType:document.getElementById("conduitCableTypeVal").value,
+        left:document.querySelector(".leftVal").value,
+        center:document.querySelector(".centerVal").value,
+        right:document.querySelector(".rightVal").value,
+        bottom:document.querySelector(".bottomVal").value,
+        deviceLeft:document.querySelector(".deviceLeftVal").value,
+        deviceRight:document.querySelector(".deviceRightVal").value,
+        deviceCenter:document.querySelector(".deviceCenterVal").value,
         note: notes
-      }
-      if(orderCount>1)
+      };
+      orderCount++;
+      if(orderCount === 1)
       {
-        document.querySelector('.viewOrders').innerHTML = `${orderCount} Orders`;
+        document.querySelector('.viewOrders').innerHTML = `${orderCount} Order`;
       }
       else{
         document.querySelector('.viewOrders').innerHTML = `${orderCount} Orders`;
       }
       localStorage.setItem('matList', JSON.stringify(matList));
-      orderCount++;
+      
     }
   )
 
@@ -64,3 +78,9 @@ function enter(event){
       document.querySelector('.notesInput').value = '';
   }
 }
+
+document.querySelector(".clearCartButton").addEventListener('click', function(){
+  localStorage.clear();
+  orderCount = 0;
+  document.querySelector('.viewOrders').innerHTML = `${orderCount} Orders`;
+})
