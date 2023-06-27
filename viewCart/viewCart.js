@@ -30,6 +30,8 @@ function loadingCart(){
               <th>Device Left</th>
               <th>Device Center</th>
               <th>Device Right</th>
+              <th>Notes</th>
+              <th>Edit</th>
             </tr>
             <tr>
           `;
@@ -71,6 +73,8 @@ function loadingCart(){
               <td>${innerHTMLdeviceLeft}</td>
               <td>${innerHTMLdeviceCenter}</td>
               <td>${innerHTMLdeviceRight}</td>
+              <td><button class = "notesButton notesButton${z}">&#9776;</button></td>
+              <td><button class = "editButton editButton${z}">&#9998;</button></td>
             </tr>`;
             counter++;
       if(counter < count)

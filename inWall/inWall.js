@@ -83,4 +83,43 @@ document.querySelector(".clearCartButton").addEventListener('click', function(){
   localStorage.clear();
   orderCount = 0;
   document.querySelector('.viewOrders').innerHTML = `${orderCount} Orders`;
+  document.querySelector(".devicePanelVal").value = '';
+  document.querySelector(".cktVal").value = '';
+  document.querySelector(".sVal").value = '';
+  document.querySelector(".qtyVal").value = '';
+  document.querySelector(".boxTypeVal").value = '';
+  document.getElementById("exitsVal").value = '0';
+  document.querySelector(".connecterTypeVal").value = '';
+  document.querySelector(".supportTypeVal").value = '';
+  document.querySelector(".plasterRingVal").value = '';
+  document.getElementById("conduitCableTypeVal").value = 'Choose';
+  document.querySelector(".leftVal").value = '';
+  document.querySelector(".centerVal").value = '';
+  document.querySelector(".rightVal").value = '';
+  document.querySelector(".bottomVal").value = '';
+  document.querySelector(".deviceLeftVal").value = '';
+  document.querySelector(".deviceRightVal").value = '';
+  document.querySelector(".deviceCenterVal").value = '';
+  document.querySelector('.notesInput').value = '';
+})
+
+document.querySelector(".resetButton").addEventListener("click", function(){
+  document.querySelector(".devicePanelVal").value = '';
+  document.querySelector(".cktVal").value = '';
+  document.querySelector(".sVal").value = '';
+  document.querySelector(".qtyVal").value = '';
+  document.querySelector(".boxTypeVal").value = '';
+  document.getElementById("exitsVal").value = '0';
+  document.querySelector(".connecterTypeVal").value = '';
+  document.querySelector(".supportTypeVal").value = '';
+  document.querySelector(".plasterRingVal").value = '';
+  document.getElementById("conduitCableTypeVal").value = 'Choose';
+  document.querySelector(".leftVal").value = '';
+  document.querySelector(".centerVal").value = '';
+  document.querySelector(".rightVal").value = '';
+  document.querySelector(".bottomVal").value = '';
+  document.querySelector(".deviceLeftVal").value = '';
+  document.querySelector(".deviceRightVal").value = '';
+  document.querySelector(".deviceCenterVal").value = '';
+  document.querySelector('.notesInput').value = '';
 })

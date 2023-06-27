@@ -26,6 +26,13 @@ select:focus {
   outline: none;
 }
 
+input {
+  max-width: 100px;
+  border-radius: 10px;
+  border: none;
+  padding: 5px 5px;
+}
+
 input:focus {
   outline: none;
 }
@@ -61,6 +68,8 @@ input:focus {
   font-size: 15px;
   border: none;
   margin-right: 0px;
+  border-radius: 0px;
+  padding: 1px 1px;
 }
 
 .sendButton {
@@ -68,7 +77,9 @@ input:focus {
   width: 50px;
   font-size: 15px;
   border: none;
-  margin-left: -5px;
+  margin-left: -6px;
+  cursor: pointer;
+  background-color: white;
 }
 
 .designation,
@@ -109,15 +120,7 @@ input:focus {
   margin-right: -1px;
 }
 
-.sendButton {
-  height: 52px;
-  width: 50px;
-  font-size: 15px;
-  border: none;
-  margin-left: -6px;
-  cursor: pointer;
-  background-color: white;
-}
+
 
 .title {
   font-weight: bold;
@@ -127,6 +130,18 @@ input:focus {
   position: absolute;
   bottom: 0px;
   right: 10px;
+  width: 100px;
+  border-radius: 20px;
+  border: none;
+  background-color: white;
+  padding: 15px 3px;
+  cursor: pointer;
+}
+
+.resetButton {
+  position: absolute;
+  bottom: 0px;
+  right: 130px;
   width: 100px;
   border-radius: 20px;
   border: none;
@@ -164,11 +179,13 @@ input:focus {
   margin-bottom: 10px;
 }
 
-.viewCart:hover {
+.viewCart:hover,
+.clearCartButton:hover {
   background-color: rgb(4, 86, 168);
 }
 
-.viewCart:active {
+.viewCart:active,
+.clearCartButton:active {
   background-color: rgb(2, 57, 111);
 }
 
