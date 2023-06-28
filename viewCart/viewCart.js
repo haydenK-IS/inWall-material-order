@@ -7,6 +7,8 @@ for(let properties in cartGridParse){
   count++;
 }
 
+
+
 loadingCart();
 function loadingCart(){
   let html=`
@@ -54,6 +56,8 @@ function loadingCart(){
       let innerHTMLdeviceLeft = cartGridParse[z].deviceLeft;
       let innerHTMLdeviceRight = cartGridParse[z].deviceRight;
       let innerHTMLdeviceCenter = cartGridParse[z].deviceCenter;
+      let innerHTMLnotes = cartGridParse[z].note;
+      console.log(innerHTMLnotes);
       html+=`
               <th>${z}</th>
               <td>${innerHTMLdevicePanel}</td>
@@ -72,10 +76,14 @@ function loadingCart(){
               <td>${innerHTMLbottom}</td>
               <td>${innerHTMLdeviceLeft}</td>
               <td>${innerHTMLdeviceCenter}</td>
-              <td>${innerHTMLdeviceRight}</td>
-              <td><button class = "notesButton notesButton${z}">&#9776;</button></td>
-              <td><button class = "editButton editButton${z}">&#9998;</button></td>
-            </tr>`;
+              <td>${innerHTMLdeviceRight}</td>`;
+            if(cartGridParse[z].note.length > 0){
+              html+=`<td><button class = "notesButton notesButton${z}">&#9776;</button></td>`;
+            }
+            else{
+              html+=`<td></td>`
+            }
+            html+=`<td><button class = "editButton editButton${z}" onclick = "edit(${z})">&#9998;</button></td></tr>`;
             counter++;
       if(counter < count)
       {
@@ -90,3 +98,58 @@ function loadingCart(){
   html+=`</table>`;
   document.querySelector('.orderSummary').innerHTML += html; 
 }
+
+function edit(objNum){
+  if(document.querySelector('.editOverlay').classList.contains('editOn')){
+    document.querySelector('.editOverlay').classList.remove('editOn');
+    document.getElementById("editOverlay").style.display = 'none';
+  }
+  else{
+    document.querySelector('.editOverlay').classList.add('editOn');
+    document.getElementById("editOverlay").style.display = "block";
+  }
+  document.querySelector(".devicePanelVal").value = cartGridParse[objNum].devicePanel;
+  document.querySelector(".cktVal").value = cartGridParse[objNum].ckt;
+  document.querySelector(".sVal").value = cartGridParse[objNum].s;
+  document.querySelector(".qtyVal").value = cartGridParse[objNum].qty;
+  document.querySelector(".boxTypeVal").value = cartGridParse[objNum].boxType;
+  document.getElementById("exitsVal").value = cartGridParse[objNum].exits;
+  document.querySelector(".connecterTypeVal").value = cartGridParse[objNum].connecterType;
+  document.querySelector(".supportTypeVal").value = cartGridParse[objNum].supportType;
+  document.querySelector(".plasterRingVal").value = cartGridParse[objNum].plasterRing;
+  document.getElementById("conduitCableTypeVal").value = cartGridParse[objNum].conduitCableType;
+  document.querySelector(".leftVal").value = cartGridParse[objNum].left;
+  document.querySelector(".centerVal").value = cartGridParse[objNum].center;
+  document.querySelector(".rightVal").value = cartGridParse[objNum].right;
+  document.querySelector(".bottomVal").value = cartGridParse[objNum].bottom;
+  document.querySelector(".deviceLeftVal").value = cartGridParse[objNum].deviceLeft;
+  document.querySelector(".deviceRightVal").value = cartGridParse[objNum].deviceRight;
+  document.querySelector(".deviceCenterVal").value = cartGridParse[objNum].deviceCenter;
+}
+
+document.querySelector('.doneButton').addEventListener('click', function(){
+  document.querySelector('.editOverlay').classList.remove('editOn');
+  document.getElementById("editOverlay").style.display = 'none';
+})
+
+document.querySelector(".resetButton").addEventListener("click", function(){
+  document.querySelector(".devicePanelVal").value = '';
+  document.querySelector(".cktVal").value = '';
+  document.querySelector(".sVal").value = '';
+  document.querySelector(".qtyVal").value = '';
+  document.querySelector(".boxTypeVal").value = '';
+  document.getElementById("exitsVal").value = '0';
+  document.querySelector(".connecterTypeVal").value = '';
+  document.querySelector(".supportTypeVal").value = '';
+  document.querySelector(".plasterRingVal").value = '';
+  document.getElementById("conduitCableTypeVal").value = 'Choose';
+  document.querySelector(".leftVal").value = '';
+  document.querySelector(".centerVal").value = '';
+  document.querySelector(".rightVal").value = '';
+  document.querySelector(".bottomVal").value = '';
+  document.querySelector(".deviceLeftVal").value = '';
+  document.querySelector(".deviceRightVal").value = '';
+  document.querySelector(".deviceCenterVal").value = '';
+  document.querySelector('.notesInput').value = '';
+})
+

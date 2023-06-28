@@ -45,6 +45,7 @@ document.querySelector(
       else{
         document.querySelector('.viewOrders').innerHTML = `${orderCount} Orders`;
       }
+      notes = [];
       localStorage.setItem('matList', JSON.stringify(matList));
       
     }
