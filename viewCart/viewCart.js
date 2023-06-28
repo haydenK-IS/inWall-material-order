@@ -78,7 +78,7 @@ function loadingCart(){
               <td>${innerHTMLdeviceCenter}</td>
               <td>${innerHTMLdeviceRight}</td>`;
             if(cartGridParse[z].note.length > 0){
-              html+=`<td><button class = "notesButton notesButton${z}">&#9776;</button></td>`;
+              html+=`<td><button class = "notesButton notesButton${z}" onclick = "notesView(${z})">&#9776;</button></td>`;
             }
             else{
               html+=`<td></td>`
@@ -125,6 +125,7 @@ function edit(objNum){
   document.querySelector(".deviceLeftVal").value = cartGridParse[objNum].deviceLeft;
   document.querySelector(".deviceRightVal").value = cartGridParse[objNum].deviceRight;
   document.querySelector(".deviceCenterVal").value = cartGridParse[objNum].deviceCenter;
+  document.querySelector('.orderNumber').innerHTML = 'Order: ' + objNum;
 }
 
 document.querySelector('.doneButton').addEventListener('click', function(){
@@ -153,3 +154,26 @@ document.querySelector(".resetButton").addEventListener("click", function(){
   document.querySelector('.notesInput').value = '';
 })
 
+function notesView(objNum){
+  let noteHTML = "";
+  if(document.querySelector('.notesOverlay').classList.contains('notesOn')){
+    document.querySelector('.notesOverlay').classList.remove('notesOn');
+    document.getElementById("notesOverlay").style.display = 'none';
+  }
+  else{
+    document.querySelector('.notesOverlay').classList.add('notesOn');
+    document.getElementById("notesOverlay").style.display = "block";
+  }
+  for(let x = 0; x<cartGridParse[objNum].note.length;x++){
+    let tempNote = cartGridParse[objNum].note[x]
+    noteHTML+=`<p>${tempNote}</p>`;
+  }
+  //document.querySelector('.notesReferance').innerHTML = cartGridParse[objNum].note;
+  document.querySelector('.notesReferance').innerHTML = noteHTML;
+  document.querySelector('.orderNumberNotes').innerHTML = 'Order: ' + objNum;
+}
+
+document.querySelector('.exitNotes').addEventListener('click', function(){
+  document.querySelector('.notesOverlay').classList.remove('notesOn');
+  document.getElementById("notesOverlay").style.display = 'none';
+})
