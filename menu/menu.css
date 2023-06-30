@@ -1,0 +1,56 @@
+p {
+  font-family: Arial;
+  font-size: 25px;
+  color: black;
+}
+
+img {
+  height: 200px;
+  width: 300px;
+  object-fit: contain;
+  background-color: white;
+  border-radius: 20px;
+  padding: 20px 20px;
+}
+
+button {
+  padding: 10px 10px;
+  border-radius: 20px;
+  color: #faf3dd;
+  border-style: solid;
+  border-color: #faf3dd;
+  border-width: 2px;
+  background-color: #495159;
+  font-size: 25px;
+  cursor: pointer;
+  transition: background-color 0.5s, color 0.5s;
+
+}
+
+button:hover {
+  background-color: #faf3dd;
+  color: #495159;
+}
+
+.homeGrid {
+  justify-content: center;
+  align-items: center;
+  width: 99%;
+  height: 99%;
+  display: flex;
+  position: absolute;
+  column-gap: 100px;
+}
+
+.quickbaseDiv,
+.pullBuildDiv,
+.viewBuildDiv {
+  display: flexbox;
+  text-align: center;
+  padding: 50px 30px;
+  border-radius: 10px;
+  background-color: #faf3dd;
+  border-width: 3px;
+  border-style: solid;
+  border-color: #495159;
+}

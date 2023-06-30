@@ -1,6 +1,4 @@
 body {
-  color: rgb(255, 255, 255);
-  background-color: rgb(255, 255, 255);
   justify-content: center;
   font-family: Arial;
   font-size: 25px;
@@ -38,12 +36,12 @@ input:focus {
 }
 
 .form {
-  background-color: rgb(0, 118, 228);
+  background-color: #faf3dd;
   border: 5px solid;
   margin: auto;
   width: 50%;
   padding: 10px;
-  border-color: rgb(2, 57, 111);
+  border-color: #495159;
   border-radius: 15px;
   display: flex;
   justify-content: space-between;
@@ -132,7 +130,7 @@ input:focus {
   right: 10px;
   width: 100px;
   border-radius: 20px;
-  border: none;
+  border-width: 1px;
   background-color: white;
   padding: 15px 3px;
   cursor: pointer;
@@ -144,17 +142,21 @@ input:focus {
   right: 130px;
   width: 100px;
   border-radius: 20px;
-  border: none;
+  border-width: 1px;
   background-color: white;
   padding: 15px 3px;
   cursor: pointer;
 }
 
-.addToOrder:hover {
+.addToOrder:hover,
+.resetButton:hover,
+.sendButton:hover {
   filter: brightness(.9);
 }
 
-.addToOrder:active {
+.addToOrder:active,
+.resetButton:active,
+.sendButton:active {
   filter: brightness(1);
 }
 
@@ -168,10 +170,9 @@ input:focus {
 
 .viewCart,
 .clearCartButton {
-  background-color: rgb(2, 57, 111);
-  color: white;
+  background-color: white;
   border-radius: 20px;
-  border: none;
+  border-width: 1px;
   width: 100px;
   padding: 15px 3px;
   cursor: pointer;
@@ -191,7 +192,7 @@ input:focus {
 
 .viewOrders {
   margin-top: 10px;
-  color: rgb(2, 57, 111);
+  color: #495159;
 }
 
 .homeButton {

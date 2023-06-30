@@ -32,7 +32,6 @@ function loadingCart(){
               <th>Device Left</th>
               <th>Device Center</th>
               <th>Device Right</th>
-              <th>Notes</th>
               <th>Edit</th>
             </tr>
             <tr>
@@ -59,31 +58,26 @@ function loadingCart(){
       let innerHTMLnotes = cartGridParse[z].note;
       console.log(innerHTMLnotes);
       html+=`
-              <th>${z}</th>
-              <td>${innerHTMLdevicePanel}</td>
-              <td>${innerHTMLckt}</td>
-              <td>${innerHTMLs}</td>
-              <td>${innerHTMLqty}</td>
-              <td>${innerHTMLboxType}</td>
-              <td>${innerHTMLexits}</td>
-              <td>${innerHTMLconnecterType}</td>
-              <td>${innerHTMLsupportType}</td>
-              <td>${innerHTMLplasterRing}</td>
-              <td>${innerHTMLconduitCableType}</td>
-              <td>${innerHTMLleft}</td>
-              <td>${innerHTMLcenter}</td>
-              <td>${innerHTMLright}</td>
-              <td>${innerHTMLbottom}</td>
-              <td>${innerHTMLdeviceLeft}</td>
-              <td>${innerHTMLdeviceCenter}</td>
-              <td>${innerHTMLdeviceRight}</td>`;
-            if(cartGridParse[z].note.length > 0){
-              html+=`<td><button class = "notesButton notesButton${z}" onclick = "notesView(${z})">&#9776;</button></td>`;
-            }
-            else{
-              html+=`<td></td>`
-            }
-            html+=`<td><button class = "editButton editButton${z}" onclick = "edit(${z})">&#9998;</button></td></tr>`;
+              <th class = "order${z}">${z}</th>
+              <td class = "devicePanel${z}">${innerHTMLdevicePanel}</td>
+              <td class = "ckt${z}">${innerHTMLckt}</td>
+              <td class = "s${z}">${innerHTMLs}</td>
+              <td class = "qty${z}">${innerHTMLqty}</td>
+              <td class = "boxType${z}">${innerHTMLboxType}</td>
+              <td class = "exits${z}">${innerHTMLexits}</td>
+              <td class = "connecterType${z}">${innerHTMLconnecterType}</td>
+              <td class = "supportType${z}">${innerHTMLsupportType}</td>
+              <td class = "plasterRing${z}">${innerHTMLplasterRing}</td>
+              <td class = "conduitCableType${z}">${innerHTMLconduitCableType}</td>
+              <td class = "left${z}">${innerHTMLleft}</td>
+              <td class = "center${z}">${innerHTMLcenter}</td>
+              <td class = "right${z}">${innerHTMLright}</td>
+              <td class = "bottom${z}">${innerHTMLbottom}</td>
+              <td class = "deviceLeft${z}">${innerHTMLdeviceLeft}</td>
+              <td class = "deviceCenter${z}">${innerHTMLdeviceCenter}</td>
+              <td class = "deviceRight${z}">${innerHTMLdeviceRight}</td>
+              <td><button class = "editButton editButton${z}" onclick = "edit(${z})">&#9998;</button></td>
+              </tr>`;
             counter++;
       if(counter < count)
       {
@@ -126,6 +120,12 @@ function edit(objNum){
   document.querySelector(".deviceRightVal").value = cartGridParse[objNum].deviceRight;
   document.querySelector(".deviceCenterVal").value = cartGridParse[objNum].deviceCenter;
   document.querySelector('.orderNumber').innerHTML = 'Order: ' + objNum;
+  let noteHTML = '';
+  for(let x = 0; x<cartGridParse[objNum].note.length;x++){
+    let tempNote = cartGridParse[objNum].note[x]
+    noteHTML+=`<p>${tempNote}</p>`;
+  }
+  document.querySelector('.userNotes').innerHTML = noteHTML;
 }
 
 document.querySelector('.doneButton').addEventListener('click', function(){

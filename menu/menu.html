@@ -4,12 +4,32 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Home</title>
+    <link rel="stylesheet" href="menu.css" />
   </head>
-  <body>
-    <a href="https://inglett.quickbase.com/db/main?a=myqb" target="_blank"
-      ><button>QuickBase</button></a
-    >
-    <a href=""><button>Pull Build Book</button></a>
-    <a href="/inWall/inWall.html"><button>New Book</button></a>
+  <body style="background-color: #94b0da">
+    <div class="homeGrid">
+      <div class="quickbaseDiv">
+        <img quickbaseIcon src="/icons/quickbase.png" alt="" />
+        <div class="imgDiv">
+          <p>Quick link to QuickBase</p>
+          <a href="https://inglett.quickbase.com/db/main?a=myqb" target="_blank"
+            ><button>QuickBase</button></a
+          >
+        </div>
+      </div>
+      <div class="pullBuildDiv">
+        <img src="/icons/i.shgcdn.webp" alt="" />
+        <p>Grab an old build book to referance or edit</p>
+        <a href=""><button>Pull Build Book</button></a>
+      </div>
+      <div class="viewBuildDiv">
+        <img
+          src="/icons/black-clipboard-line-icon-clip-art-graphic-design-simple-pictogram-isolated-on-a-white-background-vector.jpg"
+          alt=""
+        />
+        <p>View your current build book</p>
+        <a href="/inWall/inWall.html"><button>View Book</button></a>
+      </div>
+    </div>
   </body>
 </html>
