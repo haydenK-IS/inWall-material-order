@@ -1,9 +1,9 @@
-let matList = JSON.parse(localStorage.getItem("matList")) || {};
+let matRoom = JSON.parse(localStorage.getItem("matRoom")) || {};
 
 let orderCount = 0
 loadOrderCount();
 function loadOrderCount(){
-  for(let properties in matList){
+  for(let properties in matRoom){
     orderCount++;
   }
   if(orderCount === 1){
@@ -17,7 +17,7 @@ function loadOrderCount(){
 document.querySelector(
   '.addToOrder').addEventListener(
     'click', function(){
-      matList[orderCount+1] = {
+      matRoom[orderCount+1] = {
         devicePanel : document.querySelector(".devicePanelVal").value,
         ckt : document.querySelector(".cktVal").value,
         s : document.querySelector(".sVal").value,
@@ -34,8 +34,7 @@ document.querySelector(
         bottom:document.querySelector(".bottomVal").value,
         deviceLeft:document.querySelector(".deviceLeftVal").value,
         deviceRight:document.querySelector(".deviceRightVal").value,
-        deviceCenter:document.querySelector(".deviceCenterVal").value,
-        note: notes
+        deviceCenter:document.querySelector(".deviceCenterVal").value
       };
       orderCount++;
       if(orderCount === 1)
@@ -45,14 +44,43 @@ document.querySelector(
       else{
         document.querySelector('.viewOrders').innerHTML = `${orderCount} Orders`;
       }
-      notes = [];
-      localStorage.setItem('matList', JSON.stringify(matList));
+      localStorage.setItem('matRoom', JSON.stringify(matRoom));
       
+      matRoom[notes] = notesArray;
+
     }
   )
 
-let notes = [];
+let notesArray = [];
+let htmlNotes = ``;
+let noteCount = notesArray.length+1;
 
+function addNote(){
+  htmlNotes += `<div class = "noteSection">
+                  <input type = "text" placeholder = "Note ${noteCount}">
+                  <select>
+                    <option selected value="">Choose</option>
+                    <option value="boxType">Box Type</option>
+                    <option value="exits">Exits</option>
+                    <option value="comnecterType">Connecter Type</option>
+                    <option value="supportRing">Support Ring</option>
+                    <option value="plasterRing">Plaster Ring</option>
+                    <option value="conduitCableType">Conduit/Cable Type</option>
+                    <option value="left">Left</option>
+                    <option value="center">Center</option>
+                    <option value="right">Right</option>
+                    <option value="bottom">Bottom</option>
+                  </select>
+                </div>`;
+  noteCount++;
+  document.querySelector('.userNotes').innerHTML = htmlNotes;
+}
+
+document.querySelector('.addNoteButton').addEventListener('click', function(){
+  addNote();
+})
+
+/*
 document.querySelector(
   '.sendButton').addEventListener(
     'click',function(){
@@ -79,6 +107,7 @@ function enter(event){
       document.querySelector('.notesInput').value = '';
   }
 }
+*/
 
 document.querySelector(".clearCartButton").addEventListener('click', function(){
   localStorage.clear();
@@ -101,7 +130,6 @@ document.querySelector(".clearCartButton").addEventListener('click', function(){
   document.querySelector(".deviceLeftVal").value = '';
   document.querySelector(".deviceRightVal").value = '';
   document.querySelector(".deviceCenterVal").value = '';
-  document.querySelector('.notesInput').value = '';
 })
 
 document.querySelector(".resetButton").addEventListener("click", function(){
@@ -122,5 +150,4 @@ document.querySelector(".resetButton").addEventListener("click", function(){
   document.querySelector(".deviceLeftVal").value = '';
   document.querySelector(".deviceRightVal").value = '';
   document.querySelector(".deviceCenterVal").value = '';
-  document.querySelector('.notesInput').value = '';
 })

@@ -1,5 +1,5 @@
 
-let cartGridParse = JSON.parse(localStorage.getItem('matList'));
+let cartGridParse = JSON.parse(localStorage.getItem('matRoom'));
 
 let count = 0;
 
@@ -55,8 +55,6 @@ function loadingCart(){
       let innerHTMLdeviceLeft = cartGridParse[z].deviceLeft;
       let innerHTMLdeviceRight = cartGridParse[z].deviceRight;
       let innerHTMLdeviceCenter = cartGridParse[z].deviceCenter;
-      let innerHTMLnotes = cartGridParse[z].note;
-      console.log(innerHTMLnotes);
       html+=`
               <th class = "order${z}">${z}</th>
               <td class = "devicePanel${z}">${innerHTMLdevicePanel}</td>
