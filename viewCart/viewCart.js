@@ -1,5 +1,5 @@
 
-let cartGridParse = JSON.parse(localStorage.getItem('room'));
+let cartGridParse = JSON.parse(localStorage.getItem('room')) || {};
 
 let currOrderNum = 0;
 
@@ -90,7 +90,16 @@ function loadingCart(){
       html += '<td>Nothing in Cart</td></tr>'
     }
   html+=`</table>`;
-  document.querySelector('.orderSummary').innerHTML += html; 
+  document.querySelector('.orderSummary').innerHTML += html;
+  loadNotes();
+}
+
+function loadNotes(){
+  for(let x = 0; x<cartGridParse.notes[0].length; x++)
+  {
+    let html = `<h2>Note ${x+1}: ${cartGridParse.notes[0][x]}</h2>`
+    document.querySelector('.notesArrayReferance').insertAdjacentHTML("beforeend",html);
+  }
 }
 
 function edit(objNum){
@@ -120,15 +129,6 @@ function edit(objNum){
   document.querySelector(".deviceRightVal").value = cartGridParse.matRoom[objNum].deviceRight;
   document.querySelector(".deviceCenterVal").value = cartGridParse.matRoom[objNum].deviceCenter;
   document.querySelector('.orderNumber').innerHTML = 'Order: ' + objNum;
-  /*
-  let noteHTML = '';
-  for(let x = 0; x<cartGridParse[objNum].note.length;x++){
-    let tempNote = cartGridParse[objNum].note[x]
-    noteHTML+=`<p>${tempNote}</p>`;
-  }
-  document.querySelector('.userNotes').innerHTML = noteHTML;
-  */
-  
 }
 
 
@@ -179,34 +179,6 @@ document.querySelector('.doneButton').addEventListener('click', function(){
   localStorage.setItem('room',JSON.stringify(cartGridParse));
   location.reload();
 })
-
-
-
-/*
-function notesView(objNum){
-  let noteHTML = "";
-  if(document.querySelector('.notesOverlay').classList.contains('notesOn')){
-    document.querySelector('.notesOverlay').classList.remove('notesOn');
-    document.getElementById("notesOverlay").style.display = 'none';
-  }
-  else{
-    document.querySelector('.notesOverlay').classList.add('notesOn');
-    document.getElementById("notesOverlay").style.display = "block";
-  }
-  for(let x = 0; x<cartGridParse[objNum].note.length;x++){
-    let tempNote = cartGridParse[objNum].note[x]
-    noteHTML+=`<p>${tempNote}</p>`;
-  }
-  //document.querySelector('.notesReferance').innerHTML = cartGridParse[objNum].note;
-  document.querySelector('.notesReferance').innerHTML = noteHTML;
-  document.querySelector('.orderNumberNotes').innerHTML = 'Order: ' + objNum;
-}
-
-document.querySelector('.exitNotes').addEventListener('click', function(){
-  document.querySelector('.notesOverlay').classList.remove('notesOn');
-  document.getElementById("notesOverlay").style.display = 'none';
-})
-*/
 
 function setCurrOrderNum(num)
 {

@@ -58,13 +58,13 @@ button:hover {
 .americanFlag {
   opacity: 0;
   width: 50px;
+  height: fit-content;
   position: absolute;
   left: 0px;
-  top: 0px;
+  bottom: 0px;
   background-color: transparent;
-  transition: 10s;
 }
 
 .americanFlag:hover {
-  opacity: 1;
+  opacity: .5;
 }

@@ -7,13 +7,23 @@
     <link rel="stylesheet" href="viewCart.css" />
   </head>
   <body>
-    <h1>Portfolio:</h1>
-    <h1>Room #</h1>
-    <div class="notesDisplay">
-      <h1 class="notesTitle">Notes:</h1>
-      <div class="notesArrayReferance"></div>
+    <div class="titleDisplay">
+      <div class="portDis">
+        <h1>Portfolio &#x2022;</h1>
+      </div>
+      <div class="roomDis">
+        <h1>Room #</h1>
+      </div>
+      <div class="noteDis">
+        <h1 class="notesTitle" style="margin-top: 0px; margin-bottom: 0px">
+          Notes &#x2022;
+        </h1>
+        <div class="notesArrayReferance"></div>
+      </div>
     </div>
+
     <div class="orderSummary"></div>
+
     <div class="editOverlay" id="editOverlay">
       <div class="form">
         <div class="formLeft">
@@ -129,20 +139,7 @@
         </div>
       </div>
     </div>
-    <div class="notesOverlay" id="notesOverlay">
-      <div class="notesDisplayOverlay">
-        <div class="headerNotes">
-          <h3>Notes:</h3>
-          <p
-            class="orderNumberNotes"
-            style="font-weight: bold; margin-right: 5px"
-          ></p>
-        </div>
 
-        <div class="notesReferance"></div>
-        <button class="exitNotes">Exit</button>
-      </div>
-    </div>
     <script src="viewCart.js"></script>
   </body>
 </html>
