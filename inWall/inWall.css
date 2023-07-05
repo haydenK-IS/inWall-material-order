@@ -150,17 +150,17 @@ input:focus {
 
 .addToOrder:hover,
 .resetButton:hover,
-.sendButton:hover {
+.addNoteButton:hover {
   filter: brightness(.9);
 }
 
 .addToOrder:active,
 .resetButton:active,
-.sendButton:active {
+.addNoteButton:active {
   filter: brightness(1);
 }
 
-.leftBar {
+.rightBar {
   position: fixed;
   right: 0;
   top: 0;
@@ -201,6 +201,28 @@ input:focus {
   top: 10px;
 }
 
-.noteSection {
+.userNotes {
   display: block;
+  margin-top: 50px;
+}
+
+.addNoteButton {
+  position: absolute;
+  right: 0px;
+  top: 0px;
+  width: 100px;
+  border-radius: 20px;
+  border-width: 1px;
+  background-color: white;
+  padding: 15px 3px;
+  cursor: pointer;
+}
+
+.notesInputBox {
+  font-size: 18px;
+  padding: 3px 3px;
+}
+
+.notesInputBox::placeholder {
+  padding-left: 5px;
 }

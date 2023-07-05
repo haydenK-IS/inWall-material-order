@@ -54,3 +54,17 @@ button:hover {
   border-style: solid;
   border-color: #495159;
 }
+
+.americanFlag {
+  opacity: 0;
+  width: 50px;
+  position: absolute;
+  left: 0px;
+  top: 0px;
+  background-color: transparent;
+  transition: 10s;
+}
+
+.americanFlag:hover {
+  opacity: 1;
+}
