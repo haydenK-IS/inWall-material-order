@@ -23,8 +23,8 @@ function loadOrderCount(){
 }
 
 /*
-if add to room button is clicked runs function
-that will make a order obj inside of matRoom which stores all line data for that order
+ *if add to room button is clicked runs function
+ *that will make a order obj inside of matRoom which stores all line data for that order
 */
 document.querySelector(
   '.addToOrder').addEventListener(
@@ -122,6 +122,7 @@ function loadNotes(){
                     <option value="right">Right</option>
                     <option value="bottom">Bottom</option>
                   </select>
+                  <input class = "note${x+1}OrderNum noteOrderNum">
                 </div>`;
       document.querySelector('.userNotes').insertAdjacentHTML("beforeend",htmlNotes);
       document.querySelector(`.note${x+1}`).value = notesArray[x];
@@ -129,7 +130,7 @@ function loadNotes(){
 }
 
 /*
-when the add note button is clicked new html is appended to the last in userNotes
+ *when the add note button is clicked new html is appended to the last in userNotes
 */
 function addNote(){
   htmlNotes = `<div class = "noteSection">
@@ -147,6 +148,7 @@ function addNote(){
                     <option value="right">Right</option>
                     <option value="bottom">Bottom</option>
                   </select>
+                  <input class = "note${noteCount}OrderNum noteOrderNum" value = "${orderCount+1}">
                 </div>`;
   noteCount++;
   document.querySelector('.userNotes').insertAdjacentHTML("beforeend",htmlNotes);
@@ -158,7 +160,7 @@ document.querySelector('.addNoteButton').addEventListener('click', function(){
 
 //clears all values in local room
 document.querySelector(".clearCartButton").addEventListener('click', function(){
-  localStorage.clear();
+  localStorage.removeItem('room');
   orderCount = 0;
   document.querySelector('.viewOrders').innerHTML = `${orderCount} Orders`;
   document.querySelector(".devicePanelVal").value = '';

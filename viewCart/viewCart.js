@@ -1,18 +1,24 @@
-
+//stores the local room into var
 let cartGridParse = JSON.parse(localStorage.getItem('room')) || {};
 
+//referance var for editing each order
 let currOrderNum = 0;
 
+//keeps count of the orders to display all the orders into the chart
 let count = 0;
-
+//counts the orders
 for(let properties in cartGridParse.matRoom){
   count++;
 }
 
-
-
+/**
+ * puts all the html for the table into the html file
+ * displays the chart for the user to see
+ * also runs the loadNotes() method to load the notes at the top of the page
+ */
 loadingCart();
 function loadingCart(){
+  //loads the headers in the table
   let html=`
             <table id="materialTable" border="1">
             <tr>
@@ -38,7 +44,9 @@ function loadingCart(){
             </tr>
             <tr>
           `;
+  //keeps index on table rows added to close out the table when orders are complete
   let counter = 0;
+    //gets values of keys to input into the table
     for(let z in cartGridParse.matRoom){
       let innerHTMLdevicePanel = cartGridParse.matRoom[z].devicePanel;
       let innerHTMLckt = cartGridParse.matRoom[z].ckt;
@@ -79,21 +87,28 @@ function loadingCart(){
               <td><button class = "editButton editButton${z}" onclick = "setCurrOrderNum(${z}); edit(${z})">&#9998;</button></td>
               </tr>`;
             counter++;
+      //checks to see if the tbale needs to be closed
       if(counter < count)
       {
           html+='<tr>';
       }
       
     }
+    //displays if no orders are in table
     if(count === 0)
     {
       html += '<td>Nothing in Cart</td></tr>'
     }
   html+=`</table>`;
   document.querySelector('.orderSummary').innerHTML += html;
+  //loads the notes
   loadNotes();
 }
 
+/**
+ * loads each note into the html
+ * loops for each note to input and appends the adjacent html
+ */
 function loadNotes(){
   for(let x = 0; x<cartGridParse.notes[0].length; x++)
   {
@@ -102,6 +117,10 @@ function loadNotes(){
   }
 }
 
+/**
+ * pulls up overlay so the user can edit
+ * pulls each value from cartGridParse then inputs it into each textbox for the user to edit
+ */
 function edit(objNum){
   if(document.querySelector('.editOverlay').classList.contains('editOn')){
     document.querySelector('.editOverlay').classList.remove('editOn');
@@ -131,8 +150,10 @@ function edit(objNum){
   document.querySelector('.orderNumber').innerHTML = 'Order: ' + objNum;
 }
 
-
-
+/**
+ * listens for the reset button to be clicked
+ * will take all in the edit overlay and set them to blank
+ */
 document.querySelector(".resetButton").addEventListener("click", function(){
   document.querySelector(".devicePanelVal").value = '';
   document.querySelector(".cktVal").value = '';
@@ -151,9 +172,15 @@ document.querySelector(".resetButton").addEventListener("click", function(){
   document.querySelector(".deviceLeftVal").value = '';
   document.querySelector(".deviceRightVal").value = '';
   document.querySelector(".deviceCenterVal").value = '';
-  document.querySelector('.notesInput').value = '';
 })
 
+/**
+ * listens for the done button to be clicked
+ * sets each value in cartGridParse to the curent input values of each textbox
+ * removes the edit overlay
+ * sets the localStorage to new values
+ * reloads the page to change the chart to edited values
+ */
 document.querySelector('.doneButton').addEventListener('click', function(){
   cartGridParse.matRoom[currOrderNum].devicePanel=document.querySelector(".devicePanelVal").value;
   cartGridParse.matRoom[currOrderNum].ckt=document.querySelector(".cktVal").value;
@@ -180,6 +207,7 @@ document.querySelector('.doneButton').addEventListener('click', function(){
   location.reload();
 })
 
+//sets currOrderNum to edit the values
 function setCurrOrderNum(num)
 {
   currOrderNum = num;
