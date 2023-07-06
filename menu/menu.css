@@ -63,6 +63,7 @@ button:hover {
   left: 0px;
   bottom: 0px;
   background-color: transparent;
+  transition: 5s;
 }
 
 .americanFlag:hover {
