@@ -3,7 +3,11 @@ let portfolio = JSON.parse(localStorage.getItem('portfolio'));
 //gets locally stored room obj
 //if none is stored it creates a room obj with notes and matRoom
 let room = JSON.parse(localStorage.getItem('room')) || {
-  notes:[],
+  //name:document.querySelector('.roomNameInput').value,
+  notes:{
+    noteInputArray:[],
+    noteReferanceArray:[]
+  },
   matRoom:{}
 };
 
@@ -29,6 +33,24 @@ function loadOrderCount(){
 document.querySelector(
   '.addToOrder').addEventListener(
     'click', function(){
+
+      for(let x = 0; x<noteCount-1;x++)
+      {
+        if(document.querySelector(`.noteReferance${x+1}`).value === ""){
+          alert(`Must choose referance for note ${x+1}`);
+          return;
+        }
+      }
+      
+      let orderNotesArray = {};
+      document.querySelectorAll('[type = "checkbox"]').forEach(item => {
+        if(item.checked === true){
+          orderNotesArray[item.value] = true;
+        }
+        else if(item.checked === false){
+          orderNotesArray[item.value] = false;
+        }
+      })
       room.matRoom[orderCount+1] = {
         devicePanel : document.querySelector(".devicePanelVal").value,
         ckt : document.querySelector(".cktVal").value,
@@ -47,6 +69,7 @@ document.querySelector(
         deviceLeft:document.querySelector(".deviceLeftVal").value,
         deviceRight:document.querySelector(".deviceRightVal").value,
         deviceCenter:document.querySelector(".deviceCenterVal").value,
+        orderNotes:Object.entries(orderNotesArray)
       };
       orderCount++;
       //displays order# info on form
@@ -62,39 +85,27 @@ document.querySelector(
       for(let x = 0; x<noteCount-1;x++)
       {
         notesArray[x] = document.querySelector(`.note${x+1}`).value;
+        notesSelectArray[x]= document.querySelector(`.noteReferance${x+1}`).value
       }
       //sets the array to blank if there is prev notes to refresh the changed notes values
       if(room.notes.length>0)
       {
-        room['notes'] = [];
+        room['notes'].noteInputArray = [];
+        room['notes'].noteReferanceArray = [];
       }
       //pushes the notes into the room obj
-      room['notes'].push(notesArray);
+      room['notes'].noteInputArray = notesArray;
+      room['notes'].noteReferanceArray = notesSelectArray;
       //stores room to local storage
       localStorage.setItem('room', JSON.stringify(room));
+      location.reload();
     }
   )
-//saves notes if user clicks view cart instead of order
-document.querySelector('.viewCart').addEventListener('click', function(){
-  //sets each note into the correct array index
-  for(let x = 0; x<noteCount-1;x++)
-  {
-    notesArray[x] = document.querySelector(`.note${x+1}`).value;
-  }
-  //sets the array to blank if there is prev notes to refresh the changed notes values
-  if(room.notes.length>0)
-  {
-    room['notes'] = [];
-  }
-  //pushes the notes into the room obj
-  room['notes'].push(notesArray);
-  //stores room to local storage
-  localStorage.setItem('room', JSON.stringify(room));
-})
 
 //creates notes array from locally stored array
 //if no array is stored makes empty array
-let notesArray = room.notes[0] || [];
+let notesArray = room.notes.noteInputArray || [];
+let notesSelectArray = room.notes.noteReferanceArray || [];
 //keeps count of notes
 let noteCount = notesArray.length+1;
 //sets blank var to set the html
@@ -113,8 +124,8 @@ function loadNotes(){
                     <option selected value="">Choose</option>
                     <option value="boxType">Box Type</option>
                     <option value="exits">Exits</option>
-                    <option value="comnecterType">Connecter Type</option>
-                    <option value="supportRing">Support Ring</option>
+                    <option value="connecterType">Connecter Type</option>
+                    <option value="supportType">Support Type</option>
                     <option value="plasterRing">Plaster Ring</option>
                     <option value="conduitCableType">Conduit/Cable Type</option>
                     <option value="left">Left</option>
@@ -122,10 +133,11 @@ function loadNotes(){
                     <option value="right">Right</option>
                     <option value="bottom">Bottom</option>
                   </select>
-                  <input class = "note${x+1}OrderNum noteOrderNum">
+                  <input class = "notesCheckbox notes${x+1}CheckBox" type="checkbox" value = "notes${x+1}" unchecked>
                 </div>`;
       document.querySelector('.userNotes').insertAdjacentHTML("beforeend",htmlNotes);
       document.querySelector(`.note${x+1}`).value = notesArray[x];
+      document.querySelector(`.noteReferance${x+1}`).value = notesSelectArray[x];
   }
 }
 
@@ -133,14 +145,18 @@ function loadNotes(){
  *when the add note button is clicked new html is appended to the last in userNotes
 */
 function addNote(){
+  if(noteCount>10){
+    alert('Cannot have more than 10 notes');
+    return false;
+  }
   htmlNotes = `<div class = "noteSection">
                   <input class = "note${noteCount} notesInputBox" type = "text" placeholder = "Note ${noteCount}">
                   <select class = "noteReferance${noteCount} noteReferance">
                     <option selected value="">Choose</option>
                     <option value="boxType">Box Type</option>
                     <option value="exits">Exits</option>
-                    <option value="comnecterType">Connecter Type</option>
-                    <option value="supportRing">Support Ring</option>
+                    <option value="connecterType">Connecter Type</option>
+                    <option value="supportType">Support Type</option>
                     <option value="plasterRing">Plaster Ring</option>
                     <option value="conduitCableType">Conduit/Cable Type</option>
                     <option value="left">Left</option>
@@ -148,7 +164,7 @@ function addNote(){
                     <option value="right">Right</option>
                     <option value="bottom">Bottom</option>
                   </select>
-                  <input class = "note${noteCount}OrderNum noteOrderNum" value = "${orderCount+1}">
+                  <input class = "notesCheckbox notes${noteCount}Checkbox" type="checkbox" value = "notes${noteCount}">
                 </div>`;
   noteCount++;
   document.querySelector('.userNotes').insertAdjacentHTML("beforeend",htmlNotes);

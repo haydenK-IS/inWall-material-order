@@ -24,8 +24,12 @@ th {
   border-bottom: 1px solid #495159;
 }
 
-tr:hover {
+tr:nth-child(even) {
   background-color: #94b0da;
+}
+
+tr:hover {
+  background-color: #faf3dd;
 }
 
 .notesButton,
@@ -43,8 +47,8 @@ tr:hover {
 }
 
 .editButton:hover {
-  border-color: #94b0da;
-  color: #faf3dd;
+  border-color: #faf3dd;
+  color: #94b0da;
 }
 
 .editOverlay {
@@ -272,4 +276,48 @@ h2 {
   align-items: center;
   margin-top: 0px;
   margin-bottom: 0px;
+}
+
+.notes1Color {
+  background-color: red;
+}
+
+.notes2Color {
+  background-color: blue;
+  color: white;
+}
+
+.notes3Color {
+  background-color: yellow;
+}
+
+.notes4Color {
+  background-color: pink;
+}
+
+.notes5Color {
+  background-color: olive;
+  color: white;
+}
+
+.notes6Color {
+  background-color: purple;
+  color: white;
+}
+
+.notes7Color {
+  background-color: brown;
+}
+
+.notes8Color {
+  background-color: black;
+  color: white;
+}
+
+.notes9Color {
+  background-color: silver;
+}
+
+.notes10Color {
+  background-color: orange;
 }

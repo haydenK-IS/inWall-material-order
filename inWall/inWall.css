@@ -29,7 +29,7 @@ select:focus {
 }
 
 input {
-  max-width: 100px;
+  width: 100px;
   border-radius: 10px;
   border: none;
   padding: 5px 5px;
@@ -52,7 +52,7 @@ input:focus {
 }
 
 .formRight {
-  max-width: 350px;
+  max-width: 400px;
   position: relative;
 }
 
@@ -61,27 +61,6 @@ input:focus {
 .conduitLengths,
 .nemaDeviceConfig {
   margin-left: 20px;
-}
-
-.notesInput {
-  min-width: 250px;
-  min-height: 50px;
-  text-align: center;
-  font-size: 15px;
-  border: none;
-  margin-right: 0px;
-  border-radius: 0px;
-  padding: 1px 1px;
-}
-
-.sendButton {
-  height: 52px;
-  width: 50px;
-  font-size: 15px;
-  border: none;
-  margin-left: -6px;
-  cursor: pointer;
-  background-color: white;
 }
 
 .designation,
@@ -112,17 +91,6 @@ input:focus {
   align-items: center;
   column-gap: 10px;
 }
-
-.notesInput {
-  min-height: 50px;
-  text-align: center;
-  font-size: 15px;
-  border: none;
-  padding-right: 5px;
-  margin-right: -1px;
-}
-
-
 
 .title {
   font-weight: bold;
@@ -240,4 +208,67 @@ input:focus {
 .noteOrderNum::placeholder {
   text-align: center;
   opacity: 0.5;
+}
+
+.notesCheckbox {
+  width: auto;
+}
+
+.roomName {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  column-gap: 30px;
+}
+
+.roomNameInput {
+  font-size: 20px;
+  padding: 10px 10px;
+  text-align: center;
+  width: 300px;
+  height: 50px;
+}
+
+.notes1Color {
+  background-color: red;
+}
+
+.notes2Color {
+  background-color: blue;
+  color: white;
+}
+
+.notes3Color {
+  background-color: yellow;
+}
+
+.notes4Color {
+  background-color: pink;
+}
+
+.notes5Color {
+  background-color: olive;
+  color: white;
+}
+
+.notes6Color {
+  background-color: purple;
+  color: white;
+}
+
+.notes7Color {
+  background-color: brown;
+}
+
+.notes8Color {
+  background-color: black;
+  color: white;
+}
+
+.notes9Color {
+  background-color: silver;
+}
+
+.notes10Color {
+  background-color: orange;
 }

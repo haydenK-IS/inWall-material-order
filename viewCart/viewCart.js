@@ -108,12 +108,25 @@ function loadingCart(){
 /**
  * loads each note into the html
  * loops for each note to input and appends the adjacent html
+ * changes the background of table data based on correlated notes
+ * loops through orders then loops through assigned notes
  */
 function loadNotes(){
-  for(let x = 0; x<cartGridParse.notes[0].length; x++)
+  for(let x = 0; x<cartGridParse.notes.noteInputArray.length; x++)
   {
-    let html = `<h2>Note ${x+1}: ${cartGridParse.notes[0][x]}</h2>`
+    let html = `<h2>Note ${x+1}: ${cartGridParse.notes.noteInputArray[x]}</h2>`
     document.querySelector('.notesArrayReferance').insertAdjacentHTML("beforeend",html);
+  }
+  for(let x = 0; x<count; x++){
+    for(let y = 0; y<cartGridParse.matRoom[x+1].orderNotes.length; y++){
+      if(cartGridParse.matRoom[x+1].orderNotes[y][1] === true)
+      {
+        let colorRef = cartGridParse.notes.noteReferanceArray[y];
+        let dataNote = cartGridParse.matRoom[x+1].orderNotes[y][0];
+        document.querySelector(`.${colorRef}${x+1}`).classList.add(`${dataNote}Color`);
+        //console.log(colorRef + ' : ' +(y+1) + ' : ' + dataNote);
+      }
+    }
   }
 }
 
@@ -212,3 +225,5 @@ function setCurrOrderNum(num)
 {
   currOrderNum = num;
 }
+
+//document.querySelector('roomNameOutput').innerHTML = cartGridParse.name;
