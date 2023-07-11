@@ -1,3 +1,5 @@
+let buildBook = JSON.parse(localStorage.getItem('portfolio')) || {};
+
 //stores the local room into var
 let cartGridParse = JSON.parse(localStorage.getItem('room')) || {};
 
@@ -84,7 +86,7 @@ function loadingCart(){
               <td class = "deviceLeft${z}">${innerHTMLdeviceLeft}</td>
               <td class = "deviceCenter${z}">${innerHTMLdeviceCenter}</td>
               <td class = "deviceRight${z}">${innerHTMLdeviceRight}</td>
-              <td><button class = "editButton editButton${z}" onclick = "setCurrOrderNum(${z}); edit(${z})">&#9998;</button></td>
+              <th><button class = "editButton editButton${z}" onclick = "setCurrOrderNum(${z}); edit(${z})">&#9998;</button></th>
               </tr>`;
             counter++;
       //checks to see if the tbale needs to be closed
@@ -114,7 +116,7 @@ function loadingCart(){
 function loadNotes(){
   for(let x = 0; x<cartGridParse.notes.noteInputArray.length; x++)
   {
-    let html = `<h2 class = 'hNote${x+1}'>Note ${x+1}: ${cartGridParse.notes.noteInputArray[x]}</h2>`
+    let html = `<h2 class = 'hNote${x+1}'>Note ${x+1}: <span class = "referenceName">${cartGridParse.notes.noteReferanceArray[x]}</span> : ${cartGridParse.notes.noteInputArray[x]}</h2>`
     document.querySelector('.notesArrayReferance').insertAdjacentHTML("beforeend",html);
   }
   for(let x = 0; x<count; x++){
@@ -266,4 +268,9 @@ function setCurrOrderNum(num)
   currOrderNum = num;
 }
 
-//document.querySelector('roomNameOutput').innerHTML = cartGridParse.name;
+document.querySelector('.buildbookOutput').innerHTML = buildBook.name;
+document.querySelector('.roomNameOutput').innerHTML = cartGridParse.name;
+
+document.querySelector('.sendToBookButton').addEventListener('click', function(){
+  buildBook['rooms'][cartGridParse.name] = cartGridParse;
+})

@@ -1,9 +1,9 @@
 //gets locally stored portfolio
-let portfolio = JSON.parse(localStorage.getItem('portfolio'));
+let buildBook = JSON.parse(localStorage.getItem('portfolio')) || {};
 //gets locally stored room obj
 //if none is stored it creates a room obj with notes and matRoom
 let room = JSON.parse(localStorage.getItem('room')) || {
-  //name:document.querySelector('.roomNameInput').value,
+  name:'Unnamed',
   notes:{
     noteInputArray:[],
     noteReferanceArray:[]
@@ -220,3 +220,16 @@ document.querySelector(".resetButton").addEventListener("click", function(){
   document.querySelector(".deviceCenterVal").value = '';
   location.reload();
 })
+
+document.querySelector('.viewCart').addEventListener('click',function(){
+  room.name = document.querySelector('.roomNameInput').value;
+  localStorage.setItem('room', JSON.stringify(room));
+  buildBook.name = document.querySelector('.buildbookNameInput').value;
+  localStorage.setItem('portfolio', JSON.stringify(buildBook));
+})
+
+loadName();
+function loadName(){
+  document.querySelector('.roomNameInput').value = room.name;
+  document.querySelector('.buildbookNameInput').value = buildBook.name;
+}

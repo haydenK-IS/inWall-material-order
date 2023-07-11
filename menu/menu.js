@@ -1,6 +1,11 @@
 //gets the locally stored portfolio
 //if no portfolio is stored it creates a null portfolio obj
-let portfolio = JSON.parse(localStorage.getItem('portfolio')) || {};
+let portfolio = JSON.parse(localStorage.getItem('portfolio')) || {
+  name:'Unnamed',
+  rooms:{}
+};
+
+localStorage.setItem('portfolio',JSON.stringify(portfolio));
 
 document.querySelector('.pullPortfolioButton').addEventListener('click', function(){
   html =  `
@@ -8,4 +13,13 @@ document.querySelector('.pullPortfolioButton').addEventListener('click', functio
             <button class = "sendButton">&#8594;</button>
           `;
   document.querySelector('.pullPortfoilioButtonToInput').innerHTML = html;
+})
+
+document.querySelector('.changeTheme').addEventListener('click', function(){
+  if(document.querySelector('.light').classList.contains('dark')){
+    document.querySelector('.light').classList.remove('dark');
+  }
+  else{
+    document.querySelector('.light').classList.add('dark');
+  }
 })

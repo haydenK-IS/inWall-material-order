@@ -45,6 +45,7 @@ input:focus {
 input[type="checkbox"] {
   height: 20px;
   width: 20px;
+  cursor: pointer;
 }
 
 .homeButton {
@@ -53,11 +54,27 @@ input[type="checkbox"] {
   top: 10px;
 }
 
+.roomName {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  column-gap: 30px;
+}
+
+.roomNameInput,
+.buildbookNameInput {
+  font-size: 20px;
+  padding: 10px 10px;
+  text-align: center;
+  width: 300px;
+  height: 50px;
+}
+
 .form {
   border: none;
   margin: auto;
   width: 50%;
-  padding: 10px;
+  padding: 20px 20px;
   border-radius: 15px;
   display: flex;
   justify-content: space-between;
@@ -115,11 +132,13 @@ input[type="checkbox"] {
   right: 0px;
   top: 0px;
   width: 100px;
+  border: none;
+  box-shadow: 0px 0px 3px black;
   border-radius: 20px;
-  border-width: 1px;
   background-color: white;
   padding: 15px 3px;
   cursor: pointer;
+  transition: 0.5s;
 }
 
 .userNotes {
@@ -174,11 +193,13 @@ input[type="checkbox"] {
   bottom: 0px;
   right: 0px;
   width: 100px;
+  border: none;
+  box-shadow: 0px 0px 3px black;
   border-radius: 20px;
-  border-width: 1px;
   background-color: white;
   padding: 15px 3px;
   cursor: pointer;
+  transition: 0.5s;
 }
 
 .resetButton {
@@ -186,23 +207,19 @@ input[type="checkbox"] {
   bottom: 0px;
   right: 110px;
   width: 100px;
+  border: none;
+  box-shadow: 0px 0px 3px black;
   border-radius: 20px;
-  border-width: 1px;
   background-color: white;
   padding: 15px 3px;
   cursor: pointer;
+  transition: 0.5s;
 }
 
 .addToOrder:hover,
 .resetButton:hover,
 .addNoteButton:hover {
-  filter: brightness(.9);
-}
-
-.addToOrder:active,
-.resetButton:active,
-.addNoteButton:active {
-  filter: brightness(1);
+  box-shadow: 0px 0px 10px black;
 }
 
 .rightBar {
@@ -216,23 +233,20 @@ input[type="checkbox"] {
 .viewCart,
 .clearCartButton {
   background-color: white;
+  border: none;
+  box-shadow: 0px 0px 3px black;
   border-radius: 20px;
-  border-width: 1px;
   width: 100px;
   padding: 15px 3px;
   cursor: pointer;
   display: block;
   margin-bottom: 10px;
+  transition: 0.5s;
 }
 
 .viewCart:hover,
 .clearCartButton:hover {
-  filter: brightness(.9);
-}
-
-.viewCart:active,
-.clearCartButton:active {
-  filter: brightness(1);
+  box-shadow: 0px 0px 10px black;
 }
 
 .viewOrders {

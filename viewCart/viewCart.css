@@ -110,6 +110,10 @@ input:focus {
   outline: none;
 }
 
+.referenceName {
+  font-size: 15px;
+}
+
 .form {
   background-color: #faf3dd;
   border: 5px solid;

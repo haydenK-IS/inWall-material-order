@@ -40,6 +40,21 @@ input:focus {
   outline: none;
 }
 
+.light {
+  background-color: white;
+  color: black;
+}
+
+.dark {
+  background-color: rgb(69, 69, 69);
+  color: white;
+}
+
+.changeTheme {
+  padding: 10px 13px;
+  border-radius: 50%;
+}
+
 .homeGrid {
   justify-content: center;
   width: 99%;
