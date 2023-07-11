@@ -218,4 +218,5 @@ document.querySelector(".resetButton").addEventListener("click", function(){
   document.querySelector(".deviceLeftVal").value = '';
   document.querySelector(".deviceRightVal").value = '';
   document.querySelector(".deviceCenterVal").value = '';
+  location.reload();
 })

@@ -4,37 +4,48 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Home</title>
-    <link rel="stylesheet" href="menu.css" />
+
+    <!--<link rel="stylesheet" href="menu.css" />-->
+    <link rel="stylesheet" href="/menu/testMenu.css" />
   </head>
-  <body style="background-color: #94b0da">
+  <body>
     <img
       class="americanFlag"
       src="/icons/1200px-Flag_of_the_United_States.svg.webp"
       alt=""
     />
     <div class="homeGrid">
-      <div class="quickbaseDiv">
-        <img quickbaseIcon src="/icons/quickbase.png" alt="" />
-        <div class="imgDiv">
-          <p>Quick link to QuickBase</p>
-          <a href="https://inglett.quickbase.com/db/main?a=myqb" target="_blank"
-            ><button>QuickBase</button></a
-          >
+      <div>
+        <div class="pullBuildDiv">
+          <img src="/icons/i.shgcdn.webp" alt="" />
+          <p>Grab an old portfolio to referance or edit</p>
+          <div class="pullPortfoilioButtonToInput">
+            <button class="pullPortfolioButton">Pull Portfolio</button>
+          </div>
+        </div>
+        <div class="bottomHomeGrid">
+          <div class="quickbaseDiv">
+            <img quickbaseIcon src="/icons/quickbase.png" alt="" />
+            <div class="imgDiv">
+              <p>Quick link to QuickBase</p>
+              <a
+                href="https://inglett.quickbase.com/db/main?a=myqb"
+                target="_blank"
+                ><button>QuickBase</button></a
+              >
+            </div>
+          </div>
+          <div class="viewBuildDiv">
+            <img
+              src="/icons/black-clipboard-line-icon-clip-art-graphic-design-simple-pictogram-isolated-on-a-white-background-vector.jpg"
+              alt=""
+            />
+            <p>Build a new portfolio</p>
+            <a href="/inWall/inWall.html"><button>Build Portfolio</button></a>
+          </div>
         </div>
       </div>
-      <div class="pullBuildDiv">
-        <img src="/icons/i.shgcdn.webp" alt="" />
-        <p>Grab an old portfolio to referance or edit</p>
-        <a href="/pullBuild/pullBuild.html"><button>Pull Portfolio</button></a>
-      </div>
-      <div class="viewBuildDiv">
-        <img
-          src="/icons/black-clipboard-line-icon-clip-art-graphic-design-simple-pictogram-isolated-on-a-white-background-vector.jpg"
-          alt=""
-        />
-        <p>Build a new portfolio</p>
-        <a href="/inWall/inWall.html"><button>Build Portfolio</button></a>
-      </div>
     </div>
+    <script src="/menu/menu.js"></script>
   </body>
 </html>

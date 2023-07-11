@@ -114,7 +114,7 @@ function loadingCart(){
 function loadNotes(){
   for(let x = 0; x<cartGridParse.notes.noteInputArray.length; x++)
   {
-    let html = `<h2>Note ${x+1}: ${cartGridParse.notes.noteInputArray[x]}</h2>`
+    let html = `<h2 class = 'hNote${x+1}'>Note ${x+1}: ${cartGridParse.notes.noteInputArray[x]}</h2>`
     document.querySelector('.notesArrayReferance').insertAdjacentHTML("beforeend",html);
   }
   for(let x = 0; x<count; x++){
@@ -161,6 +161,33 @@ function edit(objNum){
   document.querySelector(".deviceRightVal").value = cartGridParse.matRoom[objNum].deviceRight;
   document.querySelector(".deviceCenterVal").value = cartGridParse.matRoom[objNum].deviceCenter;
   document.querySelector('.orderNumber').innerHTML = 'Order: ' + objNum;
+  for(let x = 0; x<cartGridParse.notes.noteInputArray.length;x++){
+    htmlNotes = `<div class = "noteSection">
+              <input class = "note${x+1} notesInputBox" type = "text" placeholder = "Note ${x+1}">
+              <select class = "noteReferance${x+1} noteReferance">
+                <option selected value="">Choose</option>
+                <option value="boxType">Box Type</option>
+                <option value="exits">Exits</option>
+                <option value="connecterType">Connecter Type</option>
+                <option value="supportType">Support Type</option>
+                <option value="plasterRing">Plaster Ring</option>
+                <option value="conduitCableType">Conduit/Cable Type</option>
+                <option value="left">Left</option>
+                <option value="center">Center</option>
+                <option value="right">Right</option>
+                <option value="bottom">Bottom</option>
+              </select>
+              <input class = "notesCheckbox notes${x+1}CheckBox" type="checkbox" value = "notes${x+1}" unchecked>
+            </div>`;
+    document.querySelector('.userNotes').insertAdjacentHTML("beforeend",htmlNotes);
+    document.querySelector(`.note${x+1}`).value = cartGridParse.notes.noteInputArray[x];
+    document.querySelector(`.noteReferance${x+1}`).value = cartGridParse.notes.noteReferanceArray[x];
+  }
+  for(let x = 0; x<cartGridParse.matRoom[objNum].orderNotes.length;x++){
+    if(cartGridParse.matRoom[objNum].orderNotes[x][1] === true){
+      document.querySelector(`.notes${x+1}CheckBox`).checked = true;
+    }
+  }
 }
 
 /**
@@ -173,11 +200,11 @@ document.querySelector(".resetButton").addEventListener("click", function(){
   document.querySelector(".sVal").value = '';
   document.querySelector(".qtyVal").value = '';
   document.querySelector(".boxTypeVal").value = '';
-  document.getElementById("exitsVal").value = '0';
+  document.getElementById("exitsVal").value = '';
   document.querySelector(".connecterTypeVal").value = '';
   document.querySelector(".supportTypeVal").value = '';
   document.querySelector(".plasterRingVal").value = '';
-  document.getElementById("conduitCableTypeVal").value = 'Choose';
+  document.getElementById("conduitCableTypeVal").value = '';
   document.querySelector(".leftVal").value = '';
   document.querySelector(".centerVal").value = '';
   document.querySelector(".rightVal").value = '';
@@ -212,7 +239,20 @@ document.querySelector('.doneButton').addEventListener('click', function(){
   cartGridParse.matRoom[currOrderNum].deviceLeft=document.querySelector(".deviceLeftVal").value;
   cartGridParse.matRoom[currOrderNum].deviceRight=document.querySelector(".deviceRightVal").value;
   cartGridParse.matRoom[currOrderNum].deviceCenter=document.querySelector(".deviceCenterVal").value;
-
+  for(let x = 0; x<cartGridParse.notes.noteInputArray.length; x++){
+    cartGridParse.notes.noteInputArray[x] = document.querySelector(`.note${x+1}`).value;
+    cartGridParse.notes.noteReferanceArray[x] = document.querySelector(`.noteReferance${x+1}`).value;
+  }
+  let orderNotesArray = {};
+  document.querySelectorAll('[type = "checkbox"]').forEach(item => {
+    if(item.checked === true){
+      orderNotesArray[item.value] = true;
+    }
+    else if(item.checked === false){
+      orderNotesArray[item.value] = false;
+    }
+  })
+  cartGridParse.matRoom[currOrderNum].orderNotes = Object.entries(orderNotesArray);
   document.querySelector('.editOverlay').classList.remove('editOn');
   document.getElementById("editOverlay").style.display = 'none';
   currOrderNum = 0;

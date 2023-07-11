@@ -2,6 +2,7 @@ body {
   justify-content: center;
   font-family: Arial;
   font-size: 25px;
+  background-color: rgb(246, 246, 246);
 }
 
 p {
@@ -9,7 +10,7 @@ p {
 }
 
 div {
-  margin-bottom: 8px;
+  margin-bottom: 15px;
 }
 
 a {
@@ -22,6 +23,7 @@ select {
   border-radius: 10px;
   border: none;
   cursor: pointer;
+  box-shadow: 0px 0px 3px black;
 }
 
 select:focus {
@@ -33,27 +35,38 @@ input {
   border-radius: 10px;
   border: none;
   padding: 5px 5px;
+  box-shadow: 0px 0px 3px black;
 }
 
 input:focus {
   outline: none;
 }
 
+input[type="checkbox"] {
+  height: 20px;
+  width: 20px;
+}
+
+.homeButton {
+  position: fixed;
+  left: 10px;
+  top: 10px;
+}
+
 .form {
-  background-color: #faf3dd;
-  border: 5px solid;
+  border: none;
   margin: auto;
   width: 50%;
   padding: 10px;
-  border-color: #495159;
   border-radius: 15px;
   display: flex;
   justify-content: space-between;
+  box-shadow: 0px 0px 5px grey;
+  background-color: white;
 }
 
-.formRight {
-  max-width: 400px;
-  position: relative;
+.title {
+  font-weight: bold;
 }
 
 .designation,
@@ -92,8 +105,68 @@ input:focus {
   column-gap: 10px;
 }
 
-.title {
-  font-weight: bold;
+.formRight {
+  max-width: 400px;
+  position: relative;
+}
+
+.addNoteButton {
+  position: absolute;
+  right: 0px;
+  top: 0px;
+  width: 100px;
+  border-radius: 20px;
+  border-width: 1px;
+  background-color: white;
+  padding: 15px 3px;
+  cursor: pointer;
+}
+
+.userNotes {
+  display: block;
+  margin-top: 60px;
+}
+
+.noteSection {
+  display: flex;
+  column-gap: 10px;
+  align-items: center;
+  box-shadow: 0px 0px 3px black;
+  border-radius: 20px;
+  padding: 10px 10px;
+}
+
+.notesInputBox {
+  font-size: 18px;
+  padding: 3px 3px;
+  box-shadow: none;
+}
+
+.notesInputBox::placeholder {
+  padding-left: 5px;
+}
+
+.noteReferance {
+  box-shadow: none;
+}
+
+.notesCheckbox {
+  box-shadow: none;
+}
+
+.noteOrderNum {
+  width: 25px;
+  font-size: 18px;
+  text-align: center;
+}
+
+.noteOrderNum::placeholder {
+  text-align: center;
+  opacity: 0.5;
+}
+
+.notesCheckbox {
+  width: auto;
 }
 
 .addToOrder {
@@ -154,132 +227,14 @@ input:focus {
 
 .viewCart:hover,
 .clearCartButton:hover {
-  background-color: rgb(4, 86, 168);
+  filter: brightness(.9);
 }
 
 .viewCart:active,
 .clearCartButton:active {
-  background-color: rgb(2, 57, 111);
+  filter: brightness(1);
 }
 
 .viewOrders {
   margin-top: 10px;
-  color: #495159;
-}
-
-.homeButton {
-  position: fixed;
-  left: 10px;
-  top: 10px;
-}
-
-.userNotes {
-  display: block;
-  margin-top: 60px;
-}
-
-.addNoteButton {
-  position: absolute;
-  right: 0px;
-  top: 0px;
-  width: 100px;
-  border-radius: 20px;
-  border-width: 1px;
-  background-color: white;
-  padding: 15px 3px;
-  cursor: pointer;
-}
-
-.notesInputBox {
-  font-size: 18px;
-  padding: 3px 3px;
-}
-
-.notesInputBox::placeholder {
-  padding-left: 5px;
-}
-
-.noteOrderNum {
-  width: 25px;
-  font-size: 18px;
-  text-align: center;
-}
-
-.noteOrderNum::placeholder {
-  text-align: center;
-  opacity: 0.5;
-}
-
-.notesCheckbox {
-  width: auto;
-}
-
-.roomName {
-  align-items: center;
-  display: flex;
-  justify-content: center;
-  column-gap: 30px;
-}
-
-.roomNameInput {
-  font-size: 20px;
-  padding: 10px 10px;
-  text-align: center;
-  width: 300px;
-  height: 50px;
-}
-
-.notes1Color {
-  background-color: red;
-}
-
-.notes2Color {
-  background-color: blue;
-  color: white;
-}
-
-.notes3Color {
-  background-color: yellow;
-}
-
-.notes4Color {
-  background-color: pink;
-}
-
-.notes5Color {
-  background-color: olive;
-  color: white;
-}
-
-.notes6Color {
-  background-color: purple;
-  color: white;
-}
-
-.notes7Color {
-  background-color: brown;
-}
-
-.notes8Color {
-  background-color: black;
-  color: white;
-}
-
-.notes9Color {
-  background-color: silver;
-}
-
-.notes10Color {
-  background-color: orange;
-}
-
-input[type="checkbox"] {
-  height: 20px;
-  width: 20px;
-}
-
-.noteSection {
-  display: flex;
-  column-gap: 10px;
-  align-items: center;
 }

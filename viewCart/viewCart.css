@@ -1,6 +1,5 @@
-.gridHeader {
-  display: inline-block;
-  margin-left: 10px;
+p {
+  font-family: arial;
 }
 
 table,
@@ -30,6 +29,24 @@ tr:nth-child(even) {
 
 tr:hover {
   background-color: #faf3dd;
+}
+
+.header {
+  display: flex;
+  column-gap: 20px;
+}
+
+.backButton {
+  padding: 20px 30px;
+  border-radius: 30px;
+  border-style: solid;
+  border-width: 1px;
+  margin-top: 20px;
+  cursor: pointer;
+}
+
+.backButton:hover {
+  filter: brightness(.9);
 }
 
 .notesButton,
@@ -119,27 +136,6 @@ input:focus {
   margin-left: 20px;
 }
 
-.notesInput {
-  min-width: 250px;
-  min-height: 50px;
-  text-align: center;
-  font-size: 15px;
-  border: none;
-  margin-right: 0px;
-  border-radius: 0px;
-  padding: 1px 1px;
-}
-
-.sendButton {
-  height: 52px;
-  width: 50px;
-  font-size: 15px;
-  border: none;
-  margin-left: -6px;
-  cursor: pointer;
-  background-color: white;
-}
-
 .designation,
 .botBoxConfig,
 .conduitLengths,
@@ -169,19 +165,17 @@ input:focus {
   column-gap: 10px;
 }
 
-.notesInput {
-  min-height: 50px;
-  text-align: center;
-  font-size: 15px;
-  border: none;
-  padding-right: 5px;
-  margin-right: -1px;
-}
-
-
-
 .title {
   font-weight: bold;
+}
+
+.notesInputBox {
+  font-size: 18px;
+  padding: 3px 3px;
+}
+
+.notesInputBox::placeholder {
+  padding-left: 5px;
 }
 
 .doneButton {
@@ -208,42 +202,6 @@ input:focus {
   cursor: pointer;
 }
 
-.notesOverlay {
-  position: fixed;
-  display: none;
-  width: 100%;
-  height: 100%;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-color: rgba(0, 0, 0, 0.5);
-  z-index: 2;
-  cursor: pointer;
-}
-
-.notesDisplayOverLay {
-  font-family: arial;
-  font-size: 25px;
-  background-color: #faf3dd;
-  border: 5px solid;
-  margin: auto;
-  width: 50%;
-  padding: 10px;
-  border-color: #94b0da;
-  border-radius: 15px;
-}
-
-.exitNotes {
-  width: 100px;
-  border-radius: 20px;
-  border-width: 1px;
-  border-color: black;
-  background-color: white;
-  padding: 15px 3px;
-  cursor: pointer;
-}
-
 .headerNotes {
   display: flex;
   justify-content: space-between;
@@ -253,7 +211,7 @@ input:focus {
 }
 
 .titleDisplay {
-  margin-left: 85px;
+  text-align: center;
 }
 
 .portDis,
@@ -268,7 +226,10 @@ input:focus {
 
 .notesArrayReferance {
   display: flex;
-  column-gap: 30px;
+  column-gap: 15px;
+  flex-wrap: wrap;
+  row-gap: 15px;
+  max-width: 1500px;
 }
 
 h1,
@@ -276,48 +237,74 @@ h2 {
   align-items: center;
   margin-top: 0px;
   margin-bottom: 0px;
+  padding: 10px 15px;
+  border-radius: 30px;
 }
 
-.notes1Color {
-  background-color: red;
-}
-
-.notes2Color {
-  background-color: blue;
+.notes1Color,
+.hNote1 {
+  background-color: rgb(205, 0, 0);
   color: white;
 }
 
-.notes3Color {
-  background-color: yellow;
+.notes2Color,
+.hNote2 {
+  background-color: rgb(0, 140, 255);
+  color: white;
 }
 
-.notes4Color {
+.notes3Color,
+.hNote3 {
+  background-color: rgb(246, 255, 0);
+}
+
+.notes4Color,
+.hNote4 {
   background-color: pink;
 }
 
-.notes5Color {
-  background-color: olive;
+.notes5Color,
+.hNote5 {
+  background-color: rgb(73, 125, 0);
   color: white;
 }
 
-.notes6Color {
-  background-color: purple;
+.notes6Color,
+.hNote6 {
+  background-color: rgb(105, 0, 128);
   color: white;
 }
 
-.notes7Color {
-  background-color: brown;
+.notes7Color,
+.hNote7 {
+  background-color: rgb(103, 61, 4);
+  color: white;
 }
 
-.notes8Color {
+.notes8Color,
+.hNote8 {
   background-color: black;
   color: white;
 }
 
-.notes9Color {
+.notes9Color,
+.hNote9 {
   background-color: silver;
 }
 
-.notes10Color {
+.notes10Color,
+.hNote10 {
   background-color: orange;
+}
+
+input[type="checkbox"] {
+  height: 20px;
+  width: 20px;
+}
+
+.noteSection {
+  display: flex;
+  column-gap: 10px;
+  align-items: center;
+  margin-bottom: 8px;
 }

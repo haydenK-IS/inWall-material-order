@@ -4,24 +4,33 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>View Room</title>
+    <!--
     <link rel="stylesheet" href="viewCart.css" />
+    -->
+    <link rel="stylesheet" href="/viewCart/testViewCart.css">
   </head>
   <body>
-    <div class="titleDisplay">
-      <div class="portDis">
-        <h1>Portfolio &#x2022;</h1>
+    <div class="header">
+      <div>
+        <a href="/inWall/inWall.html"><button class="backButton">Building Form</button></a>
       </div>
-      <div class="roomDis">
-        <h1>Room &#x2022;</h1>
-        <p class="roomNameOutput"></ps>
-      </div>
-      <div class="noteDis">
-        <h1 class="notesTitle" style="margin-top: 0px; margin-bottom: 0px">
-          Notes &#x2022;
-        </h1>
-        <div class="notesArrayReferance"></div>
+      <div class="titleDisplay">
+        <div class="portDis">
+          <h1>Portfolio &#x2022;</h1>
+        </div>
+        <div class="roomDis">
+          <h1>Room &#x2022;</h1>
+          <p class="roomNameOutput"></ps>
+        </div>
+        <div class="noteDis">
+          <h1 class="notesTitle" style="margin-top: 0px; margin-bottom: 0px">
+            Notes &#x2022;
+          </h1>
+          <div class="notesArrayReferance"></div>
+        </div>
       </div>
     </div>
+    
 
     <div class="orderSummary"></div>
 
@@ -134,7 +143,9 @@
             class="orderNumber"
             style="font-weight: bold; margin-right: 5px"
           ></p>
-          <div class="userNotes"></div>
+          <div class="userNotes">
+
+          </div>
           <button class="resetButton">Reset</button>
           <button class="doneButton">Done</button>
         </div>

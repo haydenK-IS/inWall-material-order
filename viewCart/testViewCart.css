@@ -1,0 +1,401 @@
+body {
+  background-color: rgb(246, 246, 246);
+}
+
+p {
+  font-family: arial;
+  font-size: 25px;
+  margin-top: 0px;
+  margin-bottom: 0px;
+}
+
+table {
+  text-align: center;
+  border-collapse: collapse;
+  font-size: 20px;
+  margin-left: auto;
+  margin-right: auto;
+  top: 20px;
+  margin-top: 30px;
+}
+
+table,
+th {
+  padding: 10px 10px;
+}
+
+td,
+th {
+  border: none;
+  border-bottom: 1px solid #495159;
+}
+
+tr:nth-child(even) {
+  background-color: whitesmoke;
+}
+
+tr:nth-child(odd) {
+  background-color: white;
+}
+
+tr:hover {
+  box-shadow: 0px 0px 10px black;
+}
+
+.header {
+  display: flex;
+  column-gap: 20px;
+}
+
+.backButton {
+  padding: 20px 30px;
+  border-radius: 30px;
+  border-style: solid;
+  border-width: 1px;
+  margin-top: 20px;
+  cursor: pointer;
+}
+
+.backButton:hover {
+  filter: brightness(.9);
+}
+
+.portDis,
+.roomDis,
+.noteDis {
+  display: flex;
+  margin-top: 0px;
+  margin-bottom: 0px;
+  column-gap: 10px;
+  align-items: center;
+}
+
+h1,
+h2 {
+  align-items: center;
+  margin-top: 0px;
+  margin-bottom: 0px;
+  padding: 10px 15px;
+  border-radius: 30px;
+}
+
+.notesArrayReferance {
+  display: flex;
+  column-gap: 15px;
+  flex-wrap: wrap;
+  row-gap: 15px;
+  max-width: 1500px;
+}
+
+.notes1Color,
+.hNote1 {
+  background-color: crimson;
+  color: white;
+}
+
+.notes2Color,
+.hNote2 {
+  background-color: cornflowerblue;
+  color: white;
+}
+
+.notes3Color,
+.hNote3 {
+  background-color: khaki;
+}
+
+.notes4Color,
+.hNote4 {
+  background-color: pink;
+}
+
+.notes5Color,
+.hNote5 {
+  background-color: darkgreen;
+  color: white;
+}
+
+.notes6Color,
+.hNote6 {
+  background-color: blueviolet;
+  color: white;
+}
+
+.notes7Color,
+.hNote7 {
+  background-color: rgb(110, 72, 18);
+  color: white;
+}
+
+.notes8Color,
+.hNote8 {
+  background-color: black;
+  color: white;
+}
+
+.notes9Color,
+.hNote9 {
+  background-color: mediumvioletred;
+  color: white;
+}
+
+.notes10Color,
+.hNote10 {
+  background-color: orange;
+}
+
+.editButton {
+  background-color: transparent;
+  border: solid;
+  border-width: 1px;
+  border-radius: 50%;
+  padding: 6px 10px;
+  cursor: pointer;
+  transition: border-color 0.5s, box-shadow 0.5s;
+}
+
+.editButton:hover {
+  border-color: transparent;
+  box-shadow: 0px 0px 5px black;
+}
+
+.editOverlay {
+  position: fixed;
+  display: none;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 2;
+  overflow-y: scroll;
+}
+
+a {
+  text-decoration: none;
+}
+
+select {
+  font-size: 18px;
+  padding: 3px 3px;
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0px 0px 5px grey;
+}
+
+select:focus {
+  outline: none;
+}
+
+input {
+  width: 100px;
+  border-radius: 10px;
+  border: none;
+  padding: 5px 5px;
+  box-shadow: 0px 0px 5px grey;
+}
+
+input:focus {
+  outline: none;
+}
+
+input[type="checkbox"] {
+  height: 20px;
+  width: 20px;
+}
+
+div {
+  margin: 10px 0px;
+}
+
+.form {
+  border: none;
+  margin: auto;
+  width: 50%;
+  padding: 10px;
+  border-radius: 15px;
+  display: flex;
+  justify-content: space-between;
+  box-shadow: 0px 0px 5px grey;
+  background-color: white;
+}
+
+.title {
+  font-weight: bold;
+}
+
+.designation,
+.botBoxConfig,
+.conduitLengths,
+.nemaDeviceConfig {
+  margin-left: 20px;
+}
+
+.devicePanel,
+.ckt,
+.s,
+.qty,
+.boxType,
+.exits,
+.connecterType,
+.supportType,
+.plasterRing,
+.conduitCableType,
+.left,
+.right,
+.center,
+.bottom,
+.deviceLeft,
+.deviceRight,
+.deviceCenter {
+  display: flex;
+  align-items: center;
+  column-gap: 10px;
+  margin-top: 25px;
+  margin-bottom: 25px
+}
+
+.formRight {
+  max-width: 400px;
+  position: relative;
+}
+
+.addNoteButton {
+  position: absolute;
+  right: 0px;
+  top: 0px;
+  width: 100px;
+  border-radius: 20px;
+  border-width: 1px;
+  background-color: white;
+  padding: 15px 3px;
+  cursor: pointer;
+}
+
+.userNotes {
+  display: block;
+  margin-top: 60px;
+}
+
+.noteSection {
+  display: flex;
+  column-gap: 10px;
+  align-items: center;
+  box-shadow: 0px 0px 3px black;
+  border-radius: 20px;
+  padding: 10px 10px;
+}
+
+.notesInputBox {
+  font-size: 18px;
+  padding: 3px 3px;
+  box-shadow: none;
+}
+
+.notesInputBox::placeholder {
+  padding-left: 5px;
+}
+
+.noteReferance {
+  box-shadow: none;
+}
+
+.notesCheckbox {
+  box-shadow: none;
+}
+
+.noteOrderNum {
+  width: 25px;
+  font-size: 18px;
+  text-align: center;
+}
+
+.noteOrderNum::placeholder {
+  text-align: center;
+  opacity: 0.5;
+}
+
+.notesCheckbox {
+  width: auto;
+}
+
+.doneButton {
+  position: absolute;
+  bottom: 0px;
+  right: 10px;
+  width: 100px;
+  border-radius: 20px;
+  border-width: 1px;
+  background-color: white;
+  padding: 15px 3px;
+  cursor: pointer;
+}
+
+.doneButton:hover {
+  filter: brightness(.9);
+}
+
+.doneButton:active {
+  filter: brightness(1);
+}
+
+.resetButton {
+  position: absolute;
+  bottom: 0px;
+  right: 120px;
+  width: 100px;
+  border-radius: 20px;
+  border-width: 1px;
+  background-color: white;
+  padding: 15px 3px;
+  cursor: pointer;
+}
+
+.addToOrder:hover,
+.resetButton:hover,
+.addNoteButton:hover {
+  filter: brightness(.9);
+}
+
+.addToOrder:active,
+.resetButton:active,
+.addNoteButton:active {
+  filter: brightness(1);
+}
+
+.rightBar {
+  position: fixed;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  margin-right: 20px;
+}
+
+.viewCart,
+.clearCartButton {
+  background-color: white;
+  border-radius: 20px;
+  border-width: 1px;
+  width: 100px;
+  padding: 15px 3px;
+  cursor: pointer;
+  display: block;
+  margin-bottom: 10px;
+}
+
+.viewCart:hover,
+.clearCartButton:hover {
+  filter: brightness(.9);
+}
+
+.viewCart:active,
+.clearCartButton:active {
+  filter: brightness(1);
+}
+
+.viewOrders {
+  margin-top: 10px;
+}
