@@ -33,6 +33,7 @@ function loadingCart(){
               <th>Exits</th>
               <th>Connecter Type</th>
               <th>Support Type</th>
+              <th>Support Type 2</th>
               <th>Plaster Ring</th>
               <th>Conduit/Cable Type</th>
               <th>Left</th>
@@ -58,6 +59,7 @@ function loadingCart(){
       let innerHTMLexits = cartGridParse.matRoom[z].exits;
       let innerHTMLconnecterType = cartGridParse.matRoom[z].connecterType;
       let innerHTMLsupportType = cartGridParse.matRoom[z].supportType;
+      let innerHTMLsupportType2 = cartGridParse.matRoom[z].supportType2;
       let innerHTMLplasterRing = cartGridParse.matRoom[z].plasterRing;
       let innerHTMLconduitCableType = cartGridParse.matRoom[z].conduitCableType;
       let innerHTMLleft = cartGridParse.matRoom[z].left;
@@ -77,6 +79,7 @@ function loadingCart(){
               <td class = "exits${z}">${innerHTMLexits}</td>
               <td class = "connecterType${z}">${innerHTMLconnecterType}</td>
               <td class = "supportType${z}">${innerHTMLsupportType}</td>
+              <td class = "supportType2${z}">${innerHTMLsupportType2}</td>
               <td class = "plasterRing${z}">${innerHTMLplasterRing}</td>
               <td class = "conduitCableType${z}">${innerHTMLconduitCableType}</td>
               <td class = "left${z}">${innerHTMLleft}</td>
@@ -153,6 +156,7 @@ function edit(objNum){
   document.getElementById("exitsVal").value = cartGridParse.matRoom[objNum].exits;
   document.querySelector(".connecterTypeVal").value = cartGridParse.matRoom[objNum].connecterType;
   document.querySelector(".supportTypeVal").value = cartGridParse.matRoom[objNum].supportType;
+  document.querySelector(".supportType2Val").value = cartGridParse.matRoom[objNum].supportType2;
   document.querySelector(".plasterRingVal").value = cartGridParse.matRoom[objNum].plasterRing;
   document.getElementById("conduitCableTypeVal").value = cartGridParse.matRoom[objNum].conduitCableType;
   document.querySelector(".leftVal").value = cartGridParse.matRoom[objNum].left;
@@ -172,6 +176,7 @@ function edit(objNum){
                 <option value="exits">Exits</option>
                 <option value="connecterType">Connecter Type</option>
                 <option value="supportType">Support Type</option>
+                <option value="supportType2">Support Type 2</option>
                 <option value="plasterRing">Plaster Ring</option>
                 <option value="conduitCableType">Conduit/Cable Type</option>
                 <option value="left">Left</option>
@@ -205,6 +210,7 @@ document.querySelector(".resetButton").addEventListener("click", function(){
   document.getElementById("exitsVal").value = '';
   document.querySelector(".connecterTypeVal").value = '';
   document.querySelector(".supportTypeVal").value = '';
+  document.querySelector(".supportType2Val").value = '';
   document.querySelector(".plasterRingVal").value = '';
   document.getElementById("conduitCableTypeVal").value = '';
   document.querySelector(".leftVal").value = '';
@@ -232,6 +238,7 @@ document.querySelector('.doneButton').addEventListener('click', function(){
   cartGridParse.matRoom[currOrderNum].exits=document.getElementById("exitsVal").value;
   cartGridParse.matRoom[currOrderNum].connecterType=document.querySelector(".connecterTypeVal").value;
   cartGridParse.matRoom[currOrderNum].supportType=document.querySelector(".supportTypeVal").value;
+  cartGridParse.matRoom[currOrderNum].supportType2=document.querySelector(".supportType2Val").value;
   cartGridParse.matRoom[currOrderNum].plasterRing=document.querySelector(".plasterRingVal").value;
   cartGridParse.matRoom[currOrderNum].conduitCableType=document.getElementById("conduitCableTypeVal").value;
   cartGridParse.matRoom[currOrderNum].left=document.querySelector(".leftVal").value;
@@ -272,5 +279,8 @@ document.querySelector('.buildbookOutput').innerHTML = buildBook.name;
 document.querySelector('.roomNameOutput').innerHTML = cartGridParse.name;
 
 document.querySelector('.sendToBookButton').addEventListener('click', function(){
+  cartGridParse.editRoom = true;
   buildBook['rooms'][cartGridParse.name] = cartGridParse;
+  localStorage.setItem('portfolio', JSON.stringify(buildBook));
+  localStorage.removeItem('room');
 })

@@ -8,7 +8,8 @@ let room = JSON.parse(localStorage.getItem('room')) || {
     noteInputArray:[],
     noteReferanceArray:[]
   },
-  matRoom:{}
+  matRoom:{},
+  editRoom:false
 };
 
 //sets the order count for the current amount of stored orders
@@ -60,6 +61,7 @@ document.querySelector(
         exits:document.getElementById("exitsVal").value,
         connecterType:document.querySelector(".connecterTypeVal").value,
         supportType:document.querySelector(".supportTypeVal").value,
+        supportType2:document.querySelector(".supportType2Val").value,
         plasterRing:document.querySelector(".plasterRingVal").value,
         conduitCableType:document.getElementById("conduitCableTypeVal").value,
         left:document.querySelector(".leftVal").value,
@@ -98,6 +100,16 @@ document.querySelector(
       room['notes'].noteReferanceArray = notesSelectArray;
       //stores room to local storage
       localStorage.setItem('room', JSON.stringify(room));
+      
+      room.name = document.querySelector('.roomNameInput').value;
+      buildBook.name = document.querySelector('.buildbookNameInput').value;
+      if(room.editRoom === false){
+        
+        localStorage.setItem('room', JSON.stringify(room));
+        
+        localStorage.setItem('portfolio', JSON.stringify(buildBook));
+      }
+      
       location.reload();
     }
   )
@@ -110,6 +122,8 @@ let notesSelectArray = room.notes.noteReferanceArray || [];
 let noteCount = notesArray.length+1;
 //sets blank var to set the html
 let htmlNotes = ``;
+
+
 loadNotes();
 
 /*
@@ -126,6 +140,7 @@ function loadNotes(){
                     <option value="exits">Exits</option>
                     <option value="connecterType">Connecter Type</option>
                     <option value="supportType">Support Type</option>
+                    <option value="supportType2">Support Type 2</option>
                     <option value="plasterRing">Plaster Ring</option>
                     <option value="conduitCableType">Conduit/Cable Type</option>
                     <option value="left">Left</option>
@@ -157,6 +172,7 @@ function addNote(){
                     <option value="exits">Exits</option>
                     <option value="connecterType">Connecter Type</option>
                     <option value="supportType">Support Type</option>
+                    <option value="supportType2">Support Type 2</option>
                     <option value="plasterRing">Plaster Ring</option>
                     <option value="conduitCableType">Conduit/Cable Type</option>
                     <option value="left">Left</option>
@@ -187,6 +203,7 @@ document.querySelector(".clearCartButton").addEventListener('click', function(){
   document.getElementById("exitsVal").value = '0';
   document.querySelector(".connecterTypeVal").value = '';
   document.querySelector(".supportTypeVal").value = '';
+  document.querySelector(".supportType2Val").value = '';
   document.querySelector(".plasterRingVal").value = '';
   document.getElementById("conduitCableTypeVal").value = 'Choose';
   document.querySelector(".leftVal").value = '';
@@ -209,6 +226,7 @@ document.querySelector(".resetButton").addEventListener("click", function(){
   document.getElementById("exitsVal").value = '0';
   document.querySelector(".connecterTypeVal").value = '';
   document.querySelector(".supportTypeVal").value = '';
+  document.querySelector(".supportType2Val").value = '';
   document.querySelector(".plasterRingVal").value = '';
   document.getElementById("conduitCableTypeVal").value = 'Choose';
   document.querySelector(".leftVal").value = '';
@@ -223,9 +241,13 @@ document.querySelector(".resetButton").addEventListener("click", function(){
 
 document.querySelector('.viewCart').addEventListener('click',function(){
   room.name = document.querySelector('.roomNameInput').value;
-  localStorage.setItem('room', JSON.stringify(room));
-  buildBook.name = document.querySelector('.buildbookNameInput').value;
-  localStorage.setItem('portfolio', JSON.stringify(buildBook));
+      buildBook.name = document.querySelector('.buildbookNameInput').value;
+      if(room.editRoom === false){
+        
+        localStorage.setItem('room', JSON.stringify(room));
+        
+        localStorage.setItem('portfolio', JSON.stringify(buildBook));
+      }
 })
 
 loadName();
