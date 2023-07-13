@@ -5,6 +5,10 @@ let portfolio = JSON.parse(localStorage.getItem('portfolio')) || {
   rooms:{}
 };
 
+if(localStorage.getItem('dark')){
+  document.querySelector('.light').classList.add('dark');
+}
+
 localStorage.setItem('portfolio',JSON.stringify(portfolio));
 
 document.querySelector('.pullPortfolioButton').addEventListener('click', function(){
@@ -18,8 +22,10 @@ document.querySelector('.pullPortfolioButton').addEventListener('click', functio
 document.querySelector('.changeTheme').addEventListener('click', function(){
   if(document.querySelector('.light').classList.contains('dark')){
     document.querySelector('.light').classList.remove('dark');
+    localStorage.removeItem('dark');
   }
   else{
     document.querySelector('.light').classList.add('dark');
+    localStorage.setItem('dark', 'dark');
   }
 })

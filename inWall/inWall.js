@@ -12,6 +12,10 @@ let room = JSON.parse(localStorage.getItem('room')) || {
   editRoom:false
 };
 
+if(localStorage.getItem('dark')){
+  document.querySelector('.light').classList.add('dark');
+}
+
 //sets the order count for the current amount of stored orders
 let orderCount = 0
 loadOrderCount();

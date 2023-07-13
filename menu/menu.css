@@ -1,3 +1,7 @@
+body {
+  background-color: rgb(246, 246, 246);
+}
+
 p {
   font-family: Arial;
   font-size: 25px;
@@ -16,20 +20,24 @@ img {
 button {
   padding: 10px 10px;
   border-radius: 20px;
-  color: #faf3dd;
-  border-style: solid;
-  border-color: #faf3dd;
-  border-width: 2px;
-  background-color: #495159;
+  border: none;
+  box-shadow: 0px 0px 3px black;
+  background-color: white;
   font-size: 25px;
   cursor: pointer;
-  transition: background-color 0.5s, color 0.5s;
-
+  transition: box-shadow 0.5s;
 }
 
 button:hover {
-  background-color: #faf3dd;
-  color: #495159;
+  box-shadow: 0px 0px 10px black;
+}
+
+input {
+  font-size: 20px;
+}
+
+input:focus {
+  outline: none;
 }
 
 .light {
@@ -38,18 +46,50 @@ button:hover {
 }
 
 .dark {
-  background-color: rgb(45, 45, 45);
+  background-color: rgb(69, 69, 69);
   color: white;
+}
+
+.changeTheme {
+  padding: 10px 13px;
+  border-radius: 50%;
 }
 
 .homeGrid {
   justify-content: center;
-  align-items: center;
   width: 99%;
-  height: 99%;
   display: flex;
   position: absolute;
+}
+
+.bottomHomeGrid {
+  display: flex;
   column-gap: 100px;
+  row-gap: 100px;
+  margin-top: 100px;
+  margin-bottom: 100px;
+}
+
+.pullPortfolioInput {
+  width: 500px;
+  margin-right: -30px;
+  padding: 15px 30px;
+  border-radius: 50px;
+  border: none;
+  box-shadow: 0px 0px 5px grey;
+}
+
+.sendButton {
+  border: none;
+  margin: 0px 0px;
+  margin-left: -20px;
+  background-color: transparent;
+  cursor: pointer;
+  box-shadow: none;
+}
+
+.sendButton:hover {
+  box-shadow: none;
 }
 
 .quickbaseDiv,
@@ -58,18 +98,21 @@ button:hover {
   display: flexbox;
   text-align: center;
   padding: 50px 30px;
+  border: none;
   border-radius: 10px;
-  background-color: #faf3dd;
-  border-width: 3px;
-  border-style: solid;
-  border-color: #495159;
+  box-shadow: 0px 0px 5px rgb(49, 49, 49);
+  background-color: white;
+}
+
+.pullBuildDiv {
+  margin-top: 100px;
 }
 
 .americanFlag {
   opacity: 0;
   width: 50px;
   height: fit-content;
-  position: absolute;
+  position: fixed;
   left: 0px;
   bottom: 0px;
   background-color: transparent;

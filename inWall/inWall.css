@@ -2,6 +2,7 @@ body {
   justify-content: center;
   font-family: Arial;
   font-size: 25px;
+  background-color: rgb(246, 246, 246);
 }
 
 p {
@@ -9,7 +10,7 @@ p {
 }
 
 div {
-  margin-bottom: 8px;
+  margin-bottom: 15px;
 }
 
 a {
@@ -22,6 +23,7 @@ select {
   border-radius: 10px;
   border: none;
   cursor: pointer;
+  box-shadow: 0px 0px 3px black;
 }
 
 select:focus {
@@ -33,27 +35,65 @@ input {
   border-radius: 10px;
   border: none;
   padding: 5px 5px;
+  box-shadow: 0px 0px 3px black;
 }
 
 input:focus {
   outline: none;
 }
 
+input[type="checkbox"] {
+  height: 20px;
+  width: 20px;
+  cursor: pointer;
+}
+
+.light {
+  background-color: white;
+  color: black;
+}
+
+.dark {
+  background-color: rgb(69, 69, 69);
+  color: white;
+}
+
+.homeButton {
+  position: fixed;
+  left: 10px;
+  top: 10px;
+}
+
+.roomName {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  column-gap: 30px;
+}
+
+.roomNameInput,
+.buildbookNameInput {
+  font-size: 20px;
+  padding: 10px 10px;
+  text-align: center;
+  width: 300px;
+  height: 50px;
+}
+
 .form {
-  background-color: #faf3dd;
-  border: 5px solid;
+  border: none;
   margin: auto;
   width: 50%;
   padding: 20px 20px;
-  border-color: #495159;
   border-radius: 15px;
   display: flex;
   justify-content: space-between;
+  box-shadow: 0px 0px 5px grey;
+  background-color: transparent;
 }
 
-.formRight {
-  max-width: 400px;
-  position: relative;
+.title {
+  font-weight: bold;
 }
 
 .designation,
@@ -78,6 +118,7 @@ input:focus {
 .exits,
 .connecterType,
 .supportType,
+.supportType2,
 .plasterRing,
 .conduitCableType,
 .left,
@@ -92,111 +133,64 @@ input:focus {
   column-gap: 10px;
 }
 
-.title {
-  font-weight: bold;
+.formRight {
+  max-width: 400px;
+  position: relative;
 }
 
-.addToOrder {
+.topRightNotes {
   position: absolute;
-  bottom: 0px;
   right: 0px;
-  width: 100px;
-  border-radius: 20px;
-  border-width: 1px;
-  background-color: white;
-  padding: 15px 3px;
+  top: 0px;
+}
+
+.addButtonFlex {
+  display: flex;
+  justify-content: right;
+}
+
+.addNoteButton {
+  border: none;
+  box-shadow: 0px 0px 3px black;
+  padding: 10px 20px;
+  background-color: transparent;
+  font-size: 20px;
+  border-radius: 30px;
+  width: 200px;
   cursor: pointer;
-}
-
-.resetButton {
-  position: absolute;
-  bottom: 0px;
-  right: 110px;
-  width: 100px;
-  border-radius: 20px;
-  border-width: 1px;
-  background-color: white;
-  padding: 15px 3px;
-  cursor: pointer;
-}
-
-.addToOrder:hover,
-.resetButton:hover,
-.addNoteButton:hover {
-  filter: brightness(.9);
-}
-
-.addToOrder:active,
-.resetButton:active,
-.addNoteButton:active {
-  filter: brightness(1);
-}
-
-.rightBar {
-  position: fixed;
-  right: 0;
-  top: 0;
-  bottom: 0;
-  margin-right: 20px;
-}
-
-.viewCart,
-.clearCartButton {
-  background-color: white;
-  border-radius: 20px;
-  border-width: 1px;
-  width: 100px;
-  padding: 15px 3px;
-  cursor: pointer;
-  display: block;
-  margin-bottom: 10px;
-}
-
-.viewCart:hover,
-.clearCartButton:hover {
-  background-color: rgb(4, 86, 168);
-}
-
-.viewCart:active,
-.clearCartButton:active {
-  background-color: rgb(2, 57, 111);
-}
-
-.viewOrders {
-  margin-top: 10px;
-  color: #495159;
-}
-
-.homeButton {
-  position: fixed;
-  left: 10px;
-  top: 10px;
+  transition: 0.5s;
 }
 
 .userNotes {
   display: block;
-  margin-top: 60px;
+  margin-top: 20px;
 }
 
-.addNoteButton {
-  position: absolute;
-  right: 0px;
-  top: 0px;
-  width: 100px;
+.noteSection {
+  display: flex;
+  column-gap: 10px;
+  align-items: center;
+  box-shadow: 0px 0px 3px black;
   border-radius: 20px;
-  border-width: 1px;
-  background-color: white;
-  padding: 15px 3px;
-  cursor: pointer;
+  padding: 10px 10px;
 }
 
 .notesInputBox {
   font-size: 18px;
   padding: 3px 3px;
+  box-shadow: none;
 }
 
 .notesInputBox::placeholder {
   padding-left: 5px;
+}
+
+.noteReferance {
+  box-shadow: none;
+}
+
+.notesCheckbox {
+  box-shadow: none;
 }
 
 .noteOrderNum {
@@ -214,72 +208,72 @@ input:focus {
   width: auto;
 }
 
-.roomName {
-  align-items: center;
+.bottomRightButtons {
   display: flex;
-  justify-content: center;
-  column-gap: 30px;
-}
-
-.roomNameInput {
-  font-size: 20px;
-  padding: 10px 10px;
-  text-align: center;
-  width: 300px;
-  height: 50px;
-}
-
-.notes1Color {
-  background-color: red;
-}
-
-.notes2Color {
-  background-color: blue;
-  color: white;
-}
-
-.notes3Color {
-  background-color: yellow;
-}
-
-.notes4Color {
-  background-color: pink;
-}
-
-.notes5Color {
-  background-color: olive;
-  color: white;
-}
-
-.notes6Color {
-  background-color: purple;
-  color: white;
-}
-
-.notes7Color {
-  background-color: brown;
-}
-
-.notes8Color {
-  background-color: black;
-  color: white;
-}
-
-.notes9Color {
-  background-color: silver;
-}
-
-.notes10Color {
-  background-color: orange;
-}
-
-input[type="checkbox"] {
-  height: 20px;
-  width: 20px;
-}
-
-.noteSection {
-  display: flex;
+  position: absolute;
+  bottom: 0px;
+  right: 0px;
   column-gap: 10px;
-  align-items: center;
+}
+
+.addToOrder {
+  border: none;
+  box-shadow: 0px 0px 3px black;
+  padding: 10px 20px;
+  background-color: transparent;
+  font-size: 20px;
+  border-radius: 30px;
+  cursor: pointer;
+  height: 55px;
+  width: 220px;
+  transition: 0.5s;
+}
+
+.resetButton {
+  border: none;
+  box-shadow: 0px 0px 3px black;
+  padding: 10px 20px;
+  background-color: transparent;
+  font-size: 20px;
+  border-radius: 30px;
+  cursor: pointer;
+  transition: 0.5s;
+}
+
+.addToOrder:hover,
+.resetButton:hover,
+.addNoteButton:hover {
+  box-shadow: 0px 0px 10px black;
+}
+
+.rightBar {
+  position: fixed;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  margin-right: 20px;
+}
+
+.viewCart,
+.clearCartButton {
+  background-color: transparent;
+  font-size: 25px;
+  border: none;
+  box-shadow: 0px 0px 3px black;
+  border-radius: 20px;
+  padding: 10px 20px;
+  cursor: pointer;
+  display: block;
+  margin-bottom: 10px;
+  transition: 0.5s;
+  width: 201px;
+}
+
+.viewCart:hover,
+.clearCartButton:hover {
+  box-shadow: 0px 0px 10px black;
+}
+
+.viewOrders {
+  margin-top: 10px;
 }
