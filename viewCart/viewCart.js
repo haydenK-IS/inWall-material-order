@@ -45,7 +45,7 @@ function loadingCart(){
               <th>Device Right</th>
               <th>Edit</th>
             </tr>
-            <tr>
+            <tr class = "tr1">
           `;
   //keeps index on table rows added to close out the table when orders are complete
   let counter = 0;

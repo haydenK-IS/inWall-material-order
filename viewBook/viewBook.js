@@ -46,3 +46,7 @@ function printRoom(roomName){
   window.open('http://127.0.0.1:5500/printing/printing.html');
   //localStorage.removeItem('room');
 }
+
+document.querySelector('.viewAllButton').addEventListener('click', function(){
+  window.open('http://127.0.0.1:5500/viewAll/viewAll.html');
+})

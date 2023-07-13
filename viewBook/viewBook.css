@@ -11,6 +11,7 @@ p {
 
 table {
   text-align: center;
+  font-family: arial;
   border-collapse: collapse;
   font-size: 40px;
   margin-left: auto;

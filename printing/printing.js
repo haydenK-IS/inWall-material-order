@@ -117,6 +117,7 @@ function loadNotes(){
         let colorRef = cartGridParse.notes.noteReferanceArray[y];
         let dataNote = cartGridParse.matRoom[x+1].orderNotes[y][0];
         document.querySelector(`.${colorRef}${x+1}`).classList.add(`${dataNote}Color`);
+        //document.querySelector('.boxType1').classList.add("notes1Color");
         //console.log(colorRef + ' : ' +(y+1) + ' : ' + dataNote);
       }
     }

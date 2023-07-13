@@ -19,6 +19,7 @@ document.querySelector('.pullPortfolioButton').addEventListener('click', functio
   document.querySelector('.pullPortfoilioButtonToInput').innerHTML = html;
 })
 
+/*
 document.querySelector('.changeTheme').addEventListener('click', function(){
   if(document.querySelector('.light').classList.contains('dark')){
     document.querySelector('.light').classList.remove('dark');
@@ -29,3 +30,4 @@ document.querySelector('.changeTheme').addEventListener('click', function(){
     localStorage.setItem('dark', 'dark');
   }
 })
+ */

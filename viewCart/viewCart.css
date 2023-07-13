@@ -50,21 +50,23 @@ td:hover {
 }
 
 .backButton {
-  padding: 20px 30px;
+  margin-top: 20px;
   border: none;
   box-shadow: 0px 0px 3px black;
+  padding: 10px 20px;
+  background-color: transparent;
+  font-size: 20px;
   border-radius: 30px;
-  margin-top: 20px;
   cursor: pointer;
   transition: 0.5s;
 }
 
-.backButton:hover {
+.backButton:hover,
+.sendToBookButton:hover {
   box-shadow: 0px 0px 10px black;
 }
 
 .sendToBookButton {
-  padding: 20px 30px;
   border: none;
   box-shadow: 0px 0px 3px black;
   border-radius: 30px;
@@ -73,6 +75,9 @@ td:hover {
   position: absolute;
   right: 10px;
   transition: 0.5s;
+  padding: 10px 20px;
+  background-color: transparent;
+  font-size: 20px;
 }
 
 .portDis,
@@ -160,6 +165,7 @@ h2 {
 }
 
 .editButton {
+  font-size: 20px;
   background-color: transparent;
   border: solid;
   border-width: 1px;
@@ -211,6 +217,7 @@ input {
   border: none;
   padding: 5px 5px;
   box-shadow: 0px 0px 5px grey;
+  font-size: 18px;
 }
 
 input:focus {
@@ -279,21 +286,9 @@ div {
   position: relative;
 }
 
-.addNoteButton {
-  position: absolute;
-  right: 0px;
-  top: 0px;
-  width: 100px;
-  border-radius: 20px;
-  border-width: 1px;
-  background-color: white;
-  padding: 15px 3px;
-  cursor: pointer;
-}
-
 .userNotes {
   display: block;
-  margin-top: 60px;
+  margin-top: 30px;
 }
 
 .noteSection {
@@ -338,82 +333,37 @@ div {
   width: auto;
 }
 
-.doneButton {
+.bottomRightButtons {
+  display: flex;
   position: absolute;
   bottom: 0px;
-  right: 10px;
-  width: 100px;
+  right: 0px;
+  column-gap: 10px;
+}
+
+.doneButton {
   border: none;
   box-shadow: 0px 0px 3px black;
-  border-radius: 20px;
-  background-color: white;
-  padding: 15px 3px;
+  padding: 10px 20px;
+  background-color: transparent;
+  font-size: 20px;
+  border-radius: 30px;
   cursor: pointer;
-}
-
-.doneButton:hover {
-  filter: brightness(.9);
-}
-
-.doneButton:active {
-  filter: brightness(1);
+  transition: 0.5s;
 }
 
 .resetButton {
-  position: absolute;
-  bottom: 0px;
-  right: 120px;
-  width: 100px;
   border: none;
   box-shadow: 0px 0px 3px black;
-  border-radius: 20px;
-  background-color: white;
-  padding: 15px 3px;
+  padding: 10px 20px;
+  background-color: transparent;
+  font-size: 20px;
+  border-radius: 30px;
   cursor: pointer;
+  transition: 0.5s;
 }
 
-.addToOrder:hover,
-.resetButton:hover,
-.addNoteButton:hover {
-  filter: brightness(.9);
-}
-
-.addToOrder:active,
-.resetButton:active,
-.addNoteButton:active {
-  filter: brightness(1);
-}
-
-.rightBar {
-  position: fixed;
-  right: 0;
-  top: 0;
-  bottom: 0;
-  margin-right: 20px;
-}
-
-.viewCart,
-.clearCartButton {
-  background-color: white;
-  border-radius: 20px;
-  border-width: 1px;
-  width: 100px;
-  padding: 15px 3px;
-  cursor: pointer;
-  display: block;
-  margin-bottom: 10px;
-}
-
-.viewCart:hover,
-.clearCartButton:hover {
-  filter: brightness(.9);
-}
-
-.viewCart:active,
-.clearCartButton:active {
-  filter: brightness(1);
-}
-
-.viewOrders {
-  margin-top: 10px;
+.doneButton:hover,
+.resetButton:hover {
+  box-shadow: 0px 0px 10px black;
 }
