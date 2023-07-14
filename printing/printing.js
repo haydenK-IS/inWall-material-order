@@ -1,3 +1,8 @@
+/**
+ * By: Hayden Kubit
+ * Date: 7/14/2023
+ */
+
 //pulls local buildbook
 let buildBook = JSON.parse(localStorage.getItem('portfolio')) || {};
 

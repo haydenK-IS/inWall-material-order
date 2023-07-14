@@ -1,3 +1,8 @@
+/**
+ * By: Hayden Kubit
+ * Date: 7/14/2023
+ */
+
 //gets locally stored portfolio
 let buildBook = JSON.parse(localStorage.getItem('portfolio')) || {};
 //gets locally stored room obj

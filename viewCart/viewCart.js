@@ -1,3 +1,8 @@
+/**
+ * By: Hayden Kubit
+ * Date: 7/14/2023
+ */
+
 //stores the local buildbook
 let buildBook = JSON.parse(localStorage.getItem('portfolio')) || {};
 
@@ -109,8 +114,10 @@ function loadingCart(){
     }
   html+=`</table>`;
   document.querySelector('.orderSummary').innerHTML += html;
+
   //loads the notes after the table has been created to referance the table data
   loadNotes();
+  loadQTY();
 }
 
 /**
@@ -295,3 +302,11 @@ document.querySelector('.sendToBookButton').addEventListener('click', function()
   localStorage.setItem('portfolio', JSON.stringify(buildBook));
   localStorage.removeItem('room');
 })
+function loadQTY(){
+  
+  for(let x = 0; x<count; x++){
+    if(cartGridParse.matRoom[x+1].qty > 1){
+      document.querySelector(`.qty${x+1}`).classList.add('multiQTY');
+    }
+  }
+}

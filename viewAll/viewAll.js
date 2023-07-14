@@ -1,3 +1,8 @@
+/**
+ * By: Hayden Kubit
+ * Date: 7/14/2023
+ */
+
 //pulls local book
 let buildBook = JSON.parse(localStorage.getItem('portfolio')) || {};
 
@@ -18,11 +23,11 @@ for(x in buildBook.rooms){
               <div class="titleDisplay">
                 <div class="portDis">
                   <h1>Build Book &#x2022;</h1>
-                  <h1 class="buildbookOutput"></h1>
+                  <h1 class="buildbookOutput${countRoom}"></h1>
                 </div>
                 <div class="roomDis">
                   <h1>Room &#x2022;</h1>
-                  <h1 class="roomNameOutput"></h1>
+                  <h1 class="roomNameOutput${countRoom}"></h1>
                 </div>
                 <div class="noteDis">
                   <h1 class="notesTitle" style="margin-top: 0px; margin-bottom: 0px">
@@ -143,6 +148,8 @@ for(x in buildBook.rooms){
       }
     }
   }
+  document.querySelector(`.buildbookOutput${countRoom}`).innerHTML = buildBook.name;
+  document.querySelector(`.roomNameOutput${countRoom}`).innerHTML = tempRoom.name
   countRoom++;
 }
 
