@@ -1,3 +1,4 @@
+//stores the local buildbook
 let buildBook = JSON.parse(localStorage.getItem('portfolio')) || {};
 
 //stores the local room into var
@@ -69,6 +70,7 @@ function loadingCart(){
       let innerHTMLdeviceLeft = cartGridParse.matRoom[z].deviceLeft;
       let innerHTMLdeviceRight = cartGridParse.matRoom[z].deviceRight;
       let innerHTMLdeviceCenter = cartGridParse.matRoom[z].deviceCenter;
+      //creates html for each value and puts into table
       html+=`
               <th class = "order${z}">${z}</th>
               <td class = "devicePanel${z}">${innerHTMLdevicePanel}</td>
@@ -91,6 +93,7 @@ function loadingCart(){
               <td class = "deviceRight${z}">${innerHTMLdeviceRight}</td>
               <th><button class = "editButton editButton${z}" onclick = "setCurrOrderNum(${z}); edit(${z})">&#9998;</button></th>
               </tr>`;
+            //increments counter to track amount of orders
             counter++;
       //checks to see if the tbale needs to be closed
       if(counter < count)
@@ -106,7 +109,7 @@ function loadingCart(){
     }
   html+=`</table>`;
   document.querySelector('.orderSummary').innerHTML += html;
-  //loads the notes
+  //loads the notes after the table has been created to referance the table data
   loadNotes();
 }
 
@@ -117,19 +120,21 @@ function loadingCart(){
  * loops through orders then loops through assigned notes
  */
 function loadNotes(){
+  //creates the html for the notes to display on top of the table
   for(let x = 0; x<cartGridParse.notes.noteInputArray.length; x++)
   {
     let html = `<h2 class = 'hNote${x+1}'>Note ${x+1}: <span class = "referenceName">${cartGridParse.notes.noteReferanceArray[x]}</span> : ${cartGridParse.notes.noteInputArray[x]}</h2>`
     document.querySelector('.notesArrayReferance').insertAdjacentHTML("beforeend",html);
   }
+  //x counts the orders
   for(let x = 0; x<count; x++){
+    //y counts the notes
     for(let y = 0; y<cartGridParse.matRoom[x+1].orderNotes.length; y++){
       if(cartGridParse.matRoom[x+1].orderNotes[y][1] === true)
       {
         let colorRef = cartGridParse.notes.noteReferanceArray[y];
         let dataNote = cartGridParse.matRoom[x+1].orderNotes[y][0];
         document.querySelector(`.${colorRef}${x+1}`).classList.add(`${dataNote}Color`);
-        //console.log(colorRef + ' : ' +(y+1) + ' : ' + dataNote);
       }
     }
   }
@@ -275,9 +280,15 @@ function setCurrOrderNum(num)
   currOrderNum = num;
 }
 
+//loads names of room and build book
 document.querySelector('.buildbookOutput').innerHTML = buildBook.name;
 document.querySelector('.roomNameOutput').innerHTML = cartGridParse.name;
 
+/**
+ * when send to book is clicked the room gets removed from the localstorage
+ * only way to access is through the edit so edit status becomes true
+ * creates object of room name into the build book and sets local storage of the book
+ */
 document.querySelector('.sendToBookButton').addEventListener('click', function(){
   cartGridParse.editRoom = true;
   buildBook['rooms'][cartGridParse.name] = cartGridParse;

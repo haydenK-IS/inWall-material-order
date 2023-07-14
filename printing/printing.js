@@ -1,13 +1,17 @@
+//pulls local buildbook
 let buildBook = JSON.parse(localStorage.getItem('portfolio')) || {};
 
+//pulls local room
 let cartGridParse = JSON.parse(localStorage.getItem('room')) || {};
 
+//keeps count of order index
 let count = 0;
 //counts the orders
 for(let properties in cartGridParse.matRoom){
   count++;
 }
 
+//loads cart to display room
 loadingCart();
 function loadingCart(){
   //loads the headers in the table
@@ -124,8 +128,12 @@ function loadNotes(){
   }
 }
 
+//displays book name and room name
 document.querySelector('.buildbookOutput').innerHTML = buildBook.name;
 document.querySelector('.roomNameOutput').innerHTML = cartGridParse.name;
 
+//prints the table 
 window.print();
+
+//removes the room from local
 localStorage.removeItem('room');

@@ -12,12 +12,15 @@ let room = JSON.parse(localStorage.getItem('room')) || {
   editRoom:false
 };
 
+//loooks for dark in the localstorage to apply dark mode
 if(localStorage.getItem('dark')){
   document.querySelector('.light').classList.add('dark');
 }
 
 //sets the order count for the current amount of stored orders
 let orderCount = 0
+
+//on page load counts the orders and displays them
 loadOrderCount();
 function loadOrderCount(){
   for(let properties in room.matRoom){
@@ -38,7 +41,7 @@ function loadOrderCount(){
 document.querySelector(
   '.addToOrder').addEventListener(
     'click', function(){
-
+      //checks the value of the dropdown to see if the user has a blank dropdown
       for(let x = 0; x<noteCount-1;x++)
       {
         if(document.querySelector(`.noteReferance${x+1}`).value === ""){
@@ -47,6 +50,7 @@ document.querySelector(
         }
       }
       
+      //makes an object for the checkmarks to be noted in the order obj
       let orderNotesArray = {};
       document.querySelectorAll('[type = "checkbox"]').forEach(item => {
         if(item.checked === true){
@@ -56,6 +60,7 @@ document.querySelector(
           orderNotesArray[item.value] = false;
         }
       })
+      //sets each order obj in the local room
       room.matRoom[orderCount+1] = {
         devicePanel : document.querySelector(".devicePanelVal").value,
         ckt : document.querySelector(".cktVal").value,
@@ -105,8 +110,11 @@ document.querySelector(
       //stores room to local storage
       localStorage.setItem('room', JSON.stringify(room));
       
+      //sets the room name to the local storage
       room.name = document.querySelector('.roomNameInput').value;
       buildBook.name = document.querySelector('.buildbookNameInput').value;
+      //if the user has already sent the room to the build book they can
+      //no longer chnage the name so the name does not update in the local storage
       if(room.editRoom === false){
         
         localStorage.setItem('room', JSON.stringify(room));
@@ -114,6 +122,7 @@ document.querySelector(
         localStorage.setItem('portfolio', JSON.stringify(buildBook));
       }
       
+      //reloads the page after every order has been added to refresh the chebox values
       location.reload();
     }
   )
@@ -127,7 +136,7 @@ let noteCount = notesArray.length+1;
 //sets blank var to set the html
 let htmlNotes = ``;
 
-
+//on page load, loads the current set of notes if any are stored
 loadNotes();
 
 /*
@@ -135,6 +144,7 @@ runs through the array and creates the html for the locally stored notes
 sets the value of each input and select to the locally storred values
 */
 function loadNotes(){
+  //creates the html for each input, dropdown, and checkbox for each note stored in the local
   for(let x = 0; x<notesArray.length; x++){
     htmlNotes = `<div class = "noteSection">
                   <input class = "note${x+1} notesInputBox" type = "text" placeholder = "Note ${x+1}">
@@ -155,6 +165,7 @@ function loadNotes(){
                   <input class = "notesCheckbox notes${x+1}CheckBox" type="checkbox" value = "notes${x+1}" unchecked>
                 </div>`;
       document.querySelector('.userNotes').insertAdjacentHTML("beforeend",htmlNotes);
+      //sets values for note that are stored locally
       document.querySelector(`.note${x+1}`).value = notesArray[x];
       document.querySelector(`.noteReferance${x+1}`).value = notesSelectArray[x];
   }
@@ -164,10 +175,12 @@ function loadNotes(){
  *when the add note button is clicked new html is appended to the last in userNotes
 */
 function addNote(){
+  //checks if user has reached max amount of notes
   if(noteCount>10){
     alert('Cannot have more than 10 notes');
     return false;
   }
+  //creates the html when adding a note
   htmlNotes = `<div class = "noteSection">
                   <input class = "note${noteCount} notesInputBox" type = "text" placeholder = "Note ${noteCount}">
                   <select class = "noteReferance${noteCount} noteReferance">
@@ -186,6 +199,7 @@ function addNote(){
                   </select>
                   <input class = "notesCheckbox notes${noteCount}Checkbox" type="checkbox" value = "notes${noteCount}">
                 </div>`;
+  //increments the current count of notes for referance and display purposes
   noteCount++;
   document.querySelector('.userNotes').insertAdjacentHTML("beforeend",htmlNotes);
 }
@@ -244,16 +258,20 @@ document.querySelector(".resetButton").addEventListener("click", function(){
 })
 
 document.querySelector('.viewCart').addEventListener('click',function(){
+  //sets the local room and buildbook name to the inputs
   room.name = document.querySelector('.roomNameInput').value;
-      buildBook.name = document.querySelector('.buildbookNameInput').value;
-      if(room.editRoom === false){
-        
-        localStorage.setItem('room', JSON.stringify(room));
-        
-        localStorage.setItem('portfolio', JSON.stringify(buildBook));
-      }
+  buildBook.name = document.querySelector('.buildbookNameInput').value;
+  //if the room has been sent to the book already the user is not allowed to change names
+  //therefore the names are not stored if edit button has been pressed
+  if(room.editRoom === false){
+    
+    localStorage.setItem('room', JSON.stringify(room));
+    
+    localStorage.setItem('portfolio', JSON.stringify(buildBook));
+  }
 })
 
+//on page load, grabs the names and outputs them into the input boxes
 loadName();
 function loadName(){
   document.querySelector('.roomNameInput').value = room.name;
