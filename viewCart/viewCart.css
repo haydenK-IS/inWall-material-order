@@ -43,27 +43,58 @@ td:hover {
   box-shadow: 0px 0px 10px black;
 }
 
+select {
+  font-size: 18px;
+  padding: 3px 3px;
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0px 0px 5px grey;
+}
+
+select:focus {
+  outline: none;
+}
+
+input {
+  border-radius: 10px;
+  border: none;
+  padding: 5px 5px;
+  box-shadow: 0px 0px 5px grey;
+  font-size: 18px;
+}
+
+input:focus {
+  outline: none;
+}
+
+input[type="checkbox"] {
+  height: 20px;
+  width: 20px;
+}
+
+div {
+  margin: 10px 0px;
+}
+
+h1 {
+  align-items: center;
+  margin-top: 0px;
+  margin-bottom: 0px;
+  padding: 10px 15px;
+  border-radius: 30px;
+}
+
+.tableInput {
+  box-shadow: none;
+  background-color: transparent;
+  text-align: center;
+  max-width: 85px;
+}
 
 .header {
   display: flex;
   column-gap: 20px;
-}
-
-.backButton {
-  margin-top: 20px;
-  border: none;
-  box-shadow: 0px 0px 3px black;
-  padding: 10px 20px;
-  background-color: transparent;
-  font-size: 20px;
-  border-radius: 30px;
-  cursor: pointer;
-  transition: 0.5s;
-}
-
-.backButton:hover,
-.sendToBookButton:hover {
-  box-shadow: 0px 0px 10px black;
 }
 
 .sendToBookButton {
@@ -80,6 +111,10 @@ td:hover {
   font-size: 20px;
 }
 
+.sendToBookButton:hover {
+  box-shadow: 0px 0px 10px black;
+}
+
 .portDis,
 .roomDis,
 .noteDis {
@@ -90,21 +125,25 @@ td:hover {
   align-items: center;
 }
 
-h1,
-h2 {
-  align-items: center;
-  margin-top: 0px;
-  margin-bottom: 0px;
-  padding: 10px 15px;
-  border-radius: 30px;
-}
-
 .notesArrayReferance {
   display: flex;
   column-gap: 15px;
   flex-wrap: wrap;
   row-gap: 15px;
   max-width: 1500px;
+}
+
+.notesEditButton {
+  border: none;
+  font-size: 25px;
+  cursor: pointer;
+  padding: 15px 20px;
+  border-radius: 30px;
+  transition: 0.5s;
+}
+
+.notesEditButton:hover {
+  box-shadow: 0px 0px 10px black;
 }
 
 .notes1Color,
@@ -164,22 +203,6 @@ h2 {
   background-color: orange;
 }
 
-.editButton {
-  font-size: 20px;
-  background-color: transparent;
-  border: solid;
-  border-width: 1px;
-  border-radius: 50%;
-  padding: 6px 10px;
-  cursor: pointer;
-  transition: border-color 0.5s, box-shadow 0.5s;
-}
-
-.editButton:hover {
-  border-color: transparent;
-  box-shadow: 0px 0px 5px black;
-}
-
 .editOverlay {
   position: fixed;
   display: none;
@@ -191,99 +214,39 @@ h2 {
   bottom: 0;
   background-color: rgba(0, 0, 0, 0.5);
   z-index: 2;
-  overflow-y: scroll;
-}
-
-a {
-  text-decoration: none;
-}
-
-select {
-  font-size: 18px;
-  padding: 3px 3px;
-  border-radius: 10px;
-  border: none;
-  cursor: pointer;
-  box-shadow: 0px 0px 5px grey;
-}
-
-select:focus {
-  outline: none;
-}
-
-input {
-  width: 100px;
-  border-radius: 10px;
-  border: none;
-  padding: 5px 5px;
-  box-shadow: 0px 0px 5px grey;
-  font-size: 18px;
-}
-
-input:focus {
-  outline: none;
-}
-
-input[type="checkbox"] {
-  height: 20px;
-  width: 20px;
-}
-
-div {
-  margin: 10px 0px;
 }
 
 .form {
-  border: none;
-  margin: auto;
-  width: 50%;
-  padding: 10px;
-  border-radius: 15px;
-  display: flex;
-  justify-content: space-between;
-  box-shadow: 0px 0px 5px black;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   background-color: white;
+  border-radius: 10px;
+  padding: 50px 50px;
+  box-shadow: 0px 0px 10px black;
 }
 
-.title {
-  font-weight: bold;
-}
-
-.designation,
-.botBoxConfig,
-.conduitLengths,
-.nemaDeviceConfig {
-  margin-left: 20px;
-}
-
-.devicePanel,
-.ckt,
-.s,
-.qty,
-.boxType,
-.exits,
-.connecterType,
-.supportType,
-.supportType2DIV,
-.plasterRing,
-.conduitCableType,
-.left,
-.right,
-.center,
-.bottom,
-.deviceLeft,
-.deviceRight,
-.deviceCenter {
+.formHeader {
   display: flex;
+  justify-content: center;
   align-items: center;
   column-gap: 10px;
-  margin-top: 25px;
-  margin-bottom: 25px
 }
 
-.formRight {
-  max-width: 400px;
-  position: relative;
+.noteInput {
+  text-align: center;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+}
+
+.loadNoteInfo {
+  display: grid;
+  grid-template-columns: 100px 100px 100px;
+  text-align: center;
 }
 
 .userNotes {
@@ -335,10 +298,7 @@ div {
 
 .bottomRightButtons {
   display: flex;
-  position: absolute;
-  bottom: 0px;
-  right: 0px;
-  column-gap: 10px;
+  justify-content: center;
 }
 
 .doneButton {
@@ -352,19 +312,7 @@ div {
   transition: 0.5s;
 }
 
-.resetButton {
-  border: none;
-  box-shadow: 0px 0px 3px black;
-  padding: 10px 20px;
-  background-color: transparent;
-  font-size: 20px;
-  border-radius: 30px;
-  cursor: pointer;
-  transition: 0.5s;
-}
-
-.doneButton:hover,
-.resetButton:hover {
+.doneButton:hover {
   box-shadow: 0px 0px 10px black;
 }
 

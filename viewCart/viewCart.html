@@ -8,11 +8,13 @@
   </head>
   <body>
     <div class="header">
+      <!--
       <div>
         <a href="/inWall/inWall.html"
           ><button class="backButton">Building Form</button></a
         >
       </div>
+      -->
       <div class="titleDisplay">
         <div class="portDis">
           <h1>Build Book &#x2022;</h1>
@@ -38,6 +40,34 @@
 
     <div class="orderSummary"></div>
 
+    <div class="editOverlay" id="editOverlay">
+      <div class="form">
+        <div class="formHeader">
+          <input type="text" class="noteInput" />
+          <select class="noteReferance">
+            <option selected value="">Choose</option>
+            <option value="boxType">Box Type</option>
+            <option value="exits">Exits</option>
+            <option value="connecterType">Connecter Type</option>
+            <option value="supportType">Support Type</option>
+            <option value="supportType2">Support Type 2</option>
+            <option value="plasterRing">Plaster Ring</option>
+            <option value="conduitCableType">Conduit/Cable Type</option>
+            <option value="left">Left</option>
+            <option value="center">Center</option>
+            <option value="right">Right</option>
+            <option value="bottom">Bottom</option>
+          </select>
+        </div>
+        <div class="container">
+          <div class="loadNoteInfo"></div>
+        </div>
+        <div class="bottomRightButtons">
+          <button class="doneButton">Done</button>
+        </div>
+      </div>
+    </div>
+    <!--
     <div class="editOverlay" id="editOverlay">
       <div class="form">
         <div class="formLeft">
@@ -159,7 +189,7 @@
         </div>
       </div>
     </div>
-
+    -->
     <script src="viewCart.js"></script>
   </body>
 </html>

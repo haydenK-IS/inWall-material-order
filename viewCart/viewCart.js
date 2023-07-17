@@ -49,10 +49,10 @@ function loadingCart(){
               <th>Device Left</th>
               <th>Device Center</th>
               <th>Device Right</th>
-              <th>Edit</th>
+              
             </tr>
             <tr class = "tr1">
-          `;
+          `; //<th>Edit</th>
   //keeps index on table rows added to close out the table when orders are complete
   let counter = 0;
     //gets values of keys to input into the table
@@ -78,26 +78,35 @@ function loadingCart(){
       //creates html for each value and puts into table
       html+=`
               <th class = "order${z}">${z}</th>
-              <td class = "devicePanel${z}">${innerHTMLdevicePanel}</td>
-              <td class = "ckt${z}">${innerHTMLckt}</td>
-              <td class = "s${z}">${innerHTMLs}</td>
-              <td class = "qty${z}">${innerHTMLqty}</td>
-              <td class = "boxType${z}">${innerHTMLboxType}</td>
-              <td class = "exits${z}">${innerHTMLexits}</td>
-              <td class = "connecterType${z}">${innerHTMLconnecterType}</td>
-              <td class = "supportType${z}">${innerHTMLsupportType}</td>
-              <td class = "supportType2${z}">${innerHTMLsupportType2}</td>
-              <td class = "plasterRing${z}">${innerHTMLplasterRing}</td>
-              <td class = "conduitCableType${z}">${innerHTMLconduitCableType}</td>
-              <td class = "left${z}">${innerHTMLleft}</td>
-              <td class = "center${z}">${innerHTMLcenter}</td>
-              <td class = "right${z}">${innerHTMLright}</td>
-              <td class = "bottom${z}">${innerHTMLbottom}</td>
-              <td class = "deviceLeft${z}">${innerHTMLdeviceLeft}</td>
-              <td class = "deviceCenter${z}">${innerHTMLdeviceCenter}</td>
-              <td class = "deviceRight${z}">${innerHTMLdeviceRight}</td>
-              <th><button class = "editButton editButton${z}" onclick = "setCurrOrderNum(${z}); edit(${z})">&#9998;</button></th>
-              </tr>`;
+              <td class = "devicePanel${z}"><input type="text" class = "devicePanel${z}Input tableInput" value = "${innerHTMLdevicePanel}"></td>
+              <td class = "ckt${z}"><input type = "text" class = "ckt${z}Input tableInput" value = "${innerHTMLckt}"></td>
+              <td class = "s${z}"><input type="text" class="s${z}Input tableInput" value="${innerHTMLs}"></td>
+              <td class = "qty${z}"><input type="text" class="qty${z}Input tableInput" value="${innerHTMLqty}"></td>
+              <td class = "boxType${z}"><input type="text" class="boxType${z}Input tableInput" value="${innerHTMLboxType}"></td>
+              <td class = "exits${z}"><select id="exits${z}Input" class="tableInput exits${z}Input">
+                                        <option selected value="${innerHTMLexits}">${innerHTMLexits}</option>
+                                        <option value="0">0</option>
+                                        <option value="1">1</option>
+                                        <option value="2">2</option>
+                                        <option value="3">3</option>
+                                        <option value="4">4</option>
+                                        <option value="5">5</option>
+                                        <option value="6">6</option>
+                                      </select></td>
+              <td class = "connecterType${z}"><input class="connecterType${z}Input tableInput" value="${innerHTMLconnecterType}"></td>
+              <td class = "supportType${z}"><input class="supportType${z}Input tableInput" value="${innerHTMLsupportType}"></td>
+              <td class = "supportType2${z}"><input class="supportType2{z}Input tableInput" value="${innerHTMLsupportType2}"></td>
+              <td class = "plasterRing${z}"><input class="plasterRing${z}Input tableInput" value="${innerHTMLplasterRing}"></td>
+              <td class = "conduitCableType${z}"><input class="conduitCableType${z}Input tableInput" value="${innerHTMLconduitCableType}"></td>
+              <td class = "left${z}"><input class="left${z}Input tableInput" value="${innerHTMLleft}"></td>
+              <td class = "center${z}"><input class="center${z}Input tableInput" value="${innerHTMLcenter}"></td>
+              <td class = "right${z}"><input class="right${z}Input tableInput" value="${innerHTMLright}"></td>
+              <td class = "bottom${z}"><input class="bottom${z}Input tableInput" value="${innerHTMLbottom}"></td>
+              <td class = "deviceLeft${z}"><input class="deviceLeft${z}Input tableInput" value="${innerHTMLdeviceLeft}"></td>
+              <td class = "deviceCenter${z}"><input class="deviceCenter${z}Input tableInput" value="${innerHTMLdeviceCenter}"></td>
+              <td class = "deviceRight${z}"><input class="deviceRight${z}Input tableInput" value="${innerHTMLdeviceRight}"></td>
+              
+              </tr>`; //<th><button class = "editButton editButton${z}" onclick = "setCurrOrderNum(${z}); edit(${z})">&#9998;</button></th>
             //increments counter to track amount of orders
             counter++;
       //checks to see if the tbale needs to be closed
@@ -114,7 +123,7 @@ function loadingCart(){
     }
   html+=`</table>`;
   document.querySelector('.orderSummary').innerHTML += html;
-
+  //document.querySelector('.devicePanel1Input').value = cartGridParse.matRoom[1].devicePanel;
   //loads the notes after the table has been created to referance the table data
   loadNotes();
   loadQTY();
@@ -130,7 +139,7 @@ function loadNotes(){
   //creates the html for the notes to display on top of the table
   for(let x = 0; x<cartGridParse.notes.noteInputArray.length; x++)
   {
-    let html = `<h2 class = 'hNote${x+1}'>Note ${x+1}: <span class = "referenceName">${cartGridParse.notes.noteReferanceArray[x]}</span> : ${cartGridParse.notes.noteInputArray[x]}</h2>`
+    let html = `<button class = 'hNote${x+1} notesEditButton notesEditButton${x+1}' onclick="setCurrOrderNum(${x+1}); edit(${x+1})">Note ${x+1}: ${cartGridParse.notes.noteReferanceArray[x]} : ${cartGridParse.notes.noteInputArray[x]}</button>`
     document.querySelector('.notesArrayReferance').insertAdjacentHTML("beforeend",html);
   }
   //x counts the orders
@@ -142,6 +151,7 @@ function loadNotes(){
         let colorRef = cartGridParse.notes.noteReferanceArray[y];
         let dataNote = cartGridParse.matRoom[x+1].orderNotes[y][0];
         document.querySelector(`.${colorRef}${x+1}`).classList.add(`${dataNote}Color`);
+        document.querySelector(`.${colorRef}${x+1}Input`).classList.add(`${dataNote}Color`);
       }
     }
   }
@@ -160,51 +170,20 @@ function edit(objNum){
     document.querySelector('.editOverlay').classList.add('editOn');
     document.getElementById("editOverlay").style.display = "block";
   }
-  document.querySelector(".devicePanelVal").value = cartGridParse.matRoom[objNum].devicePanel;
-  document.querySelector(".cktVal").value = cartGridParse.matRoom[objNum].ckt;
-  document.querySelector(".sVal").value = cartGridParse.matRoom[objNum].s;
-  document.querySelector(".qtyVal").value = cartGridParse.matRoom[objNum].qty;
-  document.querySelector(".boxTypeVal").value = cartGridParse.matRoom[objNum].boxType;
-  document.getElementById("exitsVal").value = cartGridParse.matRoom[objNum].exits;
-  document.querySelector(".connecterTypeVal").value = cartGridParse.matRoom[objNum].connecterType;
-  document.querySelector(".supportTypeVal").value = cartGridParse.matRoom[objNum].supportType;
-  document.querySelector(".supportType2Val").value = cartGridParse.matRoom[objNum].supportType2;
-  document.querySelector(".plasterRingVal").value = cartGridParse.matRoom[objNum].plasterRing;
-  document.getElementById("conduitCableTypeVal").value = cartGridParse.matRoom[objNum].conduitCableType;
-  document.querySelector(".leftVal").value = cartGridParse.matRoom[objNum].left;
-  document.querySelector(".centerVal").value = cartGridParse.matRoom[objNum].center;
-  document.querySelector(".rightVal").value = cartGridParse.matRoom[objNum].right;
-  document.querySelector(".bottomVal").value = cartGridParse.matRoom[objNum].bottom;
-  document.querySelector(".deviceLeftVal").value = cartGridParse.matRoom[objNum].deviceLeft;
-  document.querySelector(".deviceRightVal").value = cartGridParse.matRoom[objNum].deviceRight;
-  document.querySelector(".deviceCenterVal").value = cartGridParse.matRoom[objNum].deviceCenter;
-  document.querySelector('.orderNumber').innerHTML = 'Order: ' + objNum;
-  for(let x = 0; x<cartGridParse.notes.noteInputArray.length;x++){
-    htmlNotes = `<div class = "noteSection">
-              <input class = "note${x+1} notesInputBox" type = "text" placeholder = "Note ${x+1}">
-              <select class = "noteReferance${x+1} noteReferance">
-                <option selected value="">Choose</option>
-                <option value="boxType">Box Type</option>
-                <option value="exits">Exits</option>
-                <option value="connecterType">Connecter Type</option>
-                <option value="supportType">Support Type</option>
-                <option value="supportType2">Support Type 2</option>
-                <option value="plasterRing">Plaster Ring</option>
-                <option value="conduitCableType">Conduit/Cable Type</option>
-                <option value="left">Left</option>
-                <option value="center">Center</option>
-                <option value="right">Right</option>
-                <option value="bottom">Bottom</option>
-              </select>
-              <input class = "notesCheckbox notes${x+1}CheckBox" type="checkbox" value = "notes${x+1}" unchecked>
-            </div>`;
-    document.querySelector('.userNotes').insertAdjacentHTML("beforeend",htmlNotes);
-    document.querySelector(`.note${x+1}`).value = cartGridParse.notes.noteInputArray[x];
-    document.querySelector(`.noteReferance${x+1}`).value = cartGridParse.notes.noteReferanceArray[x];
+
+  document.querySelector('.noteInput').value = cartGridParse.notes.noteInputArray[objNum-1];
+  document.querySelector('.noteReferance').value = cartGridParse.notes.noteReferanceArray[objNum-1];
+  let html = '';
+  for(let x = 0; x<count; x++){
+    html+=`<div>
+            <p style = "display: inline-block">${x+1}</p> 
+            <input type="checkbox" class="note${x+1}Checkbox notesCheckbox" unchecked>
+          </div>`
   }
-  for(let x = 0; x<cartGridParse.matRoom[objNum].orderNotes.length;x++){
-    if(cartGridParse.matRoom[objNum].orderNotes[x][1] === true){
-      document.querySelector(`.notes${x+1}CheckBox`).checked = true;
+  document.querySelector('.loadNoteInfo').innerHTML = html;
+  for(let x = 0; x<count; x++){
+    if(cartGridParse.matRoom[x+1].orderNotes[objNum-1][1] === true){
+      document.querySelector(`.note${x+1}Checkbox`).checked = true;
     }
   }
 }
@@ -212,7 +191,7 @@ function edit(objNum){
 /**
  * listens for the reset button to be clicked
  * will take all in the edit overlay and set them to blank
- */
+ 
 document.querySelector(".resetButton").addEventListener("click", function(){
   document.querySelector(".devicePanelVal").value = '';
   document.querySelector(".cktVal").value = '';
@@ -233,7 +212,7 @@ document.querySelector(".resetButton").addEventListener("click", function(){
   document.querySelector(".deviceRightVal").value = '';
   document.querySelector(".deviceCenterVal").value = '';
 })
-
+*/
 /**
  * listens for the done button to be clicked
  * sets each value in cartGridParse to the curent input values of each textbox
@@ -242,6 +221,7 @@ document.querySelector(".resetButton").addEventListener("click", function(){
  * reloads the page to change the chart to edited values
  */
 document.querySelector('.doneButton').addEventListener('click', function(){
+  /*
   cartGridParse.matRoom[currOrderNum].devicePanel=document.querySelector(".devicePanelVal").value;
   cartGridParse.matRoom[currOrderNum].ckt=document.querySelector(".cktVal").value;
   cartGridParse.matRoom[currOrderNum].s=document.querySelector(".sVal").value;
@@ -260,20 +240,28 @@ document.querySelector('.doneButton').addEventListener('click', function(){
   cartGridParse.matRoom[currOrderNum].deviceLeft=document.querySelector(".deviceLeftVal").value;
   cartGridParse.matRoom[currOrderNum].deviceRight=document.querySelector(".deviceRightVal").value;
   cartGridParse.matRoom[currOrderNum].deviceCenter=document.querySelector(".deviceCenterVal").value;
+  
   for(let x = 0; x<cartGridParse.notes.noteInputArray.length; x++){
     cartGridParse.notes.noteInputArray[x] = document.querySelector(`.note${x+1}`).value;
     cartGridParse.notes.noteReferanceArray[x] = document.querySelector(`.noteReferance${x+1}`).value;
   }
-  let orderNotesArray = {};
+  */
+  cartGridParse.notes.noteInputArray[currOrderNum-1] = document.querySelector('.noteInput').value;
+  cartGridParse.notes.noteReferanceArray[currOrderNum-1] = document.querySelector('.noteReferance').value;
+
+  //let orderNotesArray = {};
+  let tempCount = 0;
   document.querySelectorAll('[type = "checkbox"]').forEach(item => {
     if(item.checked === true){
-      orderNotesArray[item.value] = true;
+      cartGridParse.matRoom[tempCount+1].orderNotes[currOrderNum-1][1] = true;;
+      tempCount++;
     }
     else if(item.checked === false){
-      orderNotesArray[item.value] = false;
+      cartGridParse.matRoom[tempCount+1].orderNotes[currOrderNum-1][1] = false;
+      tempCount++;
     }
   })
-  cartGridParse.matRoom[currOrderNum].orderNotes = Object.entries(orderNotesArray);
+  //cartGridParse.matRoom[currOrderNum].orderNotes = Object.entries(orderNotesArray);
   document.querySelector('.editOverlay').classList.remove('editOn');
   document.getElementById("editOverlay").style.display = 'none';
   currOrderNum = 0;
