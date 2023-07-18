@@ -10,7 +10,7 @@ let buildBook = JSON.parse(localStorage.getItem('portfolio')) || {};
 let cartGridParse = JSON.parse(localStorage.getItem('room')) || {};
 
 //referance var for editing each order
-let currOrderNum = 0;
+let currNoteNum = 0;
 
 //keeps count of the orders to display all the orders into the chart
 let count = 0;
@@ -95,7 +95,7 @@ function loadingCart(){
                                       </select></td>
               <td class = "connecterType${z}"><input class="connecterType${z}Input tableInput" value="${innerHTMLconnecterType}"></td>
               <td class = "supportType${z}"><input class="supportType${z}Input tableInput" value="${innerHTMLsupportType}"></td>
-              <td class = "supportType2${z}"><input class="supportType2{z}Input tableInput" value="${innerHTMLsupportType2}"></td>
+              <td class = "supportType2${z}"><input class="supportType2${z}Input tableInput" value="${innerHTMLsupportType2}"></td>
               <td class = "plasterRing${z}"><input class="plasterRing${z}Input tableInput" value="${innerHTMLplasterRing}"></td>
               <td class = "conduitCableType${z}"><input class="conduitCableType${z}Input tableInput" value="${innerHTMLconduitCableType}"></td>
               <td class = "left${z}"><input class="left${z}Input tableInput" value="${innerHTMLleft}"></td>
@@ -106,7 +106,7 @@ function loadingCart(){
               <td class = "deviceCenter${z}"><input class="deviceCenter${z}Input tableInput" value="${innerHTMLdeviceCenter}"></td>
               <td class = "deviceRight${z}"><input class="deviceRight${z}Input tableInput" value="${innerHTMLdeviceRight}"></td>
               
-              </tr>`; //<th><button class = "editButton editButton${z}" onclick = "setCurrOrderNum(${z}); edit(${z})">&#9998;</button></th>
+              </tr>`; //<th><button class = "editButton editButton${z}" onclick = "setcurrNoteNum(${z}); edit(${z})">&#9998;</button></th>
             //increments counter to track amount of orders
             counter++;
       //checks to see if the tbale needs to be closed
@@ -139,7 +139,7 @@ function loadNotes(){
   //creates the html for the notes to display on top of the table
   for(let x = 0; x<cartGridParse.notes.noteInputArray.length; x++)
   {
-    let html = `<button class = 'hNote${x+1} notesEditButton notesEditButton${x+1}' onclick="setCurrOrderNum(${x+1}); edit(${x+1})">Note ${x+1}: ${cartGridParse.notes.noteReferanceArray[x]} : ${cartGridParse.notes.noteInputArray[x]}</button>`
+    let html = `<button class = 'hNote${x+1} notesEditButton notesEditButton${x+1}' onclick="setcurrNoteNum(${x+1}); edit(${x+1})">Note ${x+1}: ${cartGridParse.notes.noteReferanceArray[x]} : ${cartGridParse.notes.noteInputArray[x]}</button>`
     document.querySelector('.notesArrayReferance').insertAdjacentHTML("beforeend",html);
   }
   //x counts the orders
@@ -188,31 +188,7 @@ function edit(objNum){
   }
 }
 
-/**
- * listens for the reset button to be clicked
- * will take all in the edit overlay and set them to blank
- 
-document.querySelector(".resetButton").addEventListener("click", function(){
-  document.querySelector(".devicePanelVal").value = '';
-  document.querySelector(".cktVal").value = '';
-  document.querySelector(".sVal").value = '';
-  document.querySelector(".qtyVal").value = '';
-  document.querySelector(".boxTypeVal").value = '';
-  document.getElementById("exitsVal").value = '';
-  document.querySelector(".connecterTypeVal").value = '';
-  document.querySelector(".supportTypeVal").value = '';
-  document.querySelector(".supportType2Val").value = '';
-  document.querySelector(".plasterRingVal").value = '';
-  document.getElementById("conduitCableTypeVal").value = '';
-  document.querySelector(".leftVal").value = '';
-  document.querySelector(".centerVal").value = '';
-  document.querySelector(".rightVal").value = '';
-  document.querySelector(".bottomVal").value = '';
-  document.querySelector(".deviceLeftVal").value = '';
-  document.querySelector(".deviceRightVal").value = '';
-  document.querySelector(".deviceCenterVal").value = '';
-})
-*/
+
 /**
  * listens for the done button to be clicked
  * sets each value in cartGridParse to the curent input values of each textbox
@@ -220,59 +196,35 @@ document.querySelector(".resetButton").addEventListener("click", function(){
  * sets the localStorage to new values
  * reloads the page to change the chart to edited values
  */
-document.querySelector('.doneButton').addEventListener('click', function(){
-  /*
-  cartGridParse.matRoom[currOrderNum].devicePanel=document.querySelector(".devicePanelVal").value;
-  cartGridParse.matRoom[currOrderNum].ckt=document.querySelector(".cktVal").value;
-  cartGridParse.matRoom[currOrderNum].s=document.querySelector(".sVal").value;
-  cartGridParse.matRoom[currOrderNum].qty=document.querySelector(".qtyVal").value;
-  cartGridParse.matRoom[currOrderNum].boxType=document.querySelector(".boxTypeVal").value;
-  cartGridParse.matRoom[currOrderNum].exits=document.getElementById("exitsVal").value;
-  cartGridParse.matRoom[currOrderNum].connecterType=document.querySelector(".connecterTypeVal").value;
-  cartGridParse.matRoom[currOrderNum].supportType=document.querySelector(".supportTypeVal").value;
-  cartGridParse.matRoom[currOrderNum].supportType2=document.querySelector(".supportType2Val").value;
-  cartGridParse.matRoom[currOrderNum].plasterRing=document.querySelector(".plasterRingVal").value;
-  cartGridParse.matRoom[currOrderNum].conduitCableType=document.getElementById("conduitCableTypeVal").value;
-  cartGridParse.matRoom[currOrderNum].left=document.querySelector(".leftVal").value;
-  cartGridParse.matRoom[currOrderNum].center=document.querySelector(".centerVal").value;
-  cartGridParse.matRoom[currOrderNum].right=document.querySelector(".rightVal").value;
-  cartGridParse.matRoom[currOrderNum].bottom=document.querySelector(".bottomVal").value;
-  cartGridParse.matRoom[currOrderNum].deviceLeft=document.querySelector(".deviceLeftVal").value;
-  cartGridParse.matRoom[currOrderNum].deviceRight=document.querySelector(".deviceRightVal").value;
-  cartGridParse.matRoom[currOrderNum].deviceCenter=document.querySelector(".deviceCenterVal").value;
-  
-  for(let x = 0; x<cartGridParse.notes.noteInputArray.length; x++){
-    cartGridParse.notes.noteInputArray[x] = document.querySelector(`.note${x+1}`).value;
-    cartGridParse.notes.noteReferanceArray[x] = document.querySelector(`.noteReferance${x+1}`).value;
-  }
-  */
-  cartGridParse.notes.noteInputArray[currOrderNum-1] = document.querySelector('.noteInput').value;
-  cartGridParse.notes.noteReferanceArray[currOrderNum-1] = document.querySelector('.noteReferance').value;
+document.querySelector('.doneEditButton').addEventListener('click', function(){
+  cartGridParse.notes.noteInputArray[currNoteNum-1] = document.querySelector('.noteInput').value;
+  cartGridParse.notes.noteReferanceArray[currNoteNum-1] = document.querySelector('.noteReferance').value;
 
   //let orderNotesArray = {};
   let tempCount = 0;
   document.querySelectorAll('[type = "checkbox"]').forEach(item => {
     if(item.checked === true){
-      cartGridParse.matRoom[tempCount+1].orderNotes[currOrderNum-1][1] = true;;
+      cartGridParse.matRoom[tempCount+1].orderNotes[currNoteNum-1][1] = true;;
       tempCount++;
     }
     else if(item.checked === false){
-      cartGridParse.matRoom[tempCount+1].orderNotes[currOrderNum-1][1] = false;
+      console.log(item);
+      console.log(tempCount + ' : ' + currNoteNum);
+      cartGridParse.matRoom[tempCount+1].orderNotes[currNoteNum-1][1] = false;
       tempCount++;
     }
   })
-  //cartGridParse.matRoom[currOrderNum].orderNotes = Object.entries(orderNotesArray);
   document.querySelector('.editOverlay').classList.remove('editOn');
   document.getElementById("editOverlay").style.display = 'none';
-  currOrderNum = 0;
+  currNoteNum = 0;
   localStorage.setItem('room',JSON.stringify(cartGridParse));
   location.reload();
 })
 
-//sets currOrderNum to edit the values
-function setCurrOrderNum(num)
+//sets currNoteNum to edit the values
+function setcurrNoteNum(num)
 {
-  currOrderNum = num;
+  currNoteNum = num;
 }
 
 //loads names of room and build book
@@ -290,11 +242,106 @@ document.querySelector('.sendToBookButton').addEventListener('click', function()
   localStorage.setItem('portfolio', JSON.stringify(buildBook));
   localStorage.removeItem('room');
 })
+
 function loadQTY(){
-  
   for(let x = 0; x<count; x++){
     if(cartGridParse.matRoom[x+1].qty > 1){
       document.querySelector(`.qty${x+1}`).classList.add('multiQTY');
     }
   }
 }
+
+document.querySelector('.saveButton').addEventListener('click', function(){
+  for(let x = 1; x<count+1; x++){
+    cartGridParse.matRoom[x].devicePanel = document.querySelector(`.devicePanel${x}Input`).value;
+    cartGridParse.matRoom[x].ckt = document.querySelector(`.ckt${x}Input`).value;
+    cartGridParse.matRoom[x].s = document.querySelector(`.s${x}Input`).value;
+    cartGridParse.matRoom[x].qty = document.querySelector(`.qty${x}Input`).value;
+    cartGridParse.matRoom[x].boxType = document.querySelector(`.boxType${x}Input`).value;
+    cartGridParse.matRoom[x].exits = document.querySelector(`.exits${x}Input`).value;
+    cartGridParse.matRoom[x].connecterType = document.querySelector(`.connecterType${x}Input`).value;
+    cartGridParse.matRoom[x].supportType = document.querySelector(`.supportType${x}Input`).value;
+    cartGridParse.matRoom[x].supportType2 = document.querySelector(`.supportType2${x}Input`).value;
+    cartGridParse.matRoom[x].plasterRing = document.querySelector(`.plasterRing${x}Input`).value;
+    cartGridParse.matRoom[x].conduitCableType = document.querySelector(`.conduitCableType${x}Input`).value;
+    cartGridParse.matRoom[x].left = document.querySelector(`.left${x}Input`).value;
+    cartGridParse.matRoom[x].center = document.querySelector(`.center${x}Input`).value;
+    cartGridParse.matRoom[x].right = document.querySelector(`.right${x}Input`).value;
+    cartGridParse.matRoom[x].bottom = document.querySelector(`.bottom${x}Input`).value;
+    cartGridParse.matRoom[x].deviceLeft = document.querySelector(`.deviceLeft${x}Input`).value;
+    cartGridParse.matRoom[x].deviceRight = document.querySelector(`.deviceRight${x}Input`).value;
+    cartGridParse.matRoom[x].deviceCenter = document.querySelector(`.deviceCenter${x}Input`).value;
+  }
+})
+
+document.querySelector('.addNotesButton').addEventListener('click', function(){
+  if(cartGridParse.notes.noteInputArray.length>=10){
+    alert('Cannot have more than 10 notes');
+    return;
+  }
+  if(document.querySelector('.addNotesOverlay').classList.contains('addNotesOn')){
+    document.querySelector('.addNotesOverlay').classList.remove('addNotesOn');
+    document.getElementById("addNotesOverlay").style.display = 'none';
+  }
+  else{
+    document.querySelector('.addNotesOverlay').classList.add('addNotesOn');
+    document.getElementById("addNotesOverlay").style.display = "block";
+  }
+  let html = '';
+  for(let x = 0; x<count; x++){
+    html+=`<div>
+            <p style = "display: inline-block">${x+1}</p> 
+            <input type="checkbox" class="note${x+1}Checkbox notesCheckbox" unchecked>
+          </div>`
+  }
+  document.querySelector('.orderCheckboxDiv').innerHTML = html;
+})
+
+document.querySelector('.doneNotesButton').addEventListener('click', function(){
+  cartGridParse.notes.noteInputArray.push(document.querySelector('.addNoteInput').value);
+  cartGridParse.notes.noteReferanceArray.push(document.querySelector('.addNoteReferance').value);
+  let length = cartGridParse.notes.noteInputArray.length;
+  let html=`<button class = 'hNote${length} notesEditButton notesEditButton${length}' onclick="setcurrNoteNum(${length}); edit(${length})">Note ${length}: ${cartGridParse.notes.noteReferanceArray[length-1]} : ${cartGridParse.notes.noteInputArray[length-1]}</button>`
+  document.querySelector(`.notesArrayReferance`).insertAdjacentHTML('beforeend',html);
+  for(let x = 0; x<count; x++){
+    cartGridParse.matRoom[x+1].orderNotes.push([`notes${length}`, document.querySelector(`.note${x+1}Checkbox`).checked]);
+  }
+  localStorage.setItem('room', JSON.stringify(cartGridParse));
+  document.querySelector('.addNotesOverlay').classList.remove('addNotesOverlay');
+  document.getElementById("addNotesOverlay").style.display = 'none';
+  location.reload();
+})
+
+document.querySelector('.addRowButton').addEventListener('click', function(){
+  let orderNotesArray = {};
+  let noteTrack = 0;
+  cartGridParse.notes.noteInputArray.forEach(element => {
+    orderNotesArray[`notes${noteTrack+1}`] = false;
+    noteTrack++;
+  })
+  //sets each order obj in the local room
+  cartGridParse.matRoom[count+1] = {
+    devicePanel:'',
+    ckt:'',
+    s:'',
+    qty:'',
+    boxType:'',
+    exits:'',
+    connecterType:'',
+    supportType:'',
+    supportType2:'',
+    plasterRing:'',
+    conduitCableType:'',
+    left:'',
+    center:'',
+    right:'',
+    bottom:'',
+    deviceLeft:'',
+    deviceRight:'',
+    deviceCenter:'',
+    orderNotes:Object.entries(orderNotesArray)
+  };
+  count++;
+  localStorage.setItem('room', JSON.stringify(cartGridParse));
+  location.reload();
+})

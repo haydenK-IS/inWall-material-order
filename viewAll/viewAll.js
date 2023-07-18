@@ -148,6 +148,13 @@ for(x in buildBook.rooms){
       }
     }
   }
+
+  for(let y = 0; y<count; y++){
+    if(tempRoom.matRoom[y+1].qty > 1){
+      document.querySelector(`.qty${y+1}${countRoom}`).classList.add('multiQTY');
+    }
+  }
+
   document.querySelector(`.buildbookOutput${countRoom}`).innerHTML = buildBook.name;
   document.querySelector(`.roomNameOutput${countRoom}`).innerHTML = tempRoom.name
   countRoom++;

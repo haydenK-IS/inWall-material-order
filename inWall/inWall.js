@@ -86,6 +86,7 @@ document.querySelector(
         deviceRight:document.querySelector(".deviceRightVal").value,
         deviceCenter:document.querySelector(".deviceCenterVal").value,
         orderNotes:Object.entries(orderNotesArray)
+        //orderNotes:orderNotesArray
       };
       orderCount++;
       //displays order# info on form

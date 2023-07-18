@@ -103,6 +103,8 @@ function loadingCart(){
     }
   html+=`</table>`;
   document.querySelector('.orderSummary').innerHTML += html;
+
+  loadQTY();
   //loads the notes
   loadNotes();
 }
@@ -129,6 +131,14 @@ function loadNotes(){
         //document.querySelector('.boxType1').classList.add("notes1Color");
         //console.log(colorRef + ' : ' +(y+1) + ' : ' + dataNote);
       }
+    }
+  }
+}
+
+function loadQTY(){
+  for(let x = 0; x<count; x++){
+    if(cartGridParse.matRoom[x+1].qty > 1){
+      document.querySelector(`.qty${x+1}`).classList.add('multiQTY');
     }
   }
 }
