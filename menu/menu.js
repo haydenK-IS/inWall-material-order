@@ -5,10 +5,6 @@
 
 //gets the locally stored portfolio
 //if no portfolio is stored it creates a null portfolio obj
-let portfolio = JSON.parse(localStorage.getItem('portfolio')) || {
-  name:'Unnamed',
-  rooms:{}
-};
 
 //looks for dark in the localstorage to apply dark mode
 if(localStorage.getItem('dark')){

@@ -4,10 +4,21 @@
  */
 
 //stores the local buildbook
-let buildBook = JSON.parse(localStorage.getItem('portfolio')) || {};
+let buildBook = JSON.parse(localStorage.getItem('portfolio')) || {
+  name:'Unnamed',
+  rooms:{}
+};
 
 //stores the local room into var
-let cartGridParse = JSON.parse(localStorage.getItem('room')) || {};
+let cartGridParse = JSON.parse(localStorage.getItem('room')) || {
+  name:'Unnamed',
+  notes:{
+    noteInputArray:[],
+    noteReferanceArray:[]
+  },
+  matRoom:{},
+  editRoom:false
+};
 
 //referance var for editing each order
 let currNoteNum = 0;
@@ -298,11 +309,15 @@ document.querySelector('.addNotesButton').addEventListener('click', function(){
 })
 
 document.querySelector('.doneNotesButton').addEventListener('click', function(){
+  if(document.querySelector('.addNoteReferance').value === ''){
+    alert('Must choose a note reference');
+    return;
+  }
   cartGridParse.notes.noteInputArray.push(document.querySelector('.addNoteInput').value);
   cartGridParse.notes.noteReferanceArray.push(document.querySelector('.addNoteReferance').value);
   let length = cartGridParse.notes.noteInputArray.length;
   let html=`<button class = 'hNote${length} notesEditButton notesEditButton${length}' onclick="setcurrNoteNum(${length}); edit(${length})">Note ${length}: ${cartGridParse.notes.noteReferanceArray[length-1]} : ${cartGridParse.notes.noteInputArray[length-1]}</button>`
-  document.querySelector(`.notesArrayReferance`).insertAdjacentHTML('beforeend',html);
+  document.querySelector(`.notesArrayReferance`).insertAdjacentHTML('afterbegin',html);
   for(let x = 0; x<count; x++){
     cartGridParse.matRoom[x+1].orderNotes.push([`notes${length}`, document.querySelector(`.note${x+1}Checkbox`).checked]);
   }

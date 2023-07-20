@@ -1,62 +1,66 @@
 body {
   justify-content: center;
   font-family: Arial;
-  font-size: 25px;
+  font-size: 35px;
   background-color: rgb(246, 246, 246);
 }
 
-p {
-  margin: 10px 0px;
-}
-
-div {
-  margin-bottom: 15px;
-}
-
-a {
-  text-decoration: none;
-}
-
 select {
-  font-size: 18px;
+  font-size: 25px;
   padding: 3px 3px;
   border-radius: 10px;
   border: none;
   cursor: pointer;
-  box-shadow: 0px 0px 3px black;
+  box-shadow: 0px 0px 5px grey;
 }
 
 select:focus {
   outline: none;
 }
 
-input {
-  width: 100px;
+.cards {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: white;
   border-radius: 10px;
-  border: none;
-  padding: 5px 5px;
-  box-shadow: 0px 0px 3px black;
-  font-size: 18px;
+  padding: 50px 50px;
+  box-shadow: 0px 0px 10px black;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
-input:focus {
-  outline: none;
-}
+.back {
+  width: 33px;
+  height: 33px;
+  border: 2px solid #333;
+  border-left: 0;
+  border-top: 0;
 
-input[type="checkbox"] {
-  height: 20px;
-  width: 20px;
+  transform: rotate(135deg);
   cursor: pointer;
 }
 
-.light {
-  background-color: white;
-  color: black;
+.main {
+  margin: 10px 50px;
 }
 
-.dark {
-  background-color: rgb(69, 69, 69);
-  color: white;
+.forward {
+  width: 33px;
+  height: 33px;
+  border: 2px solid #333;
+  border-left: 0;
+  border-top: 0;
+
+  transform: rotate(315deg);
+  cursor: pointer;
+}
+
+.cardInput {
+  display: flex;
+  justify-content: center;
 }
 
 .homeButton {
@@ -71,225 +75,4 @@ input[type="checkbox"] {
   border-radius: 30px;
   transition: 0.5s;
   cursor: pointer;
-}
-
-.homeButton:hover {
-  box-shadow: 0px 0px 10px black;
-}
-
-.roomName {
-  align-items: center;
-  display: flex;
-  justify-content: center;
-  column-gap: 30px;
-}
-
-.roomNameInput,
-.buildbookNameInput {
-  font-size: 20px;
-  padding: 10px 10px;
-  text-align: center;
-  width: 200px;
-  height: 50px;
-  border: none;
-  box-shadow: none;
-}
-
-.form {
-  border: none;
-  margin: auto;
-  width: 50%;
-  padding: 20px 20px;
-  border-radius: 15px;
-  display: flex;
-  justify-content: space-between;
-  box-shadow: 0px 0px 5px grey;
-  background-color: transparent;
-}
-
-.title {
-  font-weight: bold;
-}
-
-.designation,
-.botBoxConfig,
-.conduitLengths,
-.nemaDeviceConfig {
-  margin-left: 20px;
-}
-
-.designation,
-.botBoxConfig,
-.conduitLengths,
-.nemaDeviceConfig {
-  margin-left: 20px;
-}
-
-.devicePanel,
-.ckt,
-.s,
-.qty,
-.boxType,
-.exits,
-.connecterType,
-.supportType,
-.supportType2,
-.plasterRing,
-.conduitCableType,
-.left,
-.right,
-.center,
-.bottom,
-.deviceLeft,
-.deviceRight,
-.deviceCenter {
-  display: flex;
-  align-items: center;
-  column-gap: 10px;
-}
-
-.formRight {
-  max-width: 400px;
-  position: relative;
-}
-
-.topRightNotes {
-  position: absolute;
-  right: 0px;
-  top: 0px;
-}
-
-.addButtonFlex {
-  display: flex;
-  justify-content: right;
-}
-
-.addNoteButton {
-  border: none;
-  box-shadow: 0px 0px 3px black;
-  padding: 10px 20px;
-  background-color: transparent;
-  font-size: 20px;
-  border-radius: 30px;
-  width: 200px;
-  cursor: pointer;
-  transition: 0.5s;
-}
-
-.userNotes {
-  display: block;
-  margin-top: 20px;
-}
-
-.noteSection {
-  display: flex;
-  column-gap: 10px;
-  align-items: center;
-  box-shadow: 0px 0px 3px black;
-  border-radius: 20px;
-  padding: 10px 10px;
-}
-
-.notesInputBox {
-  font-size: 18px;
-  padding: 3px 3px;
-  box-shadow: none;
-}
-
-.notesInputBox::placeholder {
-  padding-left: 5px;
-}
-
-.noteReferance {
-  box-shadow: none;
-}
-
-.notesCheckbox {
-  box-shadow: none;
-}
-
-.noteOrderNum {
-  width: 25px;
-  font-size: 18px;
-  text-align: center;
-}
-
-.noteOrderNum::placeholder {
-  text-align: center;
-  opacity: 0.5;
-}
-
-.notesCheckbox {
-  width: auto;
-}
-
-.bottomRightButtons {
-  display: flex;
-  position: absolute;
-  bottom: 0px;
-  right: 0px;
-  column-gap: 10px;
-}
-
-.addToOrder {
-  border: none;
-  box-shadow: 0px 0px 3px black;
-  padding: 10px 20px;
-  background-color: transparent;
-  font-size: 20px;
-  border-radius: 30px;
-  cursor: pointer;
-  height: 55px;
-  width: 220px;
-  transition: 0.5s;
-}
-
-.resetButton {
-  border: none;
-  box-shadow: 0px 0px 3px black;
-  padding: 10px 20px;
-  background-color: transparent;
-  font-size: 20px;
-  border-radius: 30px;
-  cursor: pointer;
-  transition: 0.5s;
-  width: 150px;
-}
-
-.addToOrder:hover,
-.resetButton:hover,
-.addNoteButton:hover {
-  box-shadow: 0px 0px 10px black;
-}
-
-.rightBar {
-  position: fixed;
-  right: 0;
-  top: 0;
-  bottom: 0;
-  margin-right: 20px;
-}
-
-.viewCart,
-.clearCartButton {
-  background-color: transparent;
-  font-size: 25px;
-  border: none;
-  box-shadow: 0px 0px 3px black;
-  border-radius: 20px;
-  padding: 10px 20px;
-  cursor: pointer;
-  display: block;
-  margin-bottom: 10px;
-  transition: 0.5s;
-  width: 201px;
-}
-
-.viewCart:hover,
-.clearCartButton:hover {
-  box-shadow: 0px 0px 10px black;
-}
-
-.viewOrders {
-  margin-top: 10px;
 }

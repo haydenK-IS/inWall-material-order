@@ -189,6 +189,7 @@ h1 {
   flex-wrap: wrap;
   row-gap: 15px;
   max-width: 1500px;
+  align-items: center;
 }
 
 .notesEditButton {
@@ -436,4 +437,8 @@ h1 {
   color: red;
   font-weight: bold;
   font-size: larger;
+}
+
+.notesDisplay {
+  display: flex;
 }
