@@ -12,7 +12,12 @@ if(localStorage.getItem('dark')){
 }
 
 //sets the protfolio to the local sotrage
-localStorage.setItem('portfolio',JSON.stringify(portfolio));
+let portfolio = JSON.parse(localStorage.getItem('portfolio')) || {
+  name:'Unnamed',
+  rooms:{}
+};
+
+localStorage.setItem('portfolio', JSON.stringify(portfolio));
 
 //changes the html to input with a button to replace the pullPortfolioButton so the user
 //can search for their build book

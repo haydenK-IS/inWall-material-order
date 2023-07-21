@@ -37,7 +37,7 @@ document.querySelector('.forward').addEventListener('click', function(){
     cardChoice = planning[`${bbChoice}`].cards;
   }
   if(cards[cardChoice].length<= currentCard){
-    window.location.href = 'http://127.0.0.1:5500/viewCart/viewCart.html';
+    window.location.href = 'http://127.0.0.1:5501/viewCart/viewCart.html';
     window.location.href;
   }
   document.querySelector('.cardQuestion').innerHTML = cards[cardChoice][currentCard];
