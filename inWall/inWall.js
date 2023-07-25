@@ -26,7 +26,9 @@ let cards = [
                'asking for a friend?'
               ]*/
             ]
-
+let cardStorage = [
+                    []
+                  ]
 document.querySelector('.forward').addEventListener('click', function(){
   if(bbChoice === ''){
     if(document.querySelector('.buildbookChoice').value === ''){
@@ -35,8 +37,13 @@ document.querySelector('.forward').addEventListener('click', function(){
     }
     bbChoice = document.querySelector('.buildbookChoice').value
     cardChoice = planning[`${bbChoice}`].cards;
+  }else{
+    cardStorage[cardChoice].push(document.querySelector(`.question${currentCard-1}`).value)
   }
   if(cards[cardChoice].length<= currentCard){
+    planning.inWall.buildBookName = cardStorage[cardChoice][0];
+    planning.inWall.roomName = cardStorage[cardChoice][1];
+    localStorage.setItem('planning', JSON.stringify(planning))
     window.location.href = 'http://127.0.0.1:5501/viewCart/viewCart.html';
     window.location.href;
   }

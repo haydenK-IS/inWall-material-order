@@ -3,15 +3,24 @@
  * Date: 7/14/2023
  */
 
+let plan = JSON.parse(localStorage.getItem('planning')) || {
+  inWall:{
+    buildBookName:"",
+    roomName:""
+  }
+}
+
 //stores the local buildbook
 let buildBook = JSON.parse(localStorage.getItem('portfolio')) || {
-  name:'Unnamed',
+  name:plan.inWall.buildBookName,
   rooms:{}
 };
-
+//sets for frist time set up with case being buildbook name was
+//established to unnamed on the menu
+buildBook.name = plan.inWall.buildBookName;
 //stores the local room into var
 let cartGridParse = JSON.parse(localStorage.getItem('room')) || {
-  name:'Unnamed',
+  name:plan.inWall.roomName,
   notes:{
     noteInputArray:[],
     noteReferanceArray:[]
@@ -262,7 +271,7 @@ function loadQTY(){
   }
 }
 
-document.querySelector('.saveButton').addEventListener('click', function(){
+document.body.addEventListener('input', function(){
   for(let x = 1; x<count+1; x++){
     cartGridParse.matRoom[x].devicePanel = document.querySelector(`.devicePanel${x}Input`).value;
     cartGridParse.matRoom[x].ckt = document.querySelector(`.ckt${x}Input`).value;
