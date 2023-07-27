@@ -97,7 +97,7 @@ function loadingCart(){
       let innerHTMLdeviceCenter = cartGridParse.matRoom[z].deviceCenter;
       //creates html for each value and puts into table
       html+=`
-              <th class = "order${z}">${z}</th>
+              <th class = "order${z}"><button onclick="dup(${z})" class="dupButton dupButton${z}" onmouseover="plus(${z})" onmouseleave="plusChange(${z})">${z}</button></th>
               <td class = "devicePanel${z}"><input type="text" class = "devicePanel${z}Input tableInput" value = "${innerHTMLdevicePanel}"></td>
               <td class = "ckt${z}"><input type = "text" class = "ckt${z}Input tableInput" value = "${innerHTMLckt}"></td>
               <td class = "s${z}"><input type="text" class="s${z}Input tableInput" value="${innerHTMLs}"></td>
@@ -207,39 +207,6 @@ function edit(objNum){
     }
   }
 }
-
-
-/**
- * listens for the done button to be clicked
- * sets each value in cartGridParse to the curent input values of each textbox
- * removes the edit overlay
- * sets the localStorage to new values
- * reloads the page to change the chart to edited values
- */
-document.querySelector('.doneEditButton').addEventListener('click', function(){
-  cartGridParse.notes.noteInputArray[currNoteNum-1] = document.querySelector('.noteInput').value;
-  cartGridParse.notes.noteReferanceArray[currNoteNum-1] = document.querySelector('.noteReferance').value;
-
-  //let orderNotesArray = {};
-  let tempCount = 0;
-  document.querySelectorAll('[type = "checkbox"]').forEach(item => {
-    if(item.checked === true){
-      cartGridParse.matRoom[tempCount+1].orderNotes[currNoteNum-1][1] = true;;
-      tempCount++;
-    }
-    else if(item.checked === false){
-      console.log(item);
-      console.log(tempCount + ' : ' + currNoteNum);
-      cartGridParse.matRoom[tempCount+1].orderNotes[currNoteNum-1][1] = false;
-      tempCount++;
-    }
-  })
-  document.querySelector('.editOverlay').classList.remove('editOn');
-  document.getElementById("editOverlay").style.display = 'none';
-  currNoteNum = 0;
-  localStorage.setItem('room',JSON.stringify(cartGridParse));
-  location.reload();
-})
 
 //sets currNoteNum to edit the values
 function setcurrNoteNum(num)
@@ -366,6 +333,48 @@ document.querySelector('.addRowButton').addEventListener('click', function(){
     orderNotes:Object.entries(orderNotesArray)
   };
   count++;
+  localStorage.setItem('room', JSON.stringify(cartGridParse));
+  location.reload();
+})
+
+function dup(order){
+  cartGridParse.matRoom[count+1] = {
+    devicePanel: cartGridParse.matRoom[order].devicePanel,
+    ckt:cartGridParse.matRoom[order].ckt,
+    s:cartGridParse.matRoom[order].s,
+    qty:cartGridParse.matRoom[order].qty,
+    boxType:cartGridParse.matRoom[order].boxType,
+    exits:cartGridParse.matRoom[order].exits,
+    connecterType:cartGridParse.matRoom[order].connecterType,
+    supportType:cartGridParse.matRoom[order].supportType,
+    supportType2:cartGridParse.matRoom[order].supportType2,
+    plasterRing:cartGridParse.matRoom[order].plasterRing,
+    conduitCableType:cartGridParse.matRoom[order].conduitCableType,
+    left:cartGridParse.matRoom[order].left,
+    center:cartGridParse.matRoom[order].center,
+    right:cartGridParse.matRoom[order].right,
+    bottom:cartGridParse.matRoom[order].bottom,
+    deviceLeft:cartGridParse.matRoom[order].deviceLeft,
+    deviceRight:cartGridParse.matRoom[order].deviceRight,
+    deviceCenter:cartGridParse.matRoom[order].deviceCenter,
+    orderNotes:cartGridParse.matRoom[order].orderNotes
+  };
+  count++;
+  localStorage.setItem('room', JSON.stringify(cartGridParse));
+  location.reload();
+}
+
+function plus(order){
+  document.querySelector(`.dupButton${order}`).innerHTML = '+';
+}
+
+function plusChange(order){
+  document.querySelector(`.dupButton${order}`).innerHTML = `${order}`;
+}
+
+document.querySelector('.deleteRowButton').addEventListener('click', function(){
+  delete cartGridParse.matRoom[`${count}`];
+  count--;
   localStorage.setItem('room', JSON.stringify(cartGridParse));
   location.reload();
 })
