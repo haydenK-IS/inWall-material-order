@@ -4,6 +4,7 @@
  */
 
 let planning = JSON.parse(localStorage.getItem('planning')) || {
+  bbChoice:'',
   inWall:{
     cards:0,
     buildBookName:"",
@@ -14,7 +15,6 @@ let planning = JSON.parse(localStorage.getItem('planning')) || {
   }*/
 }
 
-bbChoice = '';
 let cardChoice;
 let currentCard = 0;
 
@@ -29,27 +29,37 @@ let cards = [
 let cardStorage = [
                     []
                   ]
+
+
+if(planning.inWall.buildBookName != ""){
+  cardChoice = planning[`${planning.bbChoice}`].cards;
+  cardStorage[cardChoice].push(planning.inWall.buildBookName);
+  currentCard = 1;
+  document.querySelector('.cardQuestion').innerHTML = cards[cardChoice][currentCard];
+  document.querySelector('.cardInput').innerHTML = `<input class = "question${currentCard}" type = "text">`;
+}
+
 document.querySelector('.forward').addEventListener('click', function(){
-  if(bbChoice === ''){
+  if(planning.bbChoice === ''){
     if(document.querySelector('.buildbookChoice').value === ''){
       alert('Must choose a build book type');
       return;
     }
-    bbChoice = document.querySelector('.buildbookChoice').value
-    cardChoice = planning[`${bbChoice}`].cards;
+    planning.bbChoice = document.querySelector('.buildbookChoice').value
+    cardChoice = planning[`${planning.bbChoice}`].cards;
   }else{
-    cardStorage[cardChoice].push(document.querySelector(`.question${currentCard-1}`).value)
+    cardStorage[cardChoice].push(document.querySelector(`.question${currentCard}`).value)
   }
-  if(cards[cardChoice].length<= currentCard){
+  if(cards[cardChoice].length-1<= currentCard){
     planning.inWall.buildBookName = cardStorage[cardChoice][0];
     planning.inWall.roomName = cardStorage[cardChoice][1];
     localStorage.setItem('planning', JSON.stringify(planning))
     window.location.href = 'http://127.0.0.1:5501/viewCart/viewCart.html';
     window.location.href;
   }
+  currentCard++;
   document.querySelector('.cardQuestion').innerHTML = cards[cardChoice][currentCard];
   document.querySelector('.cardInput').innerHTML = `<input class = "question${currentCard}" type = "text">`;
-  currentCard++;
 })
 
 document.querySelector('.back').addEventListener('click', function(){
@@ -58,6 +68,7 @@ document.querySelector('.back').addEventListener('click', function(){
     return;
   }
   currentCard--;
+  cardStorage[cardChoice].pop();
   document.querySelector('.cardQuestion').innerHTML = cards[cardChoice][currentCard];
   document.querySelector('.cardInput').innerHTML = `<input class = "question${currentCard}" type = "text">`;
 })

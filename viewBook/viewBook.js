@@ -42,7 +42,7 @@ function loadBuildBook(){
 function editRoom(editName){
   let roomSet = buildBook.rooms[`${editName}`];
   localStorage.setItem('room', JSON.stringify(roomSet));
-  window.location.href = 'http://127.0.0.1:5500/viewCart/viewCart.html';
+  window.location.href = 'http://127.0.0.1:5501/viewCart/viewCart.html';
   window.location.href;
 }
 
@@ -58,12 +58,12 @@ function deleteRoom(roomName){
 function printRoom(roomName){
   let roomSet = buildBook.rooms[`${roomName}`];
   localStorage.setItem('room', JSON.stringify(roomSet));
-  window.open('http://127.0.0.1:5500/printing/printing.html');
+  window.open('http://127.0.0.1:5501/printing/printing.html');
 }
 
 //opens viewall page
 document.querySelector('.viewAllButton').addEventListener('click', function(){
-  window.open('http://127.0.0.1:5500/viewAll/viewAll.html');
+  window.open('http://127.0.0.1:5501/viewAll/viewAll.html');
 })
 
 //puts the build book name on display
