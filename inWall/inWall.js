@@ -48,6 +48,10 @@ document.querySelector('.forward').addEventListener('click', function(){
     planning.bbChoice = document.querySelector('.buildbookChoice').value
     cardChoice = planning[`${planning.bbChoice}`].cards;
   }else{
+    if(document.querySelector(`.question${currentCard}`).value ==- ''){
+      alert('Please answer question');
+      return;
+    }
     cardStorage[cardChoice].push(document.querySelector(`.question${currentCard}`).value)
   }
   if(cards[cardChoice].length-1<= currentCard){
