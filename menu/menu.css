@@ -1,9 +1,9 @@
 body {
   background-color: rgb(246, 246, 246);
+  font-family: Lora;
 }
 
 p {
-  font-family: Arial;
   font-size: 25px;
   color: black;
 }

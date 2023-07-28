@@ -5,6 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>View Room</title>
     <link rel="stylesheet" href="/viewCart/viewCart.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Edu+QLD+Beginner:wght@400;500;600;700&family=Lora:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
   </head>
   <body>
     <div class="header">
@@ -60,26 +66,57 @@
 
     <div class="addNotesOverlay" id="addNotesOverlay">
       <div class="form">
-        <select class="addNoteReferance">
-          <option selected value="">Choose</option>
-          <option value="boxType">Box Type</option>
-          <option value="exits">Exits</option>
-          <option value="connecterType">Connecter Type</option>
-          <option value="supportType">Support Type</option>
-          <option value="supportType2">Support Type 2</option>
-          <option value="plasterRing">Plaster Ring</option>
-          <option value="conduitCableType">Conduit/Cable Type</option>
-          <option value="left">Left</option>
-          <option value="center">Center</option>
-          <option value="right">Right</option>
-          <option value="bottom">Bottom</option>
-        </select>
-        <input type="text" class="addNoteInput" placeholder="Note" />
+        <div class="formHeader">
+          <select class="addNoteReferance">
+            <option selected value="">Choose</option>
+            <option value="boxType">Box Type</option>
+            <option value="exits">Exits</option>
+            <option value="connecterType">Connecter Type</option>
+            <option value="supportType">Support Type</option>
+            <option value="supportType2">Support Type 2</option>
+            <option value="plasterRing">Plaster Ring</option>
+            <option value="conduitCableType">Conduit/Cable Type</option>
+            <option value="left">Left</option>
+            <option value="center">Center</option>
+            <option value="right">Right</option>
+            <option value="bottom">Bottom</option>
+          </select>
+          <input type="text" class="addNoteInput" placeholder="Note" />
+        </div>
+
         <div class="container">
           <div class="orderCheckboxDiv"></div>
         </div>
         <div class="bottomRightButtons">
-          <button class="doneNotesButton">done</button>
+          <button class="doneNotesButton">Done</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="editOverlay" id="editOverlay">
+      <div class="form">
+        <div class="formHeader">
+          <select class="noteReferance">
+            <option selected value="">Choose</option>
+            <option value="boxType">Box Type</option>
+            <option value="exits">Exits</option>
+            <option value="connecterType">Connecter Type</option>
+            <option value="supportType">Support Type</option>
+            <option value="supportType2">Support Type 2</option>
+            <option value="plasterRing">Plaster Ring</option>
+            <option value="conduitCableType">Conduit/Cable Type</option>
+            <option value="left">Left</option>
+            <option value="center">Center</option>
+            <option value="right">Right</option>
+            <option value="bottom">Bottom</option>
+          </select>
+          <input type="text" class="noteInput" />
+        </div>
+        <div class="container">
+          <div class="loadNoteInfo"></div>
+        </div>
+        <div class="bottomRightButtons">
+          <button class="doneEditButton">Done</button>
         </div>
       </div>
     </div>

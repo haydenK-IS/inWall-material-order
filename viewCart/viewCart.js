@@ -378,3 +378,35 @@ document.querySelector('.deleteRowButton').addEventListener('click', function(){
   localStorage.setItem('room', JSON.stringify(cartGridParse));
   location.reload();
 })
+
+/**
+ * listens for the done button to be clicked
+ * sets each value in cartGridParse to the curent input values of each textbox
+ * removes the edit overlay
+ * sets the localStorage to new values
+ * reloads the page to change the chart to edited values
+ */
+document.querySelector('.doneEditButton').addEventListener('click', function(){
+  cartGridParse.notes.noteInputArray[currNoteNum-1] = document.querySelector('.noteInput').value;
+  cartGridParse.notes.noteReferanceArray[currNoteNum-1] = document.querySelector('.noteReferance').value;
+
+  //let orderNotesArray = {};
+  let tempCount = 0;
+  document.querySelectorAll('[type = "checkbox"]').forEach(item => {
+    if(item.checked === true){
+      cartGridParse.matRoom[tempCount+1].orderNotes[currNoteNum-1][1] = true;;
+      tempCount++;
+    }
+    else if(item.checked === false){
+      console.log(item);
+      console.log(tempCount + ' : ' + currNoteNum);
+      cartGridParse.matRoom[tempCount+1].orderNotes[currNoteNum-1][1] = false;
+      tempCount++;
+    }
+  })
+  document.querySelector('.editOverlay').classList.remove('editOn');
+  document.getElementById("editOverlay").style.display = 'none';
+  currNoteNum = 0;
+  localStorage.setItem('room',JSON.stringify(cartGridParse));
+  location.reload();
+})
