@@ -68,3 +68,42 @@ document.querySelector('.viewAllButton').addEventListener('click', function(){
 
 //puts the build book name on display
 document.querySelector('.buildBookTitle').innerHTML= buildBook.name;
+
+
+
+/**
+ * looks for click on save book button to send book to quickbase
+ * send book data to quickbase
+*/ 
+document.querySelector('.completeBook').addEventListener('click', function(){
+  //pushes the values of the build book into quickbase with api call
+  setBookVals();
+})
+
+//holds data for the max book number
+let maxBookNum;
+//API calls prefabrication sandbox and uses designer 999 to get the maximum book value
+function getMaxBookNum(){
+  var headers = {
+  	'QB-Realm-Hostname': 'inglett.quickbase.com',
+    'User-Agent': '{User-Agent}',
+    'Authorization': 'QB-USER-TOKEN b8hh5r_nh9z_0_dm29ei5bdm65qjcwzj5srda74zte',
+    'Content-Type': 'application/json'
+  }
+  var body = {"from":"btgyiesrv","select":[20],"where":"{19.EX.'QB@inglett-stubbs.com'}","options":{"skip":0,"top":0,"compareWithAppLocalTime":false}}
+
+  fetch('https://api.quickbase.com/v1/records/query',
+    {
+      method: 'POST',
+      headers: headers,
+      body: JSON.stringify(body)
+    })
+  .then(res => {
+    if (res.ok) {
+      res.json().then(res => maxBookNum = res);
+      return maxBookNum;
+    }
+    return res.json().then(resBody => Promise.reject({status: res.status, ...resBody}));
+  })
+  .catch(err => console.log(err))
+}
